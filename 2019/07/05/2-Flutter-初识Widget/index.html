@@ -79,24 +79,20 @@
 
 
 
-<meta name="description" content="这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。推荐一个flutter学习网站：Flutter中文网 一：下载安装Flutter先去官网下载最新的flutter包：官网下载地址解压后放到自己找的到的路径这里我放到/Users/payne/flutter(注意：payne是我自己的用户名，请根据自己的用户名">
+<meta name="description" content="Widget(小部件/组件) 在flutter的世界里万物皆为Widget，可以理解成乐高玩具，再复杂的东西都是由一个个的小部件组成的。说一千道一万，不如代码来得快。下面直接展示一个最简单的Widget 12345678910111213import &amp;apos;package:flutter/material.dart&amp;apos;;void main() =&amp;gt; runApp(MyApp()">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1.Flutter-环境搭建ForMac">
-<meta property="og:url" content="http://yoursite.com/2019/07/05/1-Flutter-环境搭建ForMac/index.html">
+<meta property="og:title" content="2.Flutter-初识Widget">
+<meta property="og:url" content="http://yoursite.com/2019/07/05/2-Flutter-初识Widget/index.html">
 <meta property="og:site_name" content="泡菜的小屋">
-<meta property="og:description" content="这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。推荐一个flutter学习网站：Flutter中文网 一：下载安装Flutter先去官网下载最新的flutter包：官网下载地址解压后放到自己找的到的路径这里我放到/Users/payne/flutter(注意：payne是我自己的用户名，请根据自己的用户名">
+<meta property="og:description" content="Widget(小部件/组件) 在flutter的世界里万物皆为Widget，可以理解成乐高玩具，再复杂的东西都是由一个个的小部件组成的。说一千道一万，不如代码来得快。下面直接展示一个最简单的Widget 12345678910111213import &amp;apos;package:flutter/material.dart&amp;apos;;void main() =&amp;gt; runApp(MyApp()">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-3e37f0073241aca8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-712d26bc69d390e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-cea93e9cbc9c3236.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-27ebd2672b5db31d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-d9793afa29d3538b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-4ecbe2b343fd30ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-07-05T15:30:47.779Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-0d74dd2a0ecba9fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-667d538dfba2ce3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
+<meta property="og:updated_time" content="2019-07-05T15:32:43.383Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="1.Flutter-环境搭建ForMac">
-<meta name="twitter:description" content="这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。推荐一个flutter学习网站：Flutter中文网 一：下载安装Flutter先去官网下载最新的flutter包：官网下载地址解压后放到自己找的到的路径这里我放到/Users/payne/flutter(注意：payne是我自己的用户名，请根据自己的用户名">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1176193-3e37f0073241aca8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="2.Flutter-初识Widget">
+<meta name="twitter:description" content="Widget(小部件/组件) 在flutter的世界里万物皆为Widget，可以理解成乐高玩具，再复杂的东西都是由一个个的小部件组成的。说一千道一万，不如代码来得快。下面直接展示一个最简单的Widget 12345678910111213import &amp;apos;package:flutter/material.dart&amp;apos;;void main() =&amp;gt; runApp(MyApp()">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1176193-0d74dd2a0ecba9fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
 
 
 
@@ -126,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/05/1-Flutter-环境搭建ForMac/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/05/2-Flutter-初识Widget/">
 
 
 
 
 
-  <title>1.Flutter-环境搭建ForMac | 泡菜的小屋</title>
+  <title>2.Flutter-初识Widget | 泡菜的小屋</title>
   
 
 
@@ -239,7 +235,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/05/1-Flutter-环境搭建ForMac/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/05/2-Flutter-初识Widget/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="泡菜">
@@ -256,7 +252,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">1.Flutter-环境搭建ForMac</h1>
+          <h1 class="post-title" itemprop="name headline">2.Flutter-初识Widget</h1>
         
 
         <div class="post-meta">
@@ -268,7 +264,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-05T23:29:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-05T23:32:00+08:00">
                 2019-07-05
               </time>
             
@@ -328,12 +324,20 @@
       
 
       
-        <p>这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。<br>推荐一个flutter学习网站：<a href="https://flutterchina.club/" target="_blank" rel="noopener">Flutter中文网</a></p>
-<h6 id="一：下载安装Flutter"><a href="#一：下载安装Flutter" class="headerlink" title="一：下载安装Flutter"></a>一：下载安装Flutter</h6><p>先去官网下载最新的flutter包：<a href="[https://flutter.dev/docs/development/tools/sdk/releases?tab=macos#macos]">官网下载地址</a><br><img src="https://upload-images.jianshu.io/upload_images/1176193-3e37f0073241aca8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>解压后放到自己找的到的路径<br>这里我放到<code>/Users/payne/flutter</code>(注意：<code>payne</code>是我自己的用户名，请根据自己的用户名替换)</p>
-<p>最后把下面这句<br><code>export PATH=`pwd`/flutter/bin:$PATH</code><br>添加的根目录<code>~/.bash_proflie</code>文件中保存，环境变量就配置好了<br><img src="https://upload-images.jianshu.io/upload_images/1176193-712d26bc69d390e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<h5 id="二-检查Flutter所需依赖"><a href="#二-检查Flutter所需依赖" class="headerlink" title="二.检查Flutter所需依赖"></a>二.检查Flutter所需依赖</h5><p>在终端执行<code>flutter doctor</code><br>会自动检测当前所需依赖，可根据指示进行安装。<br><code>Android Studio</code><br><code>Android SDK</code><br>还有iOS所需依赖<br><img src="https://upload-images.jianshu.io/upload_images/1176193-cea93e9cbc9c3236.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>所有依赖都安装完成后，在执行<code>flutter doctor</code>查看是否都OK</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1176193-27ebd2672b5db31d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>启动Android Studio<br>在设置里面插件中搜索安装flutter插件<br><img src="https://upload-images.jianshu.io/upload_images/1176193-d9793afa29d3538b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>安装完成重启，可以看到新建工程界面多了一个 新建flutter工程就完成了<img src="https://upload-images.jianshu.io/upload_images/1176193-4ecbe2b343fd30ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+        <p><code>Widget(小部件/组件)</code> 在flutter的世界里万物皆为Widget，可以理解成乐高玩具，再复杂的东西都是由一个个的小部件组成的。<br>说一千道一万，不如代码来得快。下面直接展示一个最简单的Widget</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import &apos;package:flutter/material.dart&apos;;</span><br><span class="line"></span><br><span class="line">void main() =&gt; runApp(MyApp());</span><br><span class="line"></span><br><span class="line">class MyApp extends StatelessWidget &#123;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return Container(</span><br><span class="line">      color: Colors.blue,</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第一句main 作为程序的入口，等于C里面的main和iOS的didFinish<br>使用<code>runApp()</code>来设置启动的Widget，其中<code>=&gt;</code>是简写的方式，在flutter中如果函数只执行一句代码，可以直接用这个箭头代替，和下面这样一个意思</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">  runApp(MyApp());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接着新建了个类叫<code>MyApp</code>继承自<code>StatelessWidget</code>这个无状态控制器，后续章节我会详细介绍有状态与无状态的区别。</p>
+<p>在类里面重写build构建方法，并返回一个容器类Widget–<code>Container</code>，类似于前端的div<br>设置了背景色为蓝色，来看看效果。<br><img src="https://upload-images.jianshu.io/upload_images/1176193-0d74dd2a0ecba9fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt></p>
+<p>这个Demo中<code>MyApp</code>是我自己创建的Widget类，然后里面又创建了一个系统的<code>Container</code>Widget，并设置去属性Color为蓝色，这就是一个很简单的Widget</p>
+<p>下面来演示一些系统的Widget类，创建出APP流行的页面结构<br>直接修改刚才的<code>MyApp</code>类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class MyApp extends StatelessWidget &#123;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return MaterialApp(</span><br><span class="line">      title: &quot;FlutterDemo&quot;,</span><br><span class="line">      home: Scaffold(</span><br><span class="line">        appBar: AppBar(</span><br><span class="line">          title: Text(&quot;Flutter&quot;),</span><br><span class="line">        ),</span><br><span class="line">        body: Container(),</span><br><span class="line">      )</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>来看看效果<br><img src="https://upload-images.jianshu.io/upload_images/1176193-667d538dfba2ce3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt><br>是不是突然熟悉了起来，哈哈。<br>首先在build里创建了一个<code>MaterialApp</code>，给title和home属性赋值(其中title属性只对Android有效)<br>而<code>Scaffold</code>则是脚手架的意思，负责构建一个具有顶部导航栏<code>AppBar</code>的界面<br>这里值得一提的是title属性也是一个Widget，不能直接使用字符串，要用<code>Text</code>包装一下<br>在body里面我们就可以搭建具体的页面布局咯</p>
+<p>下期介绍Flutter布局</p>
 
       
     </div>
@@ -358,8 +362,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/05/iOS微信分享/" rel="next" title="iOS微信分享">
-                <i class="fa fa-chevron-left"></i> iOS微信分享
+              <a href="/2019/07/05/1-Flutter-环境搭建ForMac/" rel="next" title="1.Flutter-环境搭建ForMac">
+                <i class="fa fa-chevron-left"></i> 1.Flutter-环境搭建ForMac
               </a>
             
           </div>
@@ -367,10 +371,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/05/2-Flutter-初识Widget/" rel="prev" title="2.Flutter-初识Widget">
-                2.Flutter-初识Widget <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -422,17 +422,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -483,22 +474,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#一：下载安装Flutter"><span class="nav-number">1.</span> <span class="nav-text">一：下载安装Flutter</span></a></li></ol><li class="nav-item nav-level-5"><a class="nav-link" href="#二-检查Flutter所需依赖"><span class="nav-number"></span> <span class="nav-text">二.检查Flutter所需依赖</span></a></li></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
