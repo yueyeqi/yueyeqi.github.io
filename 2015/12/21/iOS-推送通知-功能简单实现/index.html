@@ -79,16 +79,60 @@
 
 
 
-<meta name="description" content="不积趾步，何以至千里">
-<meta property="og:type" content="website">
-<meta property="og:title" content="泡菜的小屋">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="PS:此文仅以简单实现推送为主,是本人个人整理,部分截图与内容来自于互联网,若对大家有所帮助,还请给个赞O(∩_∩)O~~,大神勿喷 一.推送原理  图中，Provider是指某个iPhone软件的Push服务器，这篇文章我将使用百度云推送服务作为Provider。APNS 是Apple Push Notification Service（Apple Push服务器）的缩写，是苹果的服务器。上图可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 推送通知 功能简单实现">
+<meta property="og:url" content="http://yoursite.com/2015/12/21/iOS-推送通知-功能简单实现/index.html">
 <meta property="og:site_name" content="泡菜的小屋">
-<meta property="og:description" content="不积趾步，何以至千里">
+<meta property="og:description" content="PS:此文仅以简单实现推送为主,是本人个人整理,部分截图与内容来自于互联网,若对大家有所帮助,还请给个赞O(∩_∩)O~~,大神勿喷 一.推送原理  图中，Provider是指某个iPhone软件的Push服务器，这篇文章我将使用百度云推送服务作为Provider。APNS 是Apple Push Notification Service（Apple Push服务器）的缩写，是苹果的服务器。上图可">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-3251c869fb41474e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-dad50f024e55ae93.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-e5d2c8145742114d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-ead7cdc4fd3a9c7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-37c51f84db2eb85b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-5b9a5d2885544c10.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-a9708f706701da64.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-56d416c21f871713.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-3217716bc5362784.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-45467ab43460e2de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-c8a58a8e75cb45cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-552de7c3337adb84.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-42e21ecb539a7251.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-b128051d8c5f7a3c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-d5f4f64e9739330a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-a21019b3d18aae2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-59613c0be12cec6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-28db7c56510b2d28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-73a1ec4001a48723.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-dcf04e42006aaf3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-3b20be40b92433ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-2a2b2e4e5f3b5eea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-cdae0968418b441c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-16083ef6b6979500.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-257394d2732c569a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-cb460021f9e1477f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-23c2d81ceef0e1d5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-64edab609767aae2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-e11b0b6b79262f6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-de534bf8e097e583.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-330a7824e80d9558.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-830126318744bd36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-b336a9bc44dbfd3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-05a3f23f3c3b2551.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-51b819286cc36050.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-2d0240d7236620b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-a12dc8e31e420b1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-124724e6c25e0a26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-5d97f9659d08253b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-d5cbb314bb15e914.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-6b14d10aee4d839a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-d2fb5ee3f09f0cbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-07-07T14:26:16.262Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="泡菜的小屋">
-<meta name="twitter:description" content="不积趾步，何以至千里">
+<meta name="twitter:title" content="iOS 推送通知 功能简单实现">
+<meta name="twitter:description" content="PS:此文仅以简单实现推送为主,是本人个人整理,部分截图与内容来自于互联网,若对大家有所帮助,还请给个赞O(∩_∩)O~~,大神勿喷 一.推送原理  图中，Provider是指某个iPhone软件的Push服务器，这篇文章我将使用百度云推送服务作为Provider。APNS 是Apple Push Notification Service（Apple Push服务器）的缩写，是苹果的服务器。上图可">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1176193-3251c869fb41474e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -118,13 +162,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2015/12/21/iOS-推送通知-功能简单实现/">
 
 
 
 
 
-  <title>泡菜的小屋</title>
+  <title>iOS 推送通知 功能简单实现 | 泡菜的小屋</title>
   
 
 
@@ -143,8 +187,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -217,331 +260,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/05/2-Flutter-初识Widget/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="泡菜">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泡菜的小屋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/05/2-Flutter-初识Widget/" itemprop="url">2.Flutter-初识Widget</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-05T23:32:00+08:00">
-                2019-07-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Flutter/" itemprop="url" rel="index">
-                    <span itemprop="name">Flutter</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/05/2-Flutter-初识Widget/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/05/2-Flutter-初识Widget/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>Widget(小部件/组件)</code> 在flutter的世界里万物皆为Widget，可以理解成乐高玩具，再复杂的东西都是由一个个的小部件组成的。<br>说一千道一万，不如代码来得快。下面直接展示一个最简单的Widget</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import &apos;package:flutter/material.dart&apos;;</span><br><span class="line"></span><br><span class="line">void main() =&gt; runApp(MyApp());</span><br><span class="line"></span><br><span class="line">class MyApp extends StatelessWidget &#123;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return Container(</span><br><span class="line">      color: Colors.blue,</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>第一句main 作为程序的入口，等于C里面的main和iOS的didFinish<br>使用<code>runApp()</code>来设置启动的Widget，其中<code>=&gt;</code>是简写的方式，在flutter中如果函数只执行一句代码，可以直接用这个箭头代替，和下面这样一个意思</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">  runApp(MyApp());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>接着新建了个类叫<code>MyApp</code>继承自<code>StatelessWidget</code>这个无状态控制器，后续章节我会详细介绍有状态与无状态的区别。</p>
-<p>在类里面重写build构建方法，并返回一个容器类Widget–<code>Container</code>，类似于前端的div<br>设置了背景色为蓝色，来看看效果。<br><img src="https://upload-images.jianshu.io/upload_images/1176193-0d74dd2a0ecba9fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt></p>
-<p>这个Demo中<code>MyApp</code>是我自己创建的Widget类，然后里面又创建了一个系统的<code>Container</code>Widget，并设置去属性Color为蓝色，这就是一个很简单的Widget</p>
-<p>下面来演示一些系统的Widget类，创建出APP流行的页面结构<br>直接修改刚才的<code>MyApp</code>类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class MyApp extends StatelessWidget &#123;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return MaterialApp(</span><br><span class="line">      title: &quot;FlutterDemo&quot;,</span><br><span class="line">      home: Scaffold(</span><br><span class="line">        appBar: AppBar(</span><br><span class="line">          title: Text(&quot;Flutter&quot;),</span><br><span class="line">        ),</span><br><span class="line">        body: Container(),</span><br><span class="line">      )</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>来看看效果<br><img src="https://upload-images.jianshu.io/upload_images/1176193-667d538dfba2ce3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt><br>是不是突然熟悉了起来，哈哈。<br>首先在build里创建了一个<code>MaterialApp</code>，给title和home属性赋值(其中title属性只对Android有效)<br>而<code>Scaffold</code>则是脚手架的意思，负责构建一个具有顶部导航栏<code>AppBar</code>的界面<br>这里值得一提的是title属性也是一个Widget，不能直接使用字符串，要用<code>Text</code>包装一下<br>在body里面我们就可以搭建具体的页面布局咯</p>
-<p>下期介绍Flutter布局</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/05/1-Flutter-环境搭建ForMac/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="泡菜">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泡菜的小屋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/05/1-Flutter-环境搭建ForMac/" itemprop="url">1.Flutter-环境搭建ForMac</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-05T23:29:00+08:00">
-                2019-07-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Flutter/" itemprop="url" rel="index">
-                    <span itemprop="name">Flutter</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/05/1-Flutter-环境搭建ForMac/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/05/1-Flutter-环境搭建ForMac/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。<br>推荐一个flutter学习网站：<a href="https://flutterchina.club/" target="_blank" rel="noopener">Flutter中文网</a></p>
-<h6 id="一：下载安装Flutter"><a href="#一：下载安装Flutter" class="headerlink" title="一：下载安装Flutter"></a>一：下载安装Flutter</h6><p>先去官网下载最新的flutter包：<a href="[https://flutter.dev/docs/development/tools/sdk/releases?tab=macos#macos]">官网下载地址</a><br><img src="https://upload-images.jianshu.io/upload_images/1176193-3e37f0073241aca8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>解压后放到自己找的到的路径<br>这里我放到<code>/Users/payne/flutter</code>(注意：<code>payne</code>是我自己的用户名，请根据自己的用户名替换)</p>
-<p>最后把下面这句<br><code>export PATH=`pwd`/flutter/bin:$PATH</code><br>添加的根目录<code>~/.bash_proflie</code>文件中保存，环境变量就配置好了<br><img src="https://upload-images.jianshu.io/upload_images/1176193-712d26bc69d390e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<h5 id="二-检查Flutter所需依赖"><a href="#二-检查Flutter所需依赖" class="headerlink" title="二.检查Flutter所需依赖"></a>二.检查Flutter所需依赖</h5><p>在终端执行<code>flutter doctor</code><br>会自动检测当前所需依赖，可根据指示进行安装。<br><code>Android Studio</code><br><code>Android SDK</code><br>还有iOS所需依赖<br><img src="https://upload-images.jianshu.io/upload_images/1176193-cea93e9cbc9c3236.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>所有依赖都安装完成后，在执行<code>flutter doctor</code>查看是否都OK</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1176193-27ebd2672b5db31d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>启动Android Studio<br>在设置里面插件中搜索安装flutter插件<br><img src="https://upload-images.jianshu.io/upload_images/1176193-d9793afa29d3538b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>安装完成重启，可以看到新建工程界面多了一个 新建flutter工程就完成了<img src="https://upload-images.jianshu.io/upload_images/1176193-4ecbe2b343fd30ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -571,9 +292,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/12/21/iOS-推送通知-功能简单实现/" itemprop="url">iOS 推送通知 功能简单实现</a></h1>
+          <h1 class="post-title" itemprop="name headline">iOS 推送通知 功能简单实现</h1>
         
 
         <div class="post-meta">
@@ -637,6 +356,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
 
           
 
@@ -655,9 +379,7 @@
       
 
       
-        
-          
-            <p>PS:此文仅以简单实现推送为主,是本人个人整理,部分截图与内容来自于互联网,若对大家有所帮助,还请给个赞O(∩_∩)O~~,大神勿喷</p>
+        <p>PS:此文仅以简单实现推送为主,是本人个人整理,部分截图与内容来自于互联网,若对大家有所帮助,还请给个赞O(∩_∩)O~~,大神勿喷</p>
 <h6 id="一-推送原理"><a href="#一-推送原理" class="headerlink" title="一.推送原理"></a>一.推送原理</h6><p><img src="http://upload-images.jianshu.io/upload_images/1176193-3251c869fb41474e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <ul>
 <li>图中，Provider是指某个iPhone软件的Push服务器，这篇文章我将使用<strong>百度云推送</strong>服务作为Provider。<br>APNS 是Apple Push Notification Service（Apple Push服务器）的缩写，是苹果的服务器。<br>上图可以分为三个阶段。<br>第一阶段：Push服务器应用程序把要发送的消息、目的iPhone的标识打包，发给APNS。<br>第二阶段：APNS在自身的已注册Push服务的iPhone列表中，查找有相应标识的iPhone，并把消息发到iPhone。<br>第三阶段：iPhone把发来的消息传递给相应的应用程序， 并且按照设定弹出Push通知。<br><img src="http://upload-images.jianshu.io/upload_images/1176193-dad50f024e55ae93.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>从上图我们可以看到。<br> 1、首先是应用程序注册消息推送。<br> 2、 IOS跟APNS Server要deviceToken。应用程序接受deviceToken。<br> 3、应用程序将deviceToken发送给PUSH服务端程序。<br> 4、 服务端程序向APNS服务发送消息。<br> 5、APNS服务将消息发送给iPhone应用程序。<br>  无论是iPhone客户端跟APNS,还是Provider和APNS都需要通过证书进行连接的。下面我介绍一下几种用到的证书。</li>
@@ -737,8 +459,6 @@
 <li>现在我们就接收到刚才创建的通知了<br><img src="http://upload-images.jianshu.io/upload_images/1176193-d2fb5ee3f09f0cbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
 </ul>
 <h6 id="总结-此文虽步骤繁多-但只要理解了苹果的证书机制-配置还是很快的-更多的推送操作本文不再多讲-可以去看各大推送SDK说明文档都是OK的-如有任何问题可邮箱yueyeqi-icloud-com联系我"><a href="#总结-此文虽步骤繁多-但只要理解了苹果的证书机制-配置还是很快的-更多的推送操作本文不再多讲-可以去看各大推送SDK说明文档都是OK的-如有任何问题可邮箱yueyeqi-icloud-com联系我" class="headerlink" title="总结:此文虽步骤繁多,但只要理解了苹果的证书机制,配置还是很快的,更多的推送操作本文不再多讲,可以去看各大推送SDK说明文档都是OK的,如有任何问题可邮箱yueyeqi@icloud.com联系我"></a>总结:此文虽步骤繁多,但只要理解了苹果的证书机制,配置还是很快的,更多的推送操作本文不再多讲,可以去看各大推送SDK说明文档都是OK的,如有任何问题可邮箱<a href="mailto:yueyeqi@icloud.com" target="_blank" rel="noopener">yueyeqi@icloud.com</a>联系我</h6>
-          
-        
       
     </div>
     
@@ -755,198 +475,32 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/11/08/iOS微信分享/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="泡菜">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泡菜的小屋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/08/iOS微信分享/" itemprop="url">iOS微信分享</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-08T23:45:00+08:00">
-                2015-11-08
-              </time>
+              <a href="/2015/11/08/iOS微信分享/" rel="next" title="iOS微信分享">
+                <i class="fa fa-chevron-left"></i> iOS微信分享
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
+              <a href="/2019/07/05/1-Flutter-环境搭建ForMac/" rel="prev" title="1.Flutter-环境搭建ForMac">
+                1.Flutter-环境搭建ForMac <i class="fa fa-chevron-right"></i>
+              </a>
             
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS技术/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/08/iOS微信分享/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/11/08/iOS微信分享/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <blockquote>
-<p>3年来第一次更新这篇老文章，蟹蟹大家的支持。</p>
-</blockquote>
-<p>此文以简单实现功能为主,不足之前还望指点,大神勿喷.<br>在此之前如何申请微信认证的Key就不说了,公司一般会有人搞(自己申请一个也非常的简单)</p>
-<h6 id="1-现在微信SDK支持手动导入和cocoapods啦"><a href="#1-现在微信SDK支持手动导入和cocoapods啦" class="headerlink" title="1.现在微信SDK支持手动导入和cocoapods啦"></a>1.现在微信SDK支持手动导入和cocoapods啦</h6><ul>
-<li>手动导入：下载微信SDK:<a href="https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419319164&lang=zh_CN" target="_blank" rel="noopener">微信SDK下载地址</a>(更多关于微信SDK信息文档请访问官方网站:<a href="https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=1417694084&token=&lang=zh_CN" target="_blank" rel="noopener">微信官方接入文档</a>)</li>
-<li>cocoapods安装：<code>pod &#39;WechatOpenSDK&#39;</code><br>微信的文档写的还是非常不错的，跟隔壁的QQ比简直好太多了，忍不住想吐槽一下。<br>接下来我们以cocoapods导入为例进行</li>
-</ul>
-<h6 id="2-桥接微信SDK"><a href="#2-桥接微信SDK" class="headerlink" title="2.桥接微信SDK"></a>2.桥接微信SDK</h6><p>微信SDK是OC版的，用Swift的工程去调用肯定是要混编的嘛，<a href="https://www.jianshu.com/p/797b6d479330" target="_blank" rel="noopener">混编具体教程</a><br>在桥接文件中引入<code>WXApi.h</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#ifndef OC_Bridging_Header_h</span><br><span class="line">#define OC_Bridging_Header_h</span><br><span class="line">#import &quot;WXApi.h&quot;</span><br><span class="line">#endif /* OC_Bridging_Header_h */</span><br></pre></td></tr></table></figure>
-
-<h6 id="3-添加URL-Scheme"><a href="#3-添加URL-Scheme" class="headerlink" title="3.添加URL Scheme"></a>3.添加URL Scheme</h6><p>iOS跳转到其他APP使用的是<code>URL Scheme</code>,在iOS9开始加入了白名单功能,需要把要跳转的APP的<code>URL Scheme</code>加入到当前工程的跳转白名单中。详细了解可以看<a href="https://blog.devzeng.com/blog/ios-url-scheme.html" target="_blank" rel="noopener">iOS URL Scheme</a></p>
-<p>在工程info.plist中新增或添加微信Schemes<img src="https://upload-images.jianshu.io/upload_images/1176193-0f545c2f6e93ebf9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>并在下方URL Types添加微信Identifier<img src="https://upload-images.jianshu.io/upload_images/1176193-b8172a61b04b1e78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>另外还需要判断当前机器中没有安装微信<br>可以使用<code>WXApi.isWXAppInstalled()</code>方法来判断当前机器是否安装了微信,从而做出相应操作</p>
-<h6 id="4-使用SDK注册你的APP"><a href="#4-使用SDK注册你的APP" class="headerlink" title="4.使用SDK注册你的APP"></a>4.使用SDK注册你的APP</h6><ul>
-<li>建议在<code>AppDelegate</code>中<code>didfinish</code>方法中注册,导入<code>import &quot;WXApi.h&quot;</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -&gt; Bool &#123;</span><br><span class="line">    </span><br><span class="line">        //微信注册</span><br><span class="line">        WXApi.registerApp(wxID)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h6 id="5-创建发送体并向微信发送分享信息"><a href="#5-创建发送体并向微信发送分享信息" class="headerlink" title="5.创建发送体并向微信发送分享信息"></a>5.创建发送体并向微信发送分享信息</h6><ul>
-<li>首先我们来看看发送对象的类<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#pragma mark - SendMessageToWXReq</span><br><span class="line">/*! @brief 第三方程序发送消息至微信终端程序的消息结构体</span><br><span class="line"> *</span><br><span class="line"> * 第三方程序向微信发送信息需要传入SendMessageToWXReq结构体，信息类型包括文本消息和多媒体消息，</span><br><span class="line"> * 分别对应于text和message成员。调用该方法后，微信处理完信息会向第三方程序发送一个处理结果。</span><br><span class="line"> * @see SendMessageToWXResp</span><br><span class="line"> */</span><br><span class="line">@interface SendMessageToWXReq : BaseReq</span><br><span class="line">/** 发送消息的文本内容</span><br><span class="line"> * @note 文本长度必须大于0且小于10K</span><br><span class="line"> */</span><br><span class="line">@property (nonatomic, retain) NSString* text;</span><br><span class="line">/** 发送消息的多媒体内容</span><br><span class="line"> * @see WXMediaMessage</span><br><span class="line"> */</span><br><span class="line">@property (nonatomic, retain) WXMediaMessage* message;</span><br><span class="line">/** 发送消息的类型，包括文本消息和多媒体消息两种，两者只能选择其一，不能同时发送文本和多媒体消息 */</span><br><span class="line">@property (nonatomic, assign) BOOL bText;</span><br><span class="line">/** 发送的目标场景，可以选择发送到会话(WXSceneSession)或者朋友圈(WXSceneTimeline)。 默认发送到会话。</span><br><span class="line"> * @see WXScene</span><br><span class="line"> */</span><br><span class="line">@property (nonatomic, assign) int scene;</span><br><span class="line">/** 指定发送消息的人，WXSceneSpecifiedSession时有效 */</span><br><span class="line">@property (nonatomic, retain) NSString* toUserOpenId;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>通过该类得知,可以发送文本信息和多媒体信息两者选一,多媒体信息可分为链接类,视频类,音乐类,这里以链接类为例,实例化发送此对象</p>
-<ul>
-<li>实例化发送对象</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let kLinkURL = &quot;http://tech.qq.com/zt2012/tmtdecode/252.htm&quot;;</span><br><span class="line">let kLinkTitle = &quot;专访张小龙：产品之上的世界观&quot;;</span><br><span class="line">let kLinkDescription = &quot;微信的平台化发展方向是否真的会让这个原本简洁的产品变得臃肿？在国际化发展方向上，微信面临的问题真的是文化差异壁垒吗？腾讯高级副总裁、微信产品负责人张小龙给出了自己的回复。&quot;;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//创建请求体</span><br><span class="line">let sendReq = SendMessageToWXReq()</span><br><span class="line">sendReq.bText = false //true文本类型，false多媒体消息类型</span><br><span class="line">sendReq.scene = 1 //0 好友，1 朋友圈, 2 收藏</span><br><span class="line"></span><br><span class="line">//创建内容对象</span><br><span class="line">let contentMessage = WXMediaMessage()</span><br><span class="line">contentMessage.title = kLinkTitle</span><br><span class="line">contentMessage.description = kLinkDescription</span><br><span class="line">contentMessage.setThumbImage(UIImage(named: &quot;鱼泡网&quot;))</span><br><span class="line"></span><br><span class="line">//创建多媒体对象</span><br><span class="line">let mediaObj = WXWebpageObject()</span><br><span class="line">mediaObj.webpageUrl = kLinkURL</span><br><span class="line"></span><br><span class="line">//完成请求对象包装</span><br><span class="line">contentMessage.mediaObject = mediaObj</span><br><span class="line">sendReq.message = contentMessage</span><br><span class="line"></span><br><span class="line">//发送分享请求</span><br><span class="line">WXApi.send(sendReq)</span><br></pre></td></tr></table></figure>
-
-<p>到这里应该是可以成功发起分享信息了，至于回调是否分享成功，微信官方做了一次调整，开发者已经不支持获取用户分享状态了。默认errCode永远都是0，errStr永远都是nil，没啥用了。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1176193-90e450574a7d527e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<h5 id="如有疑问或不足之处可以留言-觉得这篇文章对你有用，非常感谢你能赞一个喔"><a href="#如有疑问或不足之处可以留言-觉得这篇文章对你有用，非常感谢你能赞一个喔" class="headerlink" title="如有疑问或不足之处可以留言,觉得这篇文章对你有用，非常感谢你能赞一个喔~~"></a>如有疑问或不足之处可以留言,觉得这篇文章对你有用，非常感谢你能赞一个喔~~</h5>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -956,10 +510,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -967,6 +522,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -987,8 +556,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1051,6 +629,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#一-推送原理"><span class="nav-number">1.</span> <span class="nav-text">一.推送原理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#二-创建本地请求证书文件–CertificateSigningRequest"><span class="nav-number">2.</span> <span class="nav-text">二.创建本地请求证书文件–CertificateSigningRequest</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#三-进入苹果开发者网站-https-developer-apple-com"><span class="nav-number">3.</span> <span class="nav-text">三.进入苹果开发者网站:https://developer.apple.com/</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#四-进入百度云推送后台-登陆验证开发者身份-并创建一个推送应用"><span class="nav-number">4.</span> <span class="nav-text">四.进入百度云推送后台,登陆验证开发者身份,并创建一个推送应用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#五-项目里配置百度云推送"><span class="nav-number">5.</span> <span class="nav-text">五.项目里配置百度云推送</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#六-配置证书测试"><span class="nav-number">6.</span> <span class="nav-text">六.配置证书测试</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#七-创建通知测试"><span class="nav-number">7.</span> <span class="nav-text">七.创建通知测试</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#总结-此文虽步骤繁多-但只要理解了苹果的证书机制-配置还是很快的-更多的推送操作本文不再多讲-可以去看各大推送SDK说明文档都是OK的-如有任何问题可邮箱yueyeqi-icloud-com联系我"><span class="nav-number">8.</span> <span class="nav-text">总结:此文虽步骤繁多,但只要理解了苹果的证书机制,配置还是很快的,更多的推送操作本文不再多讲,可以去看各大推送SDK说明文档都是OK的,如有任何问题可邮箱yueyeqi@icloud.com联系我</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1211,6 +805,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1228,6 +826,18 @@
       <script id="dsq-count-scr" src="https://paocai.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2015/12/21/iOS-推送通知-功能简单实现/';
+          this.page.identifier = '2015/12/21/iOS-推送通知-功能简单实现/';
+          this.page.title = 'iOS 推送通知 功能简单实现';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://paocai.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
