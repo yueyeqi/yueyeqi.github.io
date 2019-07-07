@@ -554,6 +554,391 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/13/iOS-Facebook-Pop-动效库的使用教程-Swift版/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="泡菜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泡菜的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/08/13/iOS-Facebook-Pop-动效库的使用教程-Swift版/" itemprop="url">iOS Facebook-Pop 动效库的使用教程(Swift版)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-13T16:53:00+08:00">
+                2016-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS技术/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/08/13/iOS-Facebook-Pop-动效库的使用教程-Swift版/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/13/iOS-Facebook-Pop-动效库的使用教程-Swift版/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="http://upload-images.jianshu.io/upload_images/1176193-66d5c66d0d199b24.gif?imageMogr2/auto-orient/strip" alt></p>
+<h6 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h6><p>好久没更新文章了，今天讲的是Facebook出的一款动效库Facebook-Pop。(部分内容摘自互联网，文章最后附有demo地址，有什么不对的地方，欢迎大家指正出来，大神勿喷，嘿嘿)</p>
+<p>Pop是一个动画引擎，用以扩展iOS、OSX的动画类型。相较于iOS、OSX中的基本动画效果，Pop扩展后支持弹簧动画效果与衰减动画效果，你可以用Pop动画引擎来构建出真实的物理交互效果。它的API与Core Animation的API非常类似，使用起来非常容易。Pop动画引擎已经经过了良好的测试，Facebook在 Paper 应用中进行了大量使用。<br>官方Git地址：<a href="https://github.com/facebook/pop" target="_blank" rel="noopener">https://github.com/facebook/pop</a></p>
+<p>iOS原生的Core Animation框架只提供了linear, ease-in, ease-out和ease-in-ease-out等4种静态动画：<br><img src="http://upload-images.jianshu.io/upload_images/1176193-18b5c2955c69955b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>而Pop在Core Animation基础上增加Spring、Decay和Custom 3种动态动画效果：<br><img src="http://upload-images.jianshu.io/upload_images/1176193-8fc5a161aef920e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>Spring(弹性)和Decay(衰减)可以让动画变得更灵动，而Custom这更为强大，可以给任何NSObject对象属性添加动画效果(待会有例子介绍)。</p>
+<p>所以今天主要讲的就是4个动画效果</p>
+<ul>
+<li>POPBasicAnimation //基础动画</li>
+<li>POPSpringAnimation //弹性动画</li>
+<li>POPDecayAnimation //衰减动画</li>
+<li>POPCustomAnimation //自定义动画</li>
+</ul>
+<h6 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h6><p>POPBasicAnimation</p>
+<ul>
+<li>POPBasicAnimation使用最广泛 提供固定时间间隔的动画(如淡入淡出效果)<pre><code>let animation = POPBasicAnimation(propertyNamed: kPOPLayerPositionX)
+animation.toValue = NSValue(CGPoint: CGPointMake(100, 200))
+animation.duration = 2
+animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+view.layer.pop_addAnimation(animation, forKey: &quot;positionX&quot;)</code></pre>其实只有3个步骤就能创建一个动画</li>
+</ul>
+<p>1.创建对应的动画类型，这里我使用的是kPOPLayerPositionX来控制view的位置<br>2.设置动画的属性<br> toValue设置动画的最终值(对应的还有fromValue是设置动画的起始值，不写默认为当前值)<br>duration设置动画时长<br>timingFunction是系统预设的动画类型有以下5种：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">kCAMediaTimingFunctionLinear            线性,即匀速</span><br><span class="line">kCAMediaTimingFunctionEaseIn            先慢后快</span><br><span class="line">kCAMediaTimingFunctionEaseOut           先快后慢</span><br><span class="line">kCAMediaTimingFunctionEaseInEaseOut     先慢后快再慢</span><br><span class="line">kCAMediaTimingFunctionDefault           实际效果是动画中间比较快</span><br></pre></td></tr></table></figure>
+
+<p>这里使用的是EaseIn(先慢后快)<br>3.最后只需把动画add到对应视图的layer就完成，设置了key可以方便删除和修改动画，例如：<br>        [layer pop_removeAnimationForKey:@”positionX”];</p>
+<p>POPSpringAnimation</p>
+<ul>
+<li>POPSpringAnimation也许是大多数人使用POP的理由 其提供一个类似弹簧一般的动画效果(炫酷!)<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> animation = <span class="type">POPSpringAnimation</span>(propertyNamed: kPOPLayerScaleXY)</span><br><span class="line">animation!.toValue = <span class="type">NSValue</span>(<span class="type">CGSize</span>: <span class="type">CGSizeMake</span>(<span class="number">5</span>, <span class="number">5</span>))</span><br><span class="line">animation!.springBounciness = <span class="number">10</span> <span class="comment">//[0-20] 弹力 越大则震动幅度越大</span></span><br><span class="line">animation!.springSpeed = <span class="number">20</span> <span class="comment">//[0-20] 速度 越大则动画结束越快</span></span><br><span class="line"><span class="comment">//以下3个与物理力学模拟相关，没特殊需求不建议使用</span></span><br><span class="line"><span class="comment">//        animation.dynamicsFriction = 0 //拉力</span></span><br><span class="line"><span class="comment">//        animation.dynamicsFriction = 0 //摩擦</span></span><br><span class="line"><span class="comment">//        animation.dynamicsMass = 0 //质量</span></span><br><span class="line">view.layer.pop_addAnimation(animation, forKey: <span class="string">"scaleXY"</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>POPSpringAnimation是没有duration字段的 其动画持续时间由以上几个参数决定，简单的几个步骤就能实现非常炫酷灵动的效果了</p>
+<p>POPDecayAnimation</p>
+<ul>
+<li>POPDecayAnimation提供一个过阻尼效果(其实Spring是一种欠阻尼效果) 可以实现类似UIScrollView的滑动衰减效果(是的 你可以靠它来自己实现一个UIScrollView)<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> animation = <span class="type">POPDecayAnimation</span>(propertyNamed: kPOPLayerPositionX)</span><br><span class="line">        </span><br><span class="line"> animation.velocity = <span class="number">200</span> <span class="comment">//速度</span></span><br><span class="line"> animation.deceleration = <span class="number">0.998</span> <span class="comment">// 衰减系数(越小则衰减得越快)</span></span><br><span class="line">        </span><br><span class="line"> <span class="comment">//目的状态toValue是通过velocity和deceleration计算，动态得到</span></span><br><span class="line">        </span><br><span class="line"> view.layer.pop_addAnimation(animation, forKey: <span class="string">"decayPosition"</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>这是一个很简单的移动例子，当然强大的POP不止这些属性，在POPAnimatableProperty文件中还有很多可操作的属性,并且维护者还在不断增加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> Common CALayer property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPLayerBackgroundColor: String</span><br><span class="line">public let kPOPLayerBounds: String</span><br><span class="line">public let kPOPLayerCornerRadius: String</span><br><span class="line">public let kPOPLayerBorderWidth: String</span><br><span class="line">public let kPOPLayerBorderColor: String</span><br><span class="line">public let kPOPLayerOpacity: String</span><br><span class="line">public let kPOPLayerPosition: String</span><br><span class="line">public let kPOPLayerPositionX: String</span><br><span class="line">public let kPOPLayerPositionY: String</span><br><span class="line">public let kPOPLayerRotation: String</span><br><span class="line">public let kPOPLayerRotationX: String</span><br><span class="line">public let kPOPLayerRotationY: String</span><br><span class="line">public let kPOPLayerScaleX: String</span><br><span class="line">public let kPOPLayerScaleXY: String</span><br><span class="line">public let kPOPLayerScaleY: String</span><br><span class="line">public let kPOPLayerSize: String</span><br><span class="line">public let kPOPLayerSubscaleXY: String</span><br><span class="line">public let kPOPLayerSubtranslationX: String</span><br><span class="line">public let kPOPLayerSubtranslationXY: String</span><br><span class="line">public let kPOPLayerSubtranslationY: String</span><br><span class="line">public let kPOPLayerSubtranslationZ: String</span><br><span class="line">public let kPOPLayerTranslationX: String</span><br><span class="line">public let kPOPLayerTranslationXY: String</span><br><span class="line">public let kPOPLayerTranslationY: String</span><br><span class="line">public let kPOPLayerTranslationZ: String</span><br><span class="line">public let kPOPLayerZPosition: String</span><br><span class="line">public let kPOPLayerShadowColor: String</span><br><span class="line">public let kPOPLayerShadowOffset: String</span><br><span class="line">public let kPOPLayerShadowOpacity: String</span><br><span class="line">public let kPOPLayerShadowRadius: String</span><br><span class="line">/**</span><br><span class="line"> Common CAShapeLayer property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPShapeLayerStrokeStart: String</span><br><span class="line">public let kPOPShapeLayerStrokeEnd: String</span><br><span class="line">public let kPOPShapeLayerStrokeColor: String</span><br><span class="line">public let kPOPShapeLayerFillColor: String</span><br><span class="line">public let kPOPShapeLayerLineWidth: String</span><br><span class="line">public let kPOPShapeLayerLineDashPhase: String</span><br><span class="line">/**</span><br><span class="line"> Common NSLayoutConstraint property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPLayoutConstraintConstant: String</span><br><span class="line">/**</span><br><span class="line"> Common UIView property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPViewAlpha: String</span><br><span class="line">public let kPOPViewBackgroundColor: String</span><br><span class="line">public let kPOPViewBounds: String</span><br><span class="line">public let kPOPViewCenter: String</span><br><span class="line">public let kPOPViewFrame: String</span><br><span class="line">public let kPOPViewScaleX: String</span><br><span class="line">public let kPOPViewScaleXY: String</span><br><span class="line">public let kPOPViewScaleY: String</span><br><span class="line">public let kPOPViewSize: String</span><br><span class="line">public let kPOPViewTintColor: String</span><br><span class="line">/**</span><br><span class="line"> Common UIScrollView property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPScrollViewContentOffset: String</span><br><span class="line">public let kPOPScrollViewContentSize: String</span><br><span class="line">public let kPOPScrollViewZoomScale: String</span><br><span class="line">public let kPOPScrollViewContentInset: String</span><br><span class="line">public let kPOPScrollViewScrollIndicatorInsets: String</span><br><span class="line">/**</span><br><span class="line"> Common UITableView property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPTableViewContentOffset: String</span><br><span class="line">public let kPOPTableViewContentSize: String</span><br><span class="line">/**</span><br><span class="line"> Common UICollectionView property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPCollectionViewContentOffset: String</span><br><span class="line">public let kPOPCollectionViewContentSize: String</span><br><span class="line">/**</span><br><span class="line"> Common UINavigationBar property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPNavigationBarBarTintColor: String</span><br><span class="line">/**</span><br><span class="line"> Common UIToolbar property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPToolbarBarTintColor: String</span><br><span class="line">/**</span><br><span class="line"> Common UITabBar property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPTabBarBarTintColor: String</span><br><span class="line">/**</span><br><span class="line"> Common UILabel property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPLabelTextColor: String</span><br></pre></td></tr></table></figure>
+
+<p>什么？你说这里面没有你需要的，别着急POP还有更强大的自定义属性功能</p>
+<p>自定义属性</p>
+<ul>
+<li>POP默认支持的三种动画都继承自POPPropertyAnimation POPPropertyAnimation中定义了一个叫property的属性( 之前没有用到它是因为POP根据不同的默认动画属性帮你生成了默认的property) 而这个property则是用来驱动POP的动画效果中的重要一环<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">POPAnimatableProperty *prop = [POPAnimatableProperty propertyWithName:@&quot;prop&quot; initializer:^(POPMutableAnimatableProperty *prop) &#123;</span><br><span class="line">    // read value</span><br><span class="line">    prop.readBlock = ^(id obj, CGFloat values[]) &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;;</span><br><span class="line">    // write value</span><br><span class="line">    prop.writeBlock = ^(id obj, const CGFloat values[]) &#123;</span><br><span class="line">    </span><br><span class="line">    &#125;;</span><br><span class="line">    // dynamics threshold</span><br><span class="line">    prop.threshold = 0.01;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>其组成就是一个readBlock一个writeBlock和一个threashold</p>
+<p>readBlock告诉POP当前的属性值<br>writeBlock中修改变化后的属性值<br>threashold决定了动画变化间隔的阈值 值越大writeBlock的调用次数越少<br>POPAnimatableProperty其实是POP中一个比较重要的东西 像上面提到的POP自带的动画属性 查看源代码可以看到也只是POP自动帮你设置好了POPAnimatableProperty而已 其作用就是当动画的某个时间片被触发时 告诉系统如何根据当前时间片做出变化</p>
+<p>直接上案例，我们要实现一个像系统的时钟APP里秒表计时的一个效果</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">testLabel = <span class="type">UILabel</span>(frame: <span class="type">CGRectMake</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">100</span>,<span class="number">50</span>))</span><br><span class="line">testLabel.center = view.center</span><br><span class="line">view.addSubview(testLabel!)</span><br><span class="line">        </span><br><span class="line"><span class="keyword">let</span> prop = <span class="type">POPAnimatableProperty</span>.propertyWithName(<span class="string">"Custom"</span>) &#123; (prop) <span class="keyword">in</span></span><br><span class="line">    prop.writeBlock = &#123;(obj, value) -&gt; <span class="type">Void</span> <span class="keyword">in</span></span><br><span class="line">        <span class="keyword">let</span> lable = obj <span class="keyword">as</span>! <span class="type">UILabel</span></span><br><span class="line">        lable.text = <span class="type">String</span>.<span class="keyword">init</span>(format: <span class="string">"%02d:%02d:%02d"</span>, <span class="type">Int</span>(value[<span class="number">0</span>]/<span class="number">60</span>),<span class="type">Int</span>(value[<span class="number">0</span>]%<span class="number">60</span>),<span class="type">Int</span>((value[<span class="number">0</span>]*<span class="number">100</span>)%<span class="number">100</span>))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> anBasic = <span class="type">POPBasicAnimation</span>.linearAnimation()</span><br><span class="line">anBasic.property = prop <span class="keyword">as</span>! <span class="type">POPAnimatableProperty</span></span><br><span class="line">anBasic.fromValue = <span class="number">0</span></span><br><span class="line">anBasic.toValue = <span class="number">3</span>*<span class="number">60</span></span><br><span class="line">anBasic.duration = <span class="number">3</span>*<span class="number">60</span></span><br><span class="line">testLabel!.pop_addAnimation(anBasic, forKey: <span class="string">"Custom"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：<br><img src="http://upload-images.jianshu.io/upload_images/1176193-c1ac07ef6fcb9fdb.gif?imageMogr2/auto-orient/strip" alt></p>
+<p>从这个例子中有没有新的启发呢，POP可以做的事情远比CoreAnimation要多，它的强大毋庸置疑。</p>
+<hr>
+<p>Demo地址：<a href="https://github.com/yueyeqi/Facebook-PopExample" target="_blank" rel="noopener">https://github.com/yueyeqi/Facebook-PopExample</a></p>
+<hr>
+<h6 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h6><p>其实只需要熟练掌握POP自带的三种动画 即可完成大部分的动画效果 如果实在是无法满足你的需求的话 自定义动画也基本可以满足你的要求 可以说POP化繁为简的出现 极大的方便了我们这些苦逼的coder 本文主要只介绍了最基本的使用方法和思路，更多的知识和效果还待大家深入了解 完。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/24/iOS-CocoaAsyncSocket-使用教程-Swift版/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="泡菜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泡菜的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/06/24/iOS-CocoaAsyncSocket-使用教程-Swift版/" itemprop="url">iOS CocoaAsyncSocket 使用教程(Swift版)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-24T17:49:00+08:00">
+                2016-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS技术/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/06/24/iOS-CocoaAsyncSocket-使用教程-Swift版/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/24/iOS-CocoaAsyncSocket-使用教程-Swift版/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="http://upload-images.jianshu.io/upload_images/1176193-c85bb9307e3500ac.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Socket就是对于传输层TCP/IP的封装"></p>
+<h6 id="简述"><a href="#简述" class="headerlink" title="简述:"></a>简述:</h6><ul>
+<li>由于最近项目的需要,需要使用到Socket,所以就趁此整理了一下,网上对于Socket的理论知识有很多,这里就不必多说,此篇文章主要在Swift环境下使用CocoaAsyncSocket库,来实现一个非常简单的Socket连接的例子,帮助大家理解和使用.(大神勿喷呀,哈哈)</li>
+</ul>
+<h6 id="1-创建Swift工程-并使用Cocoapods导入CocoaAsyncSocket"><a href="#1-创建Swift工程-并使用Cocoapods导入CocoaAsyncSocket" class="headerlink" title="1.创建Swift工程,并使用Cocoapods导入CocoaAsyncSocket"></a>1.创建Swift工程,并使用Cocoapods导入CocoaAsyncSocket</h6><p> <img src="http://upload-images.jianshu.io/upload_images/1176193-e36c66a1bca6af34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.创建工程"><br>Cocoapods:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use_frameworks! </span><br><span class="line">pod &apos;CocoaAsyncSocket&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="2-搭建服务端和客户端UI"><a href="#2-搭建服务端和客户端UI" class="headerlink" title="2.搭建服务端和客户端UI"></a>2.搭建服务端和客户端UI</h6><ul>
+<li><p>使用Tabbar分别创建服务端界面和客户端界面<br><img src="http://upload-images.jianshu.io/upload_images/1176193-5c5e9b00e0160d4d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="服务端和客户端的界面搭建"></p>
+</li>
+<li><p>分别创建服务端和客户端ViewController并关联相关Textfield 和 Button  </p>
+</li>
+</ul>
+<h6 id="3-服务端创建Socket绑定端口-设置监听-消息发送等方法"><a href="#3-服务端创建Socket绑定端口-设置监听-消息发送等方法" class="headerlink" title="3.服务端创建Socket绑定端口,设置监听,消息发送等方法"></a>3.服务端创建Socket绑定端口,设置监听,消息发送等方法</h6><ul>
+<li>ServerViewController<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  ServerViewController.swift</span></span><br><span class="line"><span class="comment">//  TestSocket</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by YYQ on 6/21/16.</span></span><br><span class="line"><span class="comment">//  Copyright © 2016 YYQ. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"><span class="keyword">import</span> CocoaAsyncSocket</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ServerViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">    <span class="comment">//端口</span></span><br><span class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> portTF: <span class="type">UITextField!</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//消息</span></span><br><span class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> msgTF: <span class="type">UITextField!</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//信息显示</span></span><br><span class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> infoTV: <span class="type">UITextView!</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//服务端和客户端的socket引用</span></span><br><span class="line">    <span class="keyword">var</span> serverSocket: <span class="type">GCDAsyncSocket?</span></span><br><span class="line">    <span class="keyword">var</span> clientSocket: <span class="type">GCDAsyncSocket?</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//对InfoTextView添加提示内容</span></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">addText</span><span class="params">(text: String)</span></span> &#123;</span><br><span class="line">        infoTV.text = infoTV.text.stringByAppendingFormat(<span class="string">"%@\n"</span>, text)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">///监听</span></span><br><span class="line">    <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">listeningAct</span><span class="params">(sender: AnyObject)</span></span> &#123;</span><br><span class="line">    </span><br><span class="line">        serverSocket = <span class="type">GCDAsyncSocket</span>(delegate: <span class="keyword">self</span>, delegateQueue: dispatch_get_main_queue())</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> serverSocket?.acceptOnPort(<span class="type">UInt16</span>(portTF.text!)!)</span><br><span class="line">            addText(<span class="string">"监听成功"</span>)</span><br><span class="line">        &#125;<span class="keyword">catch</span> <span class="number">_</span> &#123;</span><br><span class="line">            addText(<span class="string">"监听失败"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">///发送</span></span><br><span class="line">    <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">sendAct</span><span class="params">(sender: AnyObject)</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> data = msgTF.text?.dataUsingEncoding(<span class="type">NSUTF8StringEncoding</span>)</span><br><span class="line">        <span class="comment">//向客户端写入信息   Timeout设置为 -1 则不会超时, tag作为两边一样的标示</span></span><br><span class="line">        clientSocket?.writeData(data, withTimeout: -<span class="number">1</span>, tag: <span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">ServerViewController</span>: <span class="title">GCDAsyncSocketDelegate</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//当接收到新的Socket连接时执行</span></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">socket</span><span class="params">(sock: GCDAsyncSocket!, didAcceptNewSocket newSocket: GCDAsyncSocket!)</span></span> &#123;</span><br><span class="line">    </span><br><span class="line">        addText(<span class="string">"连接成功"</span>)</span><br><span class="line">        addText(<span class="string">"连接地址"</span> + newSocket.connectedHost)</span><br><span class="line">        addText(<span class="string">"端口号"</span> + <span class="type">String</span>(newSocket.connectedPort))</span><br><span class="line">        clientSocket = newSocket</span><br><span class="line">    </span><br><span class="line">        <span class="comment">//第一次开始读取Data</span></span><br><span class="line">        clientSocket!.readDataWithTimeout(-<span class="number">1</span>, tag: <span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">socket</span><span class="params">(sock: GCDAsyncSocket!, didReadData data: NSData!, withTag tag: Int)</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> message = <span class="type">String</span>(data: data,encoding: <span class="type">NSUTF8StringEncoding</span>)</span><br><span class="line">        addText(message!)</span><br><span class="line">        <span class="comment">//再次准备读取Data,以此来循环读取Data</span></span><br><span class="line">        sock.readDataWithTimeout(-<span class="number">1</span>, tag: <span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h6 id="4-客户端创建Socket-设置连接-消息发送-读取-断开连接等方法"><a href="#4-客户端创建Socket-设置连接-消息发送-读取-断开连接等方法" class="headerlink" title="4.客户端创建Socket,设置连接,消息发送,读取,断开连接等方法"></a>4.客户端创建Socket,设置连接,消息发送,读取,断开连接等方法</h6><ul>
+<li>ClientViewController<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  ClientViewController.swift</span></span><br><span class="line"><span class="comment">//  TestSocket</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by YYQ on 6/21/16.</span></span><br><span class="line"><span class="comment">//  Copyright  2016 YYQ. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"><span class="keyword">import</span> CocoaAsyncSocket</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClientViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//IP地址</span></span><br><span class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> ipTF: <span class="type">UITextField!</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//端口</span></span><br><span class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> portTF: <span class="type">UITextField!</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//消息</span></span><br><span class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> msgTF: <span class="type">UITextField!</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//信息显示</span></span><br><span class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> infoTV: <span class="type">UITextView!</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> socket: <span class="type">GCDAsyncSocket?</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">addText</span><span class="params">(text: String)</span></span> &#123;</span><br><span class="line">        infoTV.text = infoTV.text.stringByAppendingFormat(<span class="string">"%@\n"</span>, text)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//连接</span></span><br><span class="line">    <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">connectionAct</span><span class="params">(sender: AnyObject)</span></span> &#123;</span><br><span class="line">        socket = <span class="type">GCDAsyncSocket</span>(delegate: <span class="keyword">self</span>, delegateQueue: dispatch_get_main_queue())</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> socket?.connectToHost(ipTF.text, onPort: <span class="type">UInt16</span>(portTF.text!)!)</span><br><span class="line">            addText(<span class="string">"连接成功"</span>)</span><br><span class="line">        &#125;<span class="keyword">catch</span> <span class="number">_</span> &#123;</span><br><span class="line">            addText(<span class="string">"连接失败"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//断开</span></span><br><span class="line">    <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">disconnectAct</span><span class="params">(sender: AnyObject)</span></span> &#123;</span><br><span class="line">        socket?.disconnect()</span><br><span class="line">        addText(<span class="string">"断开连接"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//发送</span></span><br><span class="line">    <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">sendMsgAct</span><span class="params">(sender: AnyObject)</span></span> &#123;</span><br><span class="line">        socket?.writeData(msgTF.text?.dataUsingEncoding(<span class="type">NSUTF8StringEncoding</span>), withTimeout: -<span class="number">1</span>, tag: <span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">ClientViewController</span>: <span class="title">GCDAsyncSocketDelegate</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">socket</span><span class="params">(sock: GCDAsyncSocket!, didConnectToHost host: String!, port: UInt16)</span></span> &#123;</span><br><span class="line">        addText(<span class="string">"连接服务器"</span> + host)</span><br><span class="line">        <span class="keyword">self</span>.socket?.readDataWithTimeout(-<span class="number">1</span>, tag: <span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">socket</span><span class="params">(sock: GCDAsyncSocket!, didReadData data: NSData!, withTag tag: Int)</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> msg = <span class="type">String</span>(data: data, encoding: <span class="type">NSUTF8StringEncoding</span>)</span><br><span class="line">        addText(msg!)</span><br><span class="line">        socket?.readDataWithTimeout(-<span class="number">1</span>, tag: <span class="number">0</span>) </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>|服务端| 客户端 |<br>|—–|:—-:|—-|<br>|<img src="http://upload-images.jianshu.io/upload_images/1176193-82d2b5dd3f4406fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>|<img src="http://upload-images.jianshu.io/upload_images/1176193-3dc0043b1ab97650.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>|</p>
+<h6 id="结语"><a href="#结语" class="headerlink" title="结语:"></a>结语:</h6><p>CocoaAsyncSocket的使用还是非常直观清晰的,这里只是简单的抛砖引玉,要更深入理解Socket,如果有时间的话,我觉得还是研究下底层的socket实现比较好,大家有什么问题欢迎提出来,一起共勉~<br>联系方式:<a href="mailto:yueyeqi@iCloud.com" target="_blank" rel="noopener">yueyeqi@iCloud.com</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/12/21/iOS-推送通知-功能简单实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1005,7 +1390,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
