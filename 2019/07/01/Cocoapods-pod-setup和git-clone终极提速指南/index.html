@@ -79,24 +79,22 @@
 
 
 
-<meta name="description" content="这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。推荐一个flutter学习网站：Flutter中文网 一：下载安装Flutter先去官网下载最新的flutter包：官网下载地址解压后放到自己找的到的路径这里我放到/Users/payne/flutter(注意：payne是我自己的用户名，请根据自己的用户名">
+<meta name="description" content="背景描述：最近刚换了新mac，需要重新配置cocoapods环境，执行pod setup时直接慢到崩溃(想哭)，速度只有几KB，不知道等到猴年马月才能装完，而且稍不注意就要重来。 网上找了很多关于pod setup的解决方法，有说换网络环境的，有说换别的源，还有说直接拷贝别人安装好的文件，或者去GitHub上面直接download下来等等等。 在我一一试了一遍后，都没有成功，可能我太笨了。 原因分">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1.Flutter-环境搭建ForMac">
-<meta property="og:url" content="http://yoursite.com/2019/07/05/1-Flutter-环境搭建ForMac/index.html">
+<meta property="og:title" content="Cocoapods pod setup和git clone终极提速指南">
+<meta property="og:url" content="http://yoursite.com/2019/07/01/Cocoapods-pod-setup和git-clone终极提速指南/index.html">
 <meta property="og:site_name" content="泡菜的小屋">
-<meta property="og:description" content="这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。推荐一个flutter学习网站：Flutter中文网 一：下载安装Flutter先去官网下载最新的flutter包：官网下载地址解压后放到自己找的到的路径这里我放到/Users/payne/flutter(注意：payne是我自己的用户名，请根据自己的用户名">
+<meta property="og:description" content="背景描述：最近刚换了新mac，需要重新配置cocoapods环境，执行pod setup时直接慢到崩溃(想哭)，速度只有几KB，不知道等到猴年马月才能装完，而且稍不注意就要重来。 网上找了很多关于pod setup的解决方法，有说换网络环境的，有说换别的源，还有说直接拷贝别人安装好的文件，或者去GitHub上面直接download下来等等等。 在我一一试了一遍后，都没有成功，可能我太笨了。 原因分">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-3e37f0073241aca8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-712d26bc69d390e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-cea93e9cbc9c3236.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-27ebd2672b5db31d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-d9793afa29d3538b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-4ecbe2b343fd30ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-07-05T15:30:47.779Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-22015c6a474dcf83.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-b9cd76bd61d27434.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/250">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-245a16f89c6bd9b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-fd28f992b5cb6af9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-07-07T15:15:19.402Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="1.Flutter-环境搭建ForMac">
-<meta name="twitter:description" content="这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。推荐一个flutter学习网站：Flutter中文网 一：下载安装Flutter先去官网下载最新的flutter包：官网下载地址解压后放到自己找的到的路径这里我放到/Users/payne/flutter(注意：payne是我自己的用户名，请根据自己的用户名">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1176193-3e37f0073241aca8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="Cocoapods pod setup和git clone终极提速指南">
+<meta name="twitter:description" content="背景描述：最近刚换了新mac，需要重新配置cocoapods环境，执行pod setup时直接慢到崩溃(想哭)，速度只有几KB，不知道等到猴年马月才能装完，而且稍不注意就要重来。 网上找了很多关于pod setup的解决方法，有说换网络环境的，有说换别的源，还有说直接拷贝别人安装好的文件，或者去GitHub上面直接download下来等等等。 在我一一试了一遍后，都没有成功，可能我太笨了。 原因分">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1176193-22015c6a474dcf83.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -126,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/05/1-Flutter-环境搭建ForMac/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/01/Cocoapods-pod-setup和git-clone终极提速指南/">
 
 
 
 
 
-  <title>1.Flutter-环境搭建ForMac | 泡菜的小屋</title>
+  <title>Cocoapods pod setup和git clone终极提速指南 | 泡菜的小屋</title>
   
 
 
@@ -239,7 +237,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/05/1-Flutter-环境搭建ForMac/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/Cocoapods-pod-setup和git-clone终极提速指南/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="泡菜">
@@ -256,7 +254,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">1.Flutter-环境搭建ForMac</h1>
+          <h1 class="post-title" itemprop="name headline">Cocoapods pod setup和git clone终极提速指南</h1>
         
 
         <div class="post-meta">
@@ -268,8 +266,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-05T23:29:00+08:00">
-                2019-07-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-01T23:05:00+08:00">
+                2019-07-01
               </time>
             
 
@@ -291,8 +289,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Flutter/" itemprop="url" rel="index">
-                    <span itemprop="name">Flutter</span>
+                  <a href="/categories/疑难杂症/" itemprop="url" rel="index">
+                    <span itemprop="name">疑难杂症</span>
                   </a>
                 </span>
 
@@ -309,8 +307,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/05/1-Flutter-环境搭建ForMac/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/05/1-Flutter-环境搭建ForMac/" itemprop="commentCount"></span>
+                <a href="/2019/07/01/Cocoapods-pod-setup和git-clone终极提速指南/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/01/Cocoapods-pod-setup和git-clone终极提速指南/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -343,12 +341,22 @@
       
 
       
-        <p>这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。<br>推荐一个flutter学习网站：<a href="https://flutterchina.club/" target="_blank" rel="noopener">Flutter中文网</a></p>
-<h6 id="一：下载安装Flutter"><a href="#一：下载安装Flutter" class="headerlink" title="一：下载安装Flutter"></a>一：下载安装Flutter</h6><p>先去官网下载最新的flutter包：<a href="[https://flutter.dev/docs/development/tools/sdk/releases?tab=macos#macos]">官网下载地址</a><br><img src="https://upload-images.jianshu.io/upload_images/1176193-3e37f0073241aca8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>解压后放到自己找的到的路径<br>这里我放到<code>/Users/payne/flutter</code>(注意：<code>payne</code>是我自己的用户名，请根据自己的用户名替换)</p>
-<p>最后把下面这句<br><code>export PATH=`pwd`/flutter/bin:$PATH</code><br>添加的根目录<code>~/.bash_proflie</code>文件中保存，环境变量就配置好了<br><img src="https://upload-images.jianshu.io/upload_images/1176193-712d26bc69d390e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<h5 id="二-检查Flutter所需依赖"><a href="#二-检查Flutter所需依赖" class="headerlink" title="二.检查Flutter所需依赖"></a>二.检查Flutter所需依赖</h5><p>在终端执行<code>flutter doctor</code><br>会自动检测当前所需依赖，可根据指示进行安装。<br><code>Android Studio</code><br><code>Android SDK</code><br>还有iOS所需依赖<br><img src="https://upload-images.jianshu.io/upload_images/1176193-cea93e9cbc9c3236.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>所有依赖都安装完成后，在执行<code>flutter doctor</code>查看是否都OK</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1176193-27ebd2672b5db31d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>启动Android Studio<br>在设置里面插件中搜索安装flutter插件<br><img src="https://upload-images.jianshu.io/upload_images/1176193-d9793afa29d3538b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>安装完成重启，可以看到新建工程界面多了一个 新建flutter工程就完成了<img src="https://upload-images.jianshu.io/upload_images/1176193-4ecbe2b343fd30ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+        <h3 id="背景描述："><a href="#背景描述：" class="headerlink" title="背景描述："></a>背景描述：</h3><p>最近刚换了新mac，需要重新配置cocoapods环境，执行pod setup时直接慢到崩溃(想哭)，速度只有几KB，不知道等到猴年马月才能装完，而且稍不注意就要重来。</p>
+<p>网上找了很多关于pod setup的解决方法，有说换网络环境的，有说换别的源，还有说直接拷贝别人安装好的文件，或者去GitHub上面直接download下来等等等。</p>
+<p>在我一一试了一遍后，都没有成功，可能我太笨了。</p>
+<h3 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h3><p>于是我想知道pod setup到底在做什么操作<img src="https://upload-images.jianshu.io/upload_images/1176193-22015c6a474dcf83.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>没错！git clone，就是一个很普通的git 仓库克隆到本地的操作。<br>为什么这么慢？因为克隆地址是github的，github的服务器是亚马逊的，而亚马逊又因为墙的原因(你懂得)….</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>so 既然知道为什么这么慢了，解决方案自然是要搭梯子了，但是你会发现搭上全局的梯子再试一次速度并没有多大的提升。<br>ok 终极解决方案来咯</p>
+<ol>
+<li>准备好一个速度不错的梯子（这里我就无耻的打个广告 O(∩_∩)O哈哈~：<a href="https://123ssr.com/auth/register?code=L0c7" target="_blank" rel="noopener">https://123ssr.com/auth/register?code=L0c7</a> ，我用的是10元/月的套餐，速度真心很不错，其次还有5元/月, 但是只能勉强看看文章、google一下什么的）当然如果你有更好的梯子也行。</li>
+<li>用小飞机-高级设置-查看代理ip和端口<img src="https://upload-images.jianshu.io/upload_images/1176193-b9cd76bd61d27434.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/250" alt><img src="https://upload-images.jianshu.io/upload_images/1176193-245a16f89c6bd9b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>我这里是127.0.0.1 和 1086,然后终端执行下面两句代码，启用代理(注意：地址和端口要一样)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy &apos;socks5://127.0.0.1:1086&apos;</span><br><span class="line">git config --global https.proxy &apos;socks5://127.0.0.1:1086&apos;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>最后把小飞机设置为全局模式，重新执行一次pod setup，快到流泪/(ㄒoㄒ)/~~，我是2M每秒下载速度，这个还是根据你的梯子和网络环境决定的<br><img src="https://upload-images.jianshu.io/upload_images/1176193-fd28f992b5cb6af9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>装完之后呢 可以再使用命令取消代理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
+
+<p>如果还有什么不懂得呢，可以留言，如果这篇文章对你有帮助的话，可以给我小红心哟~</p>
 
       
     </div>
@@ -373,8 +381,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/01/Cocoapods-pod-setup和git-clone终极提速指南/" rel="next" title="Cocoapods pod setup和git clone终极提速指南">
-                <i class="fa fa-chevron-left"></i> Cocoapods pod setup和git clone终极提速指南
+              <a href="/2019/02/25/iOS-贝塞尔曲线路径动画-SVG快速实现-Swift版/" rel="next" title="iOS 贝塞尔曲线路径动画 SVG快速实现(Swift版)">
+                <i class="fa fa-chevron-left"></i> iOS 贝塞尔曲线路径动画 SVG快速实现(Swift版)
               </a>
             
           </div>
@@ -383,8 +391,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/05/2-Flutter-初识Widget/" rel="prev" title="2.Flutter-初识Widget">
-                2.Flutter-初识Widget <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/05/1-Flutter-环境搭建ForMac/" rel="prev" title="1.Flutter-环境搭建ForMac">
+                1.Flutter-环境搭建ForMac <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -530,7 +538,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#一：下载安装Flutter"><span class="nav-number">1.</span> <span class="nav-text">一：下载安装Flutter</span></a></li></ol><li class="nav-item nav-level-5"><a class="nav-link" href="#二-检查Flutter所需依赖"><span class="nav-number"></span> <span class="nav-text">二.检查Flutter所需依赖</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景描述："><span class="nav-number">1.</span> <span class="nav-text">背景描述：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原因分析"><span class="nav-number">2.</span> <span class="nav-text">原因分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">3.</span> <span class="nav-text">解决方案</span></a></li></ol></div>
             
 
           </div>
@@ -720,9 +728,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/07/05/1-Flutter-环境搭建ForMac/';
-          this.page.identifier = '2019/07/05/1-Flutter-环境搭建ForMac/';
-          this.page.title = '1.Flutter-环境搭建ForMac';
+          this.page.url = 'http://yoursite.com/2019/07/01/Cocoapods-pod-setup和git-clone终极提速指南/';
+          this.page.identifier = '2019/07/01/Cocoapods-pod-setup和git-clone终极提速指南/';
+          this.page.title = 'Cocoapods pod setup和git clone终极提速指南';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://paocai.disqus.com/embed.js';

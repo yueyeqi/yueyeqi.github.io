@@ -232,376 +232,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/07/ITC-apps-preReleaseBuild-errors-processingFailed此构建版本无效解决方案/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="泡菜">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泡菜的小屋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/07/ITC-apps-preReleaseBuild-errors-processingFailed此构建版本无效解决方案/" itemprop="url">ITC.apps.preReleaseBuild.errors.processingFailed此构建版本无效解决方案</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-07T23:07:00+08:00">
-                2019-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/疑难杂症/" itemprop="url" rel="index">
-                    <span itemprop="name">疑难杂症</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/07/ITC-apps-preReleaseBuild-errors-processingFailed此构建版本无效解决方案/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/07/ITC-apps-preReleaseBuild-errors-processingFailed此构建版本无效解决方案/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>最近Xcode更新8之后提交AppStore出现了此构建版本无效的问题<br><img src="http://upload-images.jianshu.io/upload_images/1176193-bea28387de87b42f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1176193-53f600a9abe53ec6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>网上各种说法参次不齐，其实出现这个问题苹果会把问题原因发送到你的邮箱，对照解决就行了。<br>最近比较常见的就是Xcode8更新后，没有对访问权限设置（因为我的APP里含有访问相册的功能，但是更新Xcode8之后没有添加访问权限设置，导致编译不会报错，上传也不会报错，最后就成了此构建版本无效了，也怪我更新之后没有测试访问相册那块的功能）</p>
-<h6 id="打开info-plist-像如下添加APP里相应的访问权限"><a href="#打开info-plist-像如下添加APP里相应的访问权限" class="headerlink" title="打开info.plist 像如下添加APP里相应的访问权限"></a>打开info.plist 像如下添加APP里相应的访问权限</h6><p><img src="http://upload-images.jianshu.io/upload_images/1176193-87128fa56404ceb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1176193-fc52072fcb57a3cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<blockquote>
-<p>常用的权限</p>
-</blockquote>
-<blockquote>
-<ul>
-<li>麦克风权限：Privacy - Microphone Usage Description 是否允许此App使用你的麦克风？</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>相机权限： Privacy - Camera Usage Description 是否允许此App使用你的相机？</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>相册权限： Privacy - Photo Library Usage Description 是否允许此App访问你的媒体资料库？</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>通讯录权限： Privacy - Contacts Usage Description 是否允许此App访问你的通讯录？</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>蓝牙权限：Privacy - Bluetooth Peripheral Usage Description 是否许允此App使用蓝牙？</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>语音转文字权限：Privacy - Speech Recognition Usage Description 是否允许此App使用语音识别？</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>日历权限：Privacy - Calendars Usage Description 是否允许此App使用日历？</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>定位权限：Privacy - Location When In Use Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>定位权限: Privacy - Location Always Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据</li>
-</ul>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/07/Cocoapods-pod-setup和git-clone终极提速指南/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="泡菜">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泡菜的小屋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/07/Cocoapods-pod-setup和git-clone终极提速指南/" itemprop="url">Cocoapods pod setup和git clone终极提速指南</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-07T23:05:00+08:00">
-                2019-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/疑难杂症/" itemprop="url" rel="index">
-                    <span itemprop="name">疑难杂症</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/07/Cocoapods-pod-setup和git-clone终极提速指南/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/07/Cocoapods-pod-setup和git-clone终极提速指南/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="背景描述："><a href="#背景描述：" class="headerlink" title="背景描述："></a>背景描述：</h3><p>最近刚换了新mac，需要重新配置cocoapods环境，执行pod setup时直接慢到崩溃(想哭)，速度只有几KB，不知道等到猴年马月才能装完，而且稍不注意就要重来。</p>
-<p>网上找了很多关于pod setup的解决方法，有说换网络环境的，有说换别的源，还有说直接拷贝别人安装好的文件，或者去GitHub上面直接download下来等等等。</p>
-<p>在我一一试了一遍后，都没有成功，可能我太笨了。</p>
-<h3 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h3><p>于是我想知道pod setup到底在做什么操作<img src="https://upload-images.jianshu.io/upload_images/1176193-22015c6a474dcf83.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>没错！git clone，就是一个很普通的git 仓库克隆到本地的操作。<br>为什么这么慢？因为克隆地址是github的，github的服务器是亚马逊的，而亚马逊又因为墙的原因(你懂得)….</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>so 既然知道为什么这么慢了，解决方案自然是要搭梯子了，但是你会发现搭上全局的梯子再试一次速度并没有多大的提升。<br>ok 终极解决方案来咯</p>
-<ol>
-<li>准备好一个速度不错的梯子（这里我就无耻的打个广告 O(∩_∩)O哈哈~：<a href="https://123ssr.com/auth/register?code=L0c7" target="_blank" rel="noopener">https://123ssr.com/auth/register?code=L0c7</a> ，我用的是10元/月的套餐，速度真心很不错，其次还有5元/月, 但是只能勉强看看文章、google一下什么的）当然如果你有更好的梯子也行。</li>
-<li>用小飞机-高级设置-查看代理ip和端口<img src="https://upload-images.jianshu.io/upload_images/1176193-b9cd76bd61d27434.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/250" alt><img src="https://upload-images.jianshu.io/upload_images/1176193-245a16f89c6bd9b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>我这里是127.0.0.1 和 1086,然后终端执行下面两句代码，启用代理(注意：地址和端口要一样)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy &apos;socks5://127.0.0.1:1086&apos;</span><br><span class="line">git config --global https.proxy &apos;socks5://127.0.0.1:1086&apos;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>最后把小飞机设置为全局模式，重新执行一次pod setup，快到流泪/(ㄒoㄒ)/~~，我是2M每秒下载速度，这个还是根据你的梯子和网络环境决定的<br><img src="https://upload-images.jianshu.io/upload_images/1176193-fd28f992b5cb6af9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>装完之后呢 可以再使用命令取消代理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
-
-<p>如果还有什么不懂得呢，可以留言，如果这篇文章对你有帮助的话，可以给我小红心哟~</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/05/2-Flutter-初识Widget/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -876,6 +506,173 @@
 <h5 id="二-检查Flutter所需依赖"><a href="#二-检查Flutter所需依赖" class="headerlink" title="二.检查Flutter所需依赖"></a>二.检查Flutter所需依赖</h5><p>在终端执行<code>flutter doctor</code><br>会自动检测当前所需依赖，可根据指示进行安装。<br><code>Android Studio</code><br><code>Android SDK</code><br>还有iOS所需依赖<br><img src="https://upload-images.jianshu.io/upload_images/1176193-cea93e9cbc9c3236.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>所有依赖都安装完成后，在执行<code>flutter doctor</code>查看是否都OK</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/1176193-27ebd2672b5db31d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p>启动Android Studio<br>在设置里面插件中搜索安装flutter插件<br><img src="https://upload-images.jianshu.io/upload_images/1176193-d9793afa29d3538b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>安装完成重启，可以看到新建工程界面多了一个 新建flutter工程就完成了<img src="https://upload-images.jianshu.io/upload_images/1176193-4ecbe2b343fd30ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/Cocoapods-pod-setup和git-clone终极提速指南/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="泡菜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泡菜的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/01/Cocoapods-pod-setup和git-clone终极提速指南/" itemprop="url">Cocoapods pod setup和git clone终极提速指南</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-01T23:05:00+08:00">
+                2019-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/疑难杂症/" itemprop="url" rel="index">
+                    <span itemprop="name">疑难杂症</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/01/Cocoapods-pod-setup和git-clone终极提速指南/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/01/Cocoapods-pod-setup和git-clone终极提速指南/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="背景描述："><a href="#背景描述：" class="headerlink" title="背景描述："></a>背景描述：</h3><p>最近刚换了新mac，需要重新配置cocoapods环境，执行pod setup时直接慢到崩溃(想哭)，速度只有几KB，不知道等到猴年马月才能装完，而且稍不注意就要重来。</p>
+<p>网上找了很多关于pod setup的解决方法，有说换网络环境的，有说换别的源，还有说直接拷贝别人安装好的文件，或者去GitHub上面直接download下来等等等。</p>
+<p>在我一一试了一遍后，都没有成功，可能我太笨了。</p>
+<h3 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h3><p>于是我想知道pod setup到底在做什么操作<img src="https://upload-images.jianshu.io/upload_images/1176193-22015c6a474dcf83.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>没错！git clone，就是一个很普通的git 仓库克隆到本地的操作。<br>为什么这么慢？因为克隆地址是github的，github的服务器是亚马逊的，而亚马逊又因为墙的原因(你懂得)….</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>so 既然知道为什么这么慢了，解决方案自然是要搭梯子了，但是你会发现搭上全局的梯子再试一次速度并没有多大的提升。<br>ok 终极解决方案来咯</p>
+<ol>
+<li>准备好一个速度不错的梯子（这里我就无耻的打个广告 O(∩_∩)O哈哈~：<a href="https://123ssr.com/auth/register?code=L0c7" target="_blank" rel="noopener">https://123ssr.com/auth/register?code=L0c7</a> ，我用的是10元/月的套餐，速度真心很不错，其次还有5元/月, 但是只能勉强看看文章、google一下什么的）当然如果你有更好的梯子也行。</li>
+<li>用小飞机-高级设置-查看代理ip和端口<img src="https://upload-images.jianshu.io/upload_images/1176193-b9cd76bd61d27434.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/250" alt><img src="https://upload-images.jianshu.io/upload_images/1176193-245a16f89c6bd9b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>我这里是127.0.0.1 和 1086,然后终端执行下面两句代码，启用代理(注意：地址和端口要一样)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy &apos;socks5://127.0.0.1:1086&apos;</span><br><span class="line">git config --global https.proxy &apos;socks5://127.0.0.1:1086&apos;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>最后把小飞机设置为全局模式，重新执行一次pod setup，快到流泪/(ㄒoㄒ)/~~，我是2M每秒下载速度，这个还是根据你的梯子和网络环境决定的<br><img src="https://upload-images.jianshu.io/upload_images/1176193-fd28f992b5cb6af9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>装完之后呢 可以再使用命令取消代理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
+
+<p>如果还有什么不懂得呢，可以留言，如果这篇文章对你有帮助的话，可以给我小红心哟~</p>
 
           
         
@@ -1757,6 +1554,209 @@ view.layer.pop_addAnimation(animation, forKey: &quot;positionX&quot;)</code></pr
 <p>Demo地址：<a href="https://github.com/yueyeqi/Facebook-PopExample" target="_blank" rel="noopener">https://github.com/yueyeqi/Facebook-PopExample</a></p>
 <hr>
 <h6 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h6><p>其实只需要熟练掌握POP自带的三种动画 即可完成大部分的动画效果 如果实在是无法满足你的需求的话 自定义动画也基本可以满足你的要求 可以说POP化繁为简的出现 极大的方便了我们这些苦逼的coder 本文主要只介绍了最基本的使用方法和思路，更多的知识和效果还待大家深入了解 完。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/07/ITC-apps-preReleaseBuild-errors-processingFailed此构建版本无效解决方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="泡菜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泡菜的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/07/07/ITC-apps-preReleaseBuild-errors-processingFailed此构建版本无效解决方案/" itemprop="url">ITC.apps.preReleaseBuild.errors.processingFailed此构建版本无效解决方案</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-07T23:07:00+08:00">
+                2016-07-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/疑难杂症/" itemprop="url" rel="index">
+                    <span itemprop="name">疑难杂症</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/07/07/ITC-apps-preReleaseBuild-errors-processingFailed此构建版本无效解决方案/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/07/ITC-apps-preReleaseBuild-errors-processingFailed此构建版本无效解决方案/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近Xcode更新8之后提交AppStore出现了此构建版本无效的问题<br><img src="http://upload-images.jianshu.io/upload_images/1176193-bea28387de87b42f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1176193-53f600a9abe53ec6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>网上各种说法参次不齐，其实出现这个问题苹果会把问题原因发送到你的邮箱，对照解决就行了。<br>最近比较常见的就是Xcode8更新后，没有对访问权限设置（因为我的APP里含有访问相册的功能，但是更新Xcode8之后没有添加访问权限设置，导致编译不会报错，上传也不会报错，最后就成了此构建版本无效了，也怪我更新之后没有测试访问相册那块的功能）</p>
+<h6 id="打开info-plist-像如下添加APP里相应的访问权限"><a href="#打开info-plist-像如下添加APP里相应的访问权限" class="headerlink" title="打开info.plist 像如下添加APP里相应的访问权限"></a>打开info.plist 像如下添加APP里相应的访问权限</h6><p><img src="http://upload-images.jianshu.io/upload_images/1176193-87128fa56404ceb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1176193-fc52072fcb57a3cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<blockquote>
+<p>常用的权限</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>麦克风权限：Privacy - Microphone Usage Description 是否允许此App使用你的麦克风？</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>相机权限： Privacy - Camera Usage Description 是否允许此App使用你的相机？</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>相册权限： Privacy - Photo Library Usage Description 是否允许此App访问你的媒体资料库？</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>通讯录权限： Privacy - Contacts Usage Description 是否允许此App访问你的通讯录？</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>蓝牙权限：Privacy - Bluetooth Peripheral Usage Description 是否许允此App使用蓝牙？</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>语音转文字权限：Privacy - Speech Recognition Usage Description 是否允许此App使用语音识别？</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>日历权限：Privacy - Calendars Usage Description 是否允许此App使用日历？</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>定位权限：Privacy - Location When In Use Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>定位权限: Privacy - Location Always Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据</li>
+</ul>
+</blockquote>
 
           
         

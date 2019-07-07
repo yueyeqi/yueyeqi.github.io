@@ -79,24 +79,22 @@
 
 
 
-<meta name="description" content="这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。推荐一个flutter学习网站：Flutter中文网 一：下载安装Flutter先去官网下载最新的flutter包：官网下载地址解压后放到自己找的到的路径这里我放到/Users/payne/flutter(注意：payne是我自己的用户名，请根据自己的用户名">
+<meta name="description" content="最近Xcode更新8之后提交AppStore出现了此构建版本无效的问题 网上各种说法参次不齐，其实出现这个问题苹果会把问题原因发送到你的邮箱，对照解决就行了。最近比较常见的就是Xcode8更新后，没有对访问权限设置（因为我的APP里含有访问相册的功能，但是更新Xcode8之后没有添加访问权限设置，导致编译不会报错，上传也不会报错，最后就成了此构建版本无效了，也怪我更新之后没有测试访问相册那块的功能">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1.Flutter-环境搭建ForMac">
-<meta property="og:url" content="http://yoursite.com/2019/07/05/1-Flutter-环境搭建ForMac/index.html">
+<meta property="og:title" content="ITC.apps.preReleaseBuild.errors.processingFailed此构建版本无效解决方案">
+<meta property="og:url" content="http://yoursite.com/2016/07/07/ITC-apps-preReleaseBuild-errors-processingFailed此构建版本无效解决方案/index.html">
 <meta property="og:site_name" content="泡菜的小屋">
-<meta property="og:description" content="这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。推荐一个flutter学习网站：Flutter中文网 一：下载安装Flutter先去官网下载最新的flutter包：官网下载地址解压后放到自己找的到的路径这里我放到/Users/payne/flutter(注意：payne是我自己的用户名，请根据自己的用户名">
+<meta property="og:description" content="最近Xcode更新8之后提交AppStore出现了此构建版本无效的问题 网上各种说法参次不齐，其实出现这个问题苹果会把问题原因发送到你的邮箱，对照解决就行了。最近比较常见的就是Xcode8更新后，没有对访问权限设置（因为我的APP里含有访问相册的功能，但是更新Xcode8之后没有添加访问权限设置，导致编译不会报错，上传也不会报错，最后就成了此构建版本无效了，也怪我更新之后没有测试访问相册那块的功能">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-3e37f0073241aca8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-712d26bc69d390e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-cea93e9cbc9c3236.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-27ebd2672b5db31d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-d9793afa29d3538b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-4ecbe2b343fd30ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-07-05T15:30:47.779Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-bea28387de87b42f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-53f600a9abe53ec6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-87128fa56404ceb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-fc52072fcb57a3cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-07-07T15:14:53.027Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="1.Flutter-环境搭建ForMac">
-<meta name="twitter:description" content="这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。推荐一个flutter学习网站：Flutter中文网 一：下载安装Flutter先去官网下载最新的flutter包：官网下载地址解压后放到自己找的到的路径这里我放到/Users/payne/flutter(注意：payne是我自己的用户名，请根据自己的用户名">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1176193-3e37f0073241aca8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="ITC.apps.preReleaseBuild.errors.processingFailed此构建版本无效解决方案">
+<meta name="twitter:description" content="最近Xcode更新8之后提交AppStore出现了此构建版本无效的问题 网上各种说法参次不齐，其实出现这个问题苹果会把问题原因发送到你的邮箱，对照解决就行了。最近比较常见的就是Xcode8更新后，没有对访问权限设置（因为我的APP里含有访问相册的功能，但是更新Xcode8之后没有添加访问权限设置，导致编译不会报错，上传也不会报错，最后就成了此构建版本无效了，也怪我更新之后没有测试访问相册那块的功能">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1176193-bea28387de87b42f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -126,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/05/1-Flutter-环境搭建ForMac/">
+  <link rel="canonical" href="http://yoursite.com/2016/07/07/ITC-apps-preReleaseBuild-errors-processingFailed此构建版本无效解决方案/">
 
 
 
 
 
-  <title>1.Flutter-环境搭建ForMac | 泡菜的小屋</title>
+  <title>ITC.apps.preReleaseBuild.errors.processingFailed此构建版本无效解决方案 | 泡菜的小屋</title>
   
 
 
@@ -239,7 +237,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/05/1-Flutter-环境搭建ForMac/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/07/ITC-apps-preReleaseBuild-errors-processingFailed此构建版本无效解决方案/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="泡菜">
@@ -256,7 +254,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">1.Flutter-环境搭建ForMac</h1>
+          <h1 class="post-title" itemprop="name headline">ITC.apps.preReleaseBuild.errors.processingFailed此构建版本无效解决方案</h1>
         
 
         <div class="post-meta">
@@ -268,8 +266,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-05T23:29:00+08:00">
-                2019-07-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-07T23:07:00+08:00">
+                2016-07-07
               </time>
             
 
@@ -291,8 +289,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Flutter/" itemprop="url" rel="index">
-                    <span itemprop="name">Flutter</span>
+                  <a href="/categories/疑难杂症/" itemprop="url" rel="index">
+                    <span itemprop="name">疑难杂症</span>
                   </a>
                 </span>
 
@@ -309,8 +307,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/05/1-Flutter-环境搭建ForMac/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/05/1-Flutter-环境搭建ForMac/" itemprop="commentCount"></span>
+                <a href="/2016/07/07/ITC-apps-preReleaseBuild-errors-processingFailed此构建版本无效解决方案/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/07/ITC-apps-preReleaseBuild-errors-processingFailed此构建版本无效解决方案/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -343,12 +341,58 @@
       
 
       
-        <p>这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。<br>推荐一个flutter学习网站：<a href="https://flutterchina.club/" target="_blank" rel="noopener">Flutter中文网</a></p>
-<h6 id="一：下载安装Flutter"><a href="#一：下载安装Flutter" class="headerlink" title="一：下载安装Flutter"></a>一：下载安装Flutter</h6><p>先去官网下载最新的flutter包：<a href="[https://flutter.dev/docs/development/tools/sdk/releases?tab=macos#macos]">官网下载地址</a><br><img src="https://upload-images.jianshu.io/upload_images/1176193-3e37f0073241aca8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>解压后放到自己找的到的路径<br>这里我放到<code>/Users/payne/flutter</code>(注意：<code>payne</code>是我自己的用户名，请根据自己的用户名替换)</p>
-<p>最后把下面这句<br><code>export PATH=`pwd`/flutter/bin:$PATH</code><br>添加的根目录<code>~/.bash_proflie</code>文件中保存，环境变量就配置好了<br><img src="https://upload-images.jianshu.io/upload_images/1176193-712d26bc69d390e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<h5 id="二-检查Flutter所需依赖"><a href="#二-检查Flutter所需依赖" class="headerlink" title="二.检查Flutter所需依赖"></a>二.检查Flutter所需依赖</h5><p>在终端执行<code>flutter doctor</code><br>会自动检测当前所需依赖，可根据指示进行安装。<br><code>Android Studio</code><br><code>Android SDK</code><br>还有iOS所需依赖<br><img src="https://upload-images.jianshu.io/upload_images/1176193-cea93e9cbc9c3236.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>所有依赖都安装完成后，在执行<code>flutter doctor</code>查看是否都OK</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1176193-27ebd2672b5db31d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>启动Android Studio<br>在设置里面插件中搜索安装flutter插件<br><img src="https://upload-images.jianshu.io/upload_images/1176193-d9793afa29d3538b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>安装完成重启，可以看到新建工程界面多了一个 新建flutter工程就完成了<img src="https://upload-images.jianshu.io/upload_images/1176193-4ecbe2b343fd30ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+        <p>最近Xcode更新8之后提交AppStore出现了此构建版本无效的问题<br><img src="http://upload-images.jianshu.io/upload_images/1176193-bea28387de87b42f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1176193-53f600a9abe53ec6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>网上各种说法参次不齐，其实出现这个问题苹果会把问题原因发送到你的邮箱，对照解决就行了。<br>最近比较常见的就是Xcode8更新后，没有对访问权限设置（因为我的APP里含有访问相册的功能，但是更新Xcode8之后没有添加访问权限设置，导致编译不会报错，上传也不会报错，最后就成了此构建版本无效了，也怪我更新之后没有测试访问相册那块的功能）</p>
+<h6 id="打开info-plist-像如下添加APP里相应的访问权限"><a href="#打开info-plist-像如下添加APP里相应的访问权限" class="headerlink" title="打开info.plist 像如下添加APP里相应的访问权限"></a>打开info.plist 像如下添加APP里相应的访问权限</h6><p><img src="http://upload-images.jianshu.io/upload_images/1176193-87128fa56404ceb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1176193-fc52072fcb57a3cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<blockquote>
+<p>常用的权限</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>麦克风权限：Privacy - Microphone Usage Description 是否允许此App使用你的麦克风？</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>相机权限： Privacy - Camera Usage Description 是否允许此App使用你的相机？</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>相册权限： Privacy - Photo Library Usage Description 是否允许此App访问你的媒体资料库？</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>通讯录权限： Privacy - Contacts Usage Description 是否允许此App访问你的通讯录？</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>蓝牙权限：Privacy - Bluetooth Peripheral Usage Description 是否许允此App使用蓝牙？</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>语音转文字权限：Privacy - Speech Recognition Usage Description 是否允许此App使用语音识别？</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>日历权限：Privacy - Calendars Usage Description 是否允许此App使用日历？</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>定位权限：Privacy - Location When In Use Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>定位权限: Privacy - Location Always Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据</li>
+</ul>
+</blockquote>
 
       
     </div>
@@ -373,8 +417,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/01/Cocoapods-pod-setup和git-clone终极提速指南/" rel="next" title="Cocoapods pod setup和git clone终极提速指南">
-                <i class="fa fa-chevron-left"></i> Cocoapods pod setup和git clone终极提速指南
+              <a href="/2016/06/24/iOS-CocoaAsyncSocket-使用教程-Swift版/" rel="next" title="iOS CocoaAsyncSocket 使用教程(Swift版)">
+                <i class="fa fa-chevron-left"></i> iOS CocoaAsyncSocket 使用教程(Swift版)
               </a>
             
           </div>
@@ -383,8 +427,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/05/2-Flutter-初识Widget/" rel="prev" title="2.Flutter-初识Widget">
-                2.Flutter-初识Widget <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/13/iOS-Facebook-Pop-动效库的使用教程-Swift版/" rel="prev" title="iOS Facebook-Pop 动效库的使用教程(Swift版)">
+                iOS Facebook-Pop 动效库的使用教程(Swift版) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -530,7 +574,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#一：下载安装Flutter"><span class="nav-number">1.</span> <span class="nav-text">一：下载安装Flutter</span></a></li></ol><li class="nav-item nav-level-5"><a class="nav-link" href="#二-检查Flutter所需依赖"><span class="nav-number"></span> <span class="nav-text">二.检查Flutter所需依赖</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#打开info-plist-像如下添加APP里相应的访问权限"><span class="nav-number">1.</span> <span class="nav-text">打开info.plist 像如下添加APP里相应的访问权限</span></a></li></ol></div>
             
 
           </div>
@@ -720,9 +764,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/07/05/1-Flutter-环境搭建ForMac/';
-          this.page.identifier = '2019/07/05/1-Flutter-环境搭建ForMac/';
-          this.page.title = '1.Flutter-环境搭建ForMac';
+          this.page.url = 'http://yoursite.com/2016/07/07/ITC-apps-preReleaseBuild-errors-processingFailed此构建版本无效解决方案/';
+          this.page.identifier = '2016/07/07/ITC-apps-preReleaseBuild-errors-processingFailed此构建版本无效解决方案/';
+          this.page.title = 'ITC.apps.preReleaseBuild.errors.processingFailed此构建版本无效解决方案';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://paocai.disqus.com/embed.js';
