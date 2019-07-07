@@ -79,24 +79,21 @@
 
 
 
-<meta name="description" content="这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。推荐一个flutter学习网站：Flutter中文网 一：下载安装Flutter先去官网下载最新的flutter包：官网下载地址解压后放到自己找的到的路径这里我放到/Users/payne/flutter(注意：payne是我自己的用户名，请根据自己的用户名">
+<meta name="description" content="一：简介目前蓝牙开发越来越火，很多外部设备都使用的是蓝牙技术(如:智能手环，智能家居，可穿戴设备等)网上的资料也很多。随着蓝牙低功耗技术BLE（Bluetooth Low Energy）的发展，蓝牙技术正在一步步成熟，如今的大部分移动设备都配备有蓝牙4.0，相比之前的蓝牙技术耗电量大大降低。本文基于蓝牙4.0使用Apple自家的蓝牙框架Core Bluetooth讲解。如有不当之处，望各位朋友多多">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1.Flutter-环境搭建ForMac">
-<meta property="og:url" content="http://yoursite.com/2019/07/05/1-Flutter-环境搭建ForMac/index.html">
+<meta property="og:title" content="iOS 蓝牙4.0开发基础教程">
+<meta property="og:url" content="http://yoursite.com/2016/12/27/iOS-蓝牙4-0开发基础教程/index.html">
 <meta property="og:site_name" content="泡菜的小屋">
-<meta property="og:description" content="这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。推荐一个flutter学习网站：Flutter中文网 一：下载安装Flutter先去官网下载最新的flutter包：官网下载地址解压后放到自己找的到的路径这里我放到/Users/payne/flutter(注意：payne是我自己的用户名，请根据自己的用户名">
+<meta property="og:description" content="一：简介目前蓝牙开发越来越火，很多外部设备都使用的是蓝牙技术(如:智能手环，智能家居，可穿戴设备等)网上的资料也很多。随着蓝牙低功耗技术BLE（Bluetooth Low Energy）的发展，蓝牙技术正在一步步成熟，如今的大部分移动设备都配备有蓝牙4.0，相比之前的蓝牙技术耗电量大大降低。本文基于蓝牙4.0使用Apple自家的蓝牙框架Core Bluetooth讲解。如有不当之处，望各位朋友多多">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-3e37f0073241aca8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-712d26bc69d390e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-cea93e9cbc9c3236.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-27ebd2672b5db31d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-d9793afa29d3538b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-4ecbe2b343fd30ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-07-05T15:30:47.779Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-cc2931a1de4fef4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-c55a13fa3704650b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1176193-af3145edd5aa2553.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-07-07T14:55:05.705Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="1.Flutter-环境搭建ForMac">
-<meta name="twitter:description" content="这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。推荐一个flutter学习网站：Flutter中文网 一：下载安装Flutter先去官网下载最新的flutter包：官网下载地址解压后放到自己找的到的路径这里我放到/Users/payne/flutter(注意：payne是我自己的用户名，请根据自己的用户名">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1176193-3e37f0073241aca8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="iOS 蓝牙4.0开发基础教程">
+<meta name="twitter:description" content="一：简介目前蓝牙开发越来越火，很多外部设备都使用的是蓝牙技术(如:智能手环，智能家居，可穿戴设备等)网上的资料也很多。随着蓝牙低功耗技术BLE（Bluetooth Low Energy）的发展，蓝牙技术正在一步步成熟，如今的大部分移动设备都配备有蓝牙4.0，相比之前的蓝牙技术耗电量大大降低。本文基于蓝牙4.0使用Apple自家的蓝牙框架Core Bluetooth讲解。如有不当之处，望各位朋友多多">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1176193-cc2931a1de4fef4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -126,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/05/1-Flutter-环境搭建ForMac/">
+  <link rel="canonical" href="http://yoursite.com/2016/12/27/iOS-蓝牙4-0开发基础教程/">
 
 
 
 
 
-  <title>1.Flutter-环境搭建ForMac | 泡菜的小屋</title>
+  <title>iOS 蓝牙4.0开发基础教程 | 泡菜的小屋</title>
   
 
 
@@ -239,7 +236,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/05/1-Flutter-环境搭建ForMac/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/27/iOS-蓝牙4-0开发基础教程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="泡菜">
@@ -256,7 +253,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">1.Flutter-环境搭建ForMac</h1>
+          <h1 class="post-title" itemprop="name headline">iOS 蓝牙4.0开发基础教程</h1>
         
 
         <div class="post-meta">
@@ -268,8 +265,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-05T23:29:00+08:00">
-                2019-07-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-27T16:50:00+08:00">
+                2016-12-27
               </time>
             
 
@@ -291,8 +288,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Flutter/" itemprop="url" rel="index">
-                    <span itemprop="name">Flutter</span>
+                  <a href="/categories/iOS技术/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS技术</span>
                   </a>
                 </span>
 
@@ -309,8 +306,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/05/1-Flutter-环境搭建ForMac/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/05/1-Flutter-环境搭建ForMac/" itemprop="commentCount"></span>
+                <a href="/2016/12/27/iOS-蓝牙4-0开发基础教程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/27/iOS-蓝牙4-0开发基础教程/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -343,12 +340,161 @@
       
 
       
-        <p>这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。<br>推荐一个flutter学习网站：<a href="https://flutterchina.club/" target="_blank" rel="noopener">Flutter中文网</a></p>
-<h6 id="一：下载安装Flutter"><a href="#一：下载安装Flutter" class="headerlink" title="一：下载安装Flutter"></a>一：下载安装Flutter</h6><p>先去官网下载最新的flutter包：<a href="[https://flutter.dev/docs/development/tools/sdk/releases?tab=macos#macos]">官网下载地址</a><br><img src="https://upload-images.jianshu.io/upload_images/1176193-3e37f0073241aca8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>解压后放到自己找的到的路径<br>这里我放到<code>/Users/payne/flutter</code>(注意：<code>payne</code>是我自己的用户名，请根据自己的用户名替换)</p>
-<p>最后把下面这句<br><code>export PATH=`pwd`/flutter/bin:$PATH</code><br>添加的根目录<code>~/.bash_proflie</code>文件中保存，环境变量就配置好了<br><img src="https://upload-images.jianshu.io/upload_images/1176193-712d26bc69d390e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<h5 id="二-检查Flutter所需依赖"><a href="#二-检查Flutter所需依赖" class="headerlink" title="二.检查Flutter所需依赖"></a>二.检查Flutter所需依赖</h5><p>在终端执行<code>flutter doctor</code><br>会自动检测当前所需依赖，可根据指示进行安装。<br><code>Android Studio</code><br><code>Android SDK</code><br>还有iOS所需依赖<br><img src="https://upload-images.jianshu.io/upload_images/1176193-cea93e9cbc9c3236.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>所有依赖都安装完成后，在执行<code>flutter doctor</code>查看是否都OK</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1176193-27ebd2672b5db31d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>启动Android Studio<br>在设置里面插件中搜索安装flutter插件<br><img src="https://upload-images.jianshu.io/upload_images/1176193-d9793afa29d3538b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>安装完成重启，可以看到新建工程界面多了一个 新建flutter工程就完成了<img src="https://upload-images.jianshu.io/upload_images/1176193-4ecbe2b343fd30ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+        <h6 id="一：简介"><a href="#一：简介" class="headerlink" title="一：简介"></a>一：简介</h6><p>目前蓝牙开发越来越火，很多外部设备都使用的是蓝牙技术(如:智能手环，智能家居，可穿戴设备等)网上的资料也很多。随着蓝牙低功耗技术BLE（Bluetooth Low Energy）的发展，蓝牙技术正在一步步成熟，如今的大部分移动设备都配备有蓝牙4.0，相比之前的蓝牙技术耗电量大大降低。本文基于蓝牙4.0使用Apple自家的蓝牙框架<code>Core Bluetooth</code>讲解。如有不当之处，望各位朋友多多提醒！</p>
+<h6 id="二：基本概念"><a href="#二：基本概念" class="headerlink" title="二：基本概念"></a>二：基本概念</h6><ul>
+<li><p>中心模式和外设模式<br>顾名思义，比如<strong>以App作为中心，连接其他外设的场景称为中心模式，而使用手机作为外设被其他中心设备操作的场景则被称为外设模式。</strong><br><img src="http://upload-images.jianshu.io/upload_images/1176193-cc2931a1de4fef4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>如图在<code>Core Bluetooth</code>框架API中，左列为中心模式，右列为外设模式</p>
+</li>
+<li><p>Central和Peripheral是什么？<br><code>Core Bluetooth</code>框架核心的两个东西：中心<code>Central</code>和外围设备<code>Peripheral</code><br><img src="http://upload-images.jianshu.io/upload_images/1176193-c55a13fa3704650b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>如图是以APP作为中心<code>Central</code>，连接其他的外设<code>Peripheral</code>的中心模式。在中心模式中本地Central表示为CBCentralManager，用来发现和连接外设<code>Peripheral</code>表示为CBPeripheral。</p>
+</li>
+<li><p>服务<code>Service</code>和特征<code>Characteristic</code>是什么？<br>服务<code>Service</code>：外设对外广播必须要有服务，服务可以是多个，服务里面又包含了特征<code>Characteristic</code>。<br>特征<code>Characteristic</code>：存在于服务里面，服务里面也可以存在多个特征，特征就是具体的键值对，提供数据的地方。<br><img src="http://upload-images.jianshu.io/upload_images/1176193-af3145edd5aa2553.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+</li>
+</ul>
+<h6 id="三：开始使用"><a href="#三：开始使用" class="headerlink" title="三：开始使用"></a>三：开始使用</h6><p>这里以APP为中心模式举个例</p>
+<pre><code>import UIKit
+import CoreBluetooth //导入蓝牙框架
+//添加蓝牙代理
+class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
+
+@IBOutlet weak var tableView: UITableView!
+var manager: CBCentralManager?//中心角色
+var per: CBPeripheral?//服务
+var readCharac: CBCharacteristic? // 读取特征
+var writeCharac: CBCharacteristic? // 写入特征
+
+var deviceArray: [CBPeripheral] = [] //外设数据源
+
+override func viewDidLoad() {
+    super.viewDidLoad()
+    //建立中心角色
+    manager = CBCentralManager(delegate: self, queue: nil)
+}
+
+//判断蓝牙是否开启，并开始扫描
+func centralManagerDidUpdateState(_ central: CBCentralManager) {
+    if let central = manager {
+        switch central.state {
+        case .poweredOn:
+            print(&quot;蓝牙已打开，请扫描外设&quot;)
+            manager?.scanForPeripherals(withServices: nil, options: nil)
+        case .poweredOff:
+            print(&quot;蓝牙没有打开，请先打开蓝牙&quot;)
+        default:
+            break
+        }
+    }
+}
+
+//查找外设的代理
+func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+    //查找到外设后添加到数据源里面，并刷新tableView数据
+    if !deviceArray.contains(peripheral) {
+        deviceArray.append(peripheral)
+    }
+    tableView.reloadData()
+}
+
+//连接外设成功，启动发现服务
+func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+    print(&quot;连接成功：\(peripheral.name)&quot;)//打印外设name
+    peripheral.delegate = self
+    peripheral.discoverServices(nil)//开始发现服务
+    per = peripheral
+}
+
+//连接外设失败
+func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+    print(&quot;连接失败：\(peripheral.name)&quot;)
+}
+
+//发现服务
+func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+    //遍历服务，发现服务下的特征
+    for server in peripheral.services! {
+        //也可以通过服务UUID来过滤服务
+        //server.uuid
+        peripheral.discoverCharacteristics(nil, for: server)
+    }
+}
+
+//信号检测
+func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
+    let rssi = abs(RSSI .intValue)
+    let str = &quot;发现BLT4.0热点：\(peripheral)，强度：\(rssi)&quot;
+    print(str)
+}
+
+//搜索到特征Characteristics
+func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+    print(&quot;服务UUID：\(service.uuid)&quot;)
+    //遍历每个服务下的特征
+    for c in service.characteristics! {
+        print(&quot;特征UUID:\(c.uuid)&quot;)
+        //根据外设所定制的特征，分别处理
+        //比如特征&quot;1111&quot;为读取，&quot;2222&quot;为写入
+        if (c.uuid.uuidString.range(of: &quot;1111&quot;) != nil) {
+            readCharac = c
+            peripheral.readRSSI()//检测外设信号
+            peripheral.readValue(for: c)//读取一次特征值
+            peripheral.setNotifyValue(true, for: c)//当特征值改变时通知
+        }else if (c.uuid.uuidString.range(of: &quot;2222&quot;) != nil) {
+            //写入的特征
+            writeCharac = c
+        }
+    }
+}
+
+//获取外设发来的数据(无论是读取还是通知，都在这个方法接收)
+func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+    if characteristic.uuid == CBUUID(string: &quot;1111&quot;) {
+        let data = characteristic.value
+        //data则是读取过来的数据
+    }
+}
+
+//检测中心向外设写数据是否成功
+func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
+    if (error != nil) {
+        print(&quot;发送失败&quot;)
+    }else {
+        print(&quot;发送成功&quot;)
+    }
+}
+
+//模拟写入数据
+//func testWriteData() {
+//    per?.writeValue(writeData, for: writeCharac!, type: CBCharacteristicWriteType.withResponse)
+//}
+}
+
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
+
+func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
+    return deviceArray.count
+}
+
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell {
+    let identified = &quot;cell&quot;
+    var cell = tableView.dequeueReusableCell(withIdentifier: identified)
+    if cell == nil {
+        cell = UITableViewCell(style: .default, reuseIdentifier: identified)
+    }
+    let per = deviceArray[indexPath.row]
+
+    if let name = per.name {
+        cell?.textLabel?.text = name
+    }else {
+        cell?.textLabel?.text = per.identifier.uuidString
+    }
+
+    return cell!
+}
+
+func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    per = deviceArray[indexPath.row]
+    manager?.connect(per!, options: nil)
+}
+}</code></pre><p>总得来说蓝牙连接分为以下几个步骤<br>1.建立一个Central Manager实例进行蓝牙管理<br>2.搜索外围设备<br>3.连接外围设备<br>4.获得外围设备的服务<br>5.获得服务的特征<br>6.从外围设备读数据<br>7.给外围设备发送数据</p>
+<p>Demo地址：<a href="https://github.com/yueyeqi/CoreBluetooth_Demo" target="_blank" rel="noopener">https://github.com/yueyeqi/CoreBluetooth_Demo</a></p>
 
       
     </div>
@@ -373,8 +519,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/25/iOS-贝塞尔曲线路径动画-SVG快速实现-Swift版/" rel="next" title="iOS 贝塞尔曲线路径动画 SVG快速实现(Swift版)">
-                <i class="fa fa-chevron-left"></i> iOS 贝塞尔曲线路径动画 SVG快速实现(Swift版)
+              <a href="/2016/08/13/iOS-Facebook-Pop-动效库的使用教程-Swift版/" rel="next" title="iOS Facebook-Pop 动效库的使用教程(Swift版)">
+                <i class="fa fa-chevron-left"></i> iOS Facebook-Pop 动效库的使用教程(Swift版)
               </a>
             
           </div>
@@ -383,8 +529,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/05/2-Flutter-初识Widget/" rel="prev" title="2.Flutter-初识Widget">
-                2.Flutter-初识Widget <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/01/iOS-简单实现KVO-Swift版/" rel="prev" title="iOS 简单实现KVO(Swift版)">
+                iOS 简单实现KVO(Swift版) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -530,7 +676,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#一：下载安装Flutter"><span class="nav-number">1.</span> <span class="nav-text">一：下载安装Flutter</span></a></li></ol><li class="nav-item nav-level-5"><a class="nav-link" href="#二-检查Flutter所需依赖"><span class="nav-number"></span> <span class="nav-text">二.检查Flutter所需依赖</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#一：简介"><span class="nav-number">1.</span> <span class="nav-text">一：简介</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#二：基本概念"><span class="nav-number">2.</span> <span class="nav-text">二：基本概念</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#三：开始使用"><span class="nav-number">3.</span> <span class="nav-text">三：开始使用</span></a></li></ol></div>
             
 
           </div>
@@ -720,9 +866,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/07/05/1-Flutter-环境搭建ForMac/';
-          this.page.identifier = '2019/07/05/1-Flutter-环境搭建ForMac/';
-          this.page.title = '1.Flutter-环境搭建ForMac';
+          this.page.url = 'http://yoursite.com/2016/12/27/iOS-蓝牙4-0开发基础教程/';
+          this.page.identifier = '2016/12/27/iOS-蓝牙4-0开发基础教程/';
+          this.page.title = 'iOS 蓝牙4.0开发基础教程';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://paocai.disqus.com/embed.js';

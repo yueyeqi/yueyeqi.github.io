@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ios flutter 技术分享">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本文将简单实现iOS快速路径绘制动画。什么核心动画(Core Animation)、CAShapeLayer、UIBeizerPath等这些，这篇文章就不多说了。反正看完这篇文章可以实现以下两种效果，虽然这两种效果很弱智，但高楼从地起嘛，懂了原理可以实现越来越复杂的动画组。Demo在最后可以下载，代码很烂，大神轻喷。 注：二维码效果来源:文章，因为原文里的部分功能无法重现，故在此重新写了个Demo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 贝塞尔曲线路径动画 SVG快速实现(Swift版)">
+<meta property="og:url" content="http://yoursite.com/2019/02/25/iOS-贝塞尔曲线路径动画-SVG快速实现-Swift版/index.html">
+<meta property="og:site_name" content="泡菜的小屋">
+<meta property="og:description" content="本文将简单实现iOS快速路径绘制动画。什么核心动画(Core Animation)、CAShapeLayer、UIBeizerPath等这些，这篇文章就不多说了。反正看完这篇文章可以实现以下两种效果，虽然这两种效果很弱智，但高楼从地起嘛，懂了原理可以实现越来越复杂的动画组。Demo在最后可以下载，代码很烂，大神轻喷。 注：二维码效果来源:文章，因为原文里的部分功能无法重现，故在此重新写了个Demo">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-1d78d2c1effc20b7.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-e506fbb52417111d.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-81db908145ca13a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-23844ac6335984b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-78be8f3cb1b8262d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-eed8543b54c01ab4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-08aa5ece1338dd5f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-07-07T15:01:00.084Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS 贝塞尔曲线路径动画 SVG快速实现(Swift版)">
+<meta name="twitter:description" content="本文将简单实现iOS快速路径绘制动画。什么核心动画(Core Animation)、CAShapeLayer、UIBeizerPath等这些，这篇文章就不多说了。反正看完这篇文章可以实现以下两种效果，虽然这两种效果很弱智，但高楼从地起嘛，懂了原理可以实现越来越复杂的动画组。Demo在最后可以下载，代码很烂，大神轻喷。 注：二维码效果来源:文章，因为原文里的部分功能无法重现，故在此重新写了个Demo">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1176193-1d78d2c1effc20b7.gif?imageMogr2/auto-orient/strip">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/25/iOS-贝塞尔曲线路径动画-SVG快速实现-Swift版/">
+
+
+
+
+
+  <title>iOS 贝塞尔曲线路径动画 SVG快速实现(Swift版) | 泡菜的小屋</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">泡菜的小屋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">专注iOS、Flutter技术分享</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/25/iOS-贝塞尔曲线路径动画-SVG快速实现-Swift版/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="泡菜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泡菜的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS 贝塞尔曲线路径动画 SVG快速实现(Swift版)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-25T15:54:00+08:00">
+                2019-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS技术/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/25/iOS-贝塞尔曲线路径动画-SVG快速实现-Swift版/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/25/iOS-贝塞尔曲线路径动画-SVG快速实现-Swift版/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h6 id="本文将简单实现iOS快速路径绘制动画。"><a href="#本文将简单实现iOS快速路径绘制动画。" class="headerlink" title="本文将简单实现iOS快速路径绘制动画。"></a>本文将简单实现iOS快速路径绘制动画。</h6><p>什么核心动画(Core Animation)、CAShapeLayer、UIBeizerPath等这些，这篇文章就不多说了。<br>反正看完这篇文章可以实现以下两种效果，虽然这两种效果很弱智，但高楼从地起嘛，懂了原理可以实现越来越复杂的动画组。Demo在最后可以下载，代码很烂，大神轻喷。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1176193-1d78d2c1effc20b7.gif?imageMogr2/auto-orient/strip" alt><br><img src="https://upload-images.jianshu.io/upload_images/1176193-e506fbb52417111d.gif?imageMogr2/auto-orient/strip" alt><br>注：二维码效果来源:<a href="https://segmentfault.com/a/1190000002580541" target="_blank" rel="noopener">文章</a>，因为原文里的部分功能无法重现，故在此重新写了个Demo。</p>
+<h6 id="案例一：快速实现路径动画"><a href="#案例一：快速实现路径动画" class="headerlink" title="案例一：快速实现路径动画"></a>案例一：快速实现路径动画</h6><ul>
+<li>步骤：</li>
+</ul>
+<p>1.方案有很多，可以通过Sketch软件，先绘制出想要的图，然后导出SVG，再用PaintCode软件将SVG文件转换成所需的代码。这里我直接通过PaintCode绘制路径图，导出代码啦。<img src="https://upload-images.jianshu.io/upload_images/1176193-81db908145ca13a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>2.打开PaintCode，使用钢笔工具，随便画一条线，在软件的下方会直接生成贝塞尔曲线的代码(PS:也可以根据自己需要更改所使用的编程语言)。<br><img src="https://upload-images.jianshu.io/upload_images/1176193-23844ac6335984b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>3.复制生成的代码，去Xcode创建一个UIView。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">class ESSVGView: UIView &#123;</span><br><span class="line"></span><br><span class="line">    override init(frame: CGRect) &#123;</span><br><span class="line">        super.init(frame: frame)</span><br><span class="line">        backgroundColor = UIColor.white</span><br><span class="line">        drawBezierPath()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    required init?(coder aDecoder: NSCoder) &#123;</span><br><span class="line">        fatalError(&quot;init(coder:) has not been implemented&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    func drawBezierPath() &#123;</span><br><span class="line">       </span><br><span class="line">        //通过PaintCode生成的代码</span><br><span class="line">        let pathPath = UIBezierPath()</span><br><span class="line">        pathPath.move(to: CGPoint(x: 179.5, y: 36.5))</span><br><span class="line">        pathPath.addCurve(to: CGPoint(x: 52.5, y: 118.5), controlPoint1: CGPoint(x: 95.5, y: 81.5), controlPoint2: CGPoint(x: 52.5, y: 118.5))</span><br><span class="line">        pathPath.addLine(to: CGPoint(x: 263.5, y: 118.5))</span><br><span class="line">        pathPath.addCurve(to: CGPoint(x: 75.5, y: 253.5), controlPoint1: CGPoint(x: 263.5, y: 118.5), controlPoint2: CGPoint(x: 4.5, y: 205.5))</span><br><span class="line">        pathPath.addCurve(to: CGPoint(x: 263.5, y: 253.5), controlPoint1: CGPoint(x: 146.5, y: 301.5), controlPoint2: CGPoint(x: 263.5, y: 253.5))</span><br><span class="line">        pathPath.addCurve(to: CGPoint(x: 75.5, y: 378.5), controlPoint1: CGPoint(x: 263.5, y: 253.5), controlPoint2: CGPoint(x: 222.5, y: 413.5))</span><br><span class="line">        pathPath.addCurve(to: CGPoint(x: 134.5, y: 527.5), controlPoint1: CGPoint(x: -71.5, y: 343.5), controlPoint2: CGPoint(x: 134.5, y: 527.5))</span><br><span class="line">        pathPath.addLine(to: CGPoint(x: 263.5, y: 404.5))</span><br><span class="line">        </span><br><span class="line">        //添加path到ShapeLayer</span><br><span class="line">        let pathLayer = CAShapeLayer()</span><br><span class="line">        pathLayer.frame = frame</span><br><span class="line">        pathLayer.bounds = frame</span><br><span class="line">        pathLayer.isGeometryFlipped = false</span><br><span class="line">        pathLayer.path = pathPath.cgPath</span><br><span class="line">        pathLayer.strokeColor = UIColor.red.cgColor</span><br><span class="line">        pathLayer.fillColor = nil</span><br><span class="line">        pathLayer.lineWidth = 3</span><br><span class="line">        pathLayer.lineJoin = CAShapeLayerLineJoin.bevel</span><br><span class="line">        layer.addSublayer(pathLayer)</span><br><span class="line">        </span><br><span class="line">        //添加动画</span><br><span class="line">        let animation = CABasicAnimation(keyPath: &quot;strokeEnd&quot;) //strokeEnd正常绘制效果，strokeStart逐渐消失效果</span><br><span class="line">        animation.fromValue = 0 //初始值</span><br><span class="line">        animation.toValue = 1 //结束值</span><br><span class="line">        animation.repeatCount = 10 //重复次数</span><br><span class="line">        animation.duration = 10 //动画时间</span><br><span class="line">        pathLayer.add(animation, forKey: nil)</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.接着去ViewController，添加到视图里就OK了。简单粗暴！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class ViewController: UIViewController &#123;</span><br><span class="line"></span><br><span class="line">    override func viewDidLoad() &#123;</span><br><span class="line">        super.viewDidLoad()</span><br><span class="line">        let svg = ESSVGView(frame: view.frame)</span><br><span class="line">        view.addSubview(svg)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="案例二：快速实现二维码动画"><a href="#案例二：快速实现二维码动画" class="headerlink" title="案例二：快速实现二维码动画"></a>案例二：快速实现二维码动画</h6><ul>
+<li>步骤：<br>1.首先找一个可以生成二维码并能导出SVG的网站，这里我用的是<a href="https://cli.im/" target="_blank" rel="noopener">草料二维码生成</a>，选择其他格式。</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/1176193-78be8f3cb1b8262d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>2.下载SVG格式文件<br><img src="https://upload-images.jianshu.io/upload_images/1176193-eed8543b54c01ab4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>3.这里可以用文本编辑打开一下这个SVG文件，其实里面就是个XML，注意这些use就是二维码中一个个小方块。<br>每个方块x，y都知道了，width和height是固定值都是12。<br><img src="https://upload-images.jianshu.io/upload_images/1176193-08aa5ece1338dd5f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>4.接下来将SVG格式文件拖到工程，并用XML来解析这个文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">override init(frame: CGRect) &#123;</span><br><span class="line">       super.init(frame: frame)</span><br><span class="line">       backgroundColor = UIColor.white</span><br><span class="line">       let qrPath = Bundle.main.path(forResource: &quot;qr&quot;, ofType: &quot;svg&quot;)!</span><br><span class="line">       let qrData = NSData(contentsOfFile: qrPath)</span><br><span class="line">       let xmlParser = XMLParser(data: qrData! as Data)</span><br><span class="line">       xmlParser.delegate = self</span><br><span class="line">       xmlParser.parse()</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>5.使用XML代理的2个方法进行处理</p>
+<h6 id="每当解析到一个新标签，这里就会被调用"><a href="#每当解析到一个新标签，这里就会被调用" class="headerlink" title="每当解析到一个新标签，这里就会被调用"></a>每当解析到一个新标签，这里就会被调用</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:])</span><br></pre></td></tr></table></figure>
+
+<h6 id="整个-svg-文件解析完毕后，这里就会被调用"><a href="#整个-svg-文件解析完毕后，这里就会被调用" class="headerlink" title="整个 svg 文件解析完毕后，这里就会被调用"></a>整个 svg 文件解析完毕后，这里就会被调用</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func parserDidEndDocument(_ parser: XMLParser)</span><br></pre></td></tr></table></figure>
+
+<p>6.最后我就直接把代码贴上来，关键地方都注释了干啥滴。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">class ESXML: UIView &#123;</span><br><span class="line">    </span><br><span class="line">    var rects = [CGRect]()</span><br><span class="line">    </span><br><span class="line">    override init(frame: CGRect) &#123;</span><br><span class="line">        super.init(frame: frame)</span><br><span class="line">        backgroundColor = UIColor.white</span><br><span class="line">        //解析SVG文件</span><br><span class="line">        let qrPath = Bundle.main.path(forResource: &quot;qr&quot;, ofType: &quot;svg&quot;)!</span><br><span class="line">        let qrData = NSData(contentsOfFile: qrPath)</span><br><span class="line">        let xmlParser = XMLParser(data: qrData! as Data)</span><br><span class="line">        xmlParser.delegate = self</span><br><span class="line">        xmlParser.parse()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    required init?(coder aDecoder: NSCoder) &#123;</span><br><span class="line">        fatalError(&quot;init(coder:) has not been implemented&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension ESXML: XMLParserDelegate &#123;</span><br><span class="line">    </span><br><span class="line">    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) &#123;</span><br><span class="line">        if elementName == &quot;use&quot; &#123;</span><br><span class="line">            //但elementName等于use的时候，记录rect并添加的rects数组中</span><br><span class="line">            let x = Double(attributeDict[&quot;x&quot;]!)</span><br><span class="line">            let y = Double(attributeDict[&quot;y&quot;]!)</span><br><span class="line">            let rect = CGRect(x: x!, y: y!, width: 12, height: 12)</span><br><span class="line">            rects.append(rect)</span><br><span class="line">        &#125;else if elementName == &quot;svg&quot; &#123;</span><br><span class="line">            //elementName等于svg的时候，记录这个二维码大小</span><br><span class="line">            let w = Double(attributeDict[&quot;width&quot;]!)</span><br><span class="line">            let h = Double(attributeDict[&quot;height&quot;]!)</span><br><span class="line">            bounds = CGRect(x: 0, y: 0, width: w!, height: h!)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    func parserDidEndDocument(_ parser: XMLParser) &#123;</span><br><span class="line">        //给layer添加阴影</span><br><span class="line">        layer.shadowColor = UIColor.gray.cgColor</span><br><span class="line">        layer.shadowRadius = 4</span><br><span class="line">        layer.shadowOpacity = 1</span><br><span class="line">        layer.shadowOffset = CGSize.zero</span><br><span class="line">        </span><br><span class="line">        //遍历rects数组，把每一个rect变为一个贝塞尔路径，并用一个CAShapeLayer承载，最后添加动画。</span><br><span class="line">        for r in rects &#123;</span><br><span class="line">            let rectLayer = CAShapeLayer()</span><br><span class="line">            </span><br><span class="line">            rectLayer.fillColor = UIColor.orange.cgColor</span><br><span class="line">            rectLayer.strokeColor = nil</span><br><span class="line">            rectLayer.path = UIBezierPath(rect: CGRect(origin: CGPoint.zero, size: r.size)).cgPath</span><br><span class="line">            rectLayer.frame = r</span><br><span class="line">            </span><br><span class="line">            var startTransform = CATransform3DIdentity</span><br><span class="line">            startTransform.m34 = 1.0 / -20  // 透视</span><br><span class="line">            startTransform = CATransform3DRotate(startTransform, CGFloat(Double.pi)*0.5, 0, 1, 0)  // 沿 y 轴旋转 π/2 圈，待会再动画转回来</span><br><span class="line"></span><br><span class="line">            // transform 动画</span><br><span class="line">            let transAnim = CABasicAnimation(keyPath: &quot;transform&quot;)</span><br><span class="line">            transAnim.duration = drand48() * 2  // 随机一个持续时间</span><br><span class="line">            transAnim.fromValue = NSValue(caTransform3D: startTransform)</span><br><span class="line">            transAnim.toValue = NSValue(caTransform3D: CATransform3DIdentity)</span><br><span class="line">            transAnim.repeatCount = 5</span><br><span class="line">            rectLayer.add(transAnim, forKey: &quot;transAnim&quot;)</span><br><span class="line"></span><br><span class="line">            // 透明度动画</span><br><span class="line">            let alphaAnim = CABasicAnimation(keyPath: &quot;opacity&quot;)</span><br><span class="line">            alphaAnim.duration = transAnim.duration</span><br><span class="line">            alphaAnim.fromValue = 0</span><br><span class="line">            alphaAnim.toValue = 1</span><br><span class="line">            alphaAnim.repeatCount = 5</span><br><span class="line">            rectLayer.add(alphaAnim, forKey: &quot;alphaAnim&quot;)</span><br><span class="line">            </span><br><span class="line">            layer.addSublayer(rectLayer)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/yueyeqi/BezierAnimationDemo" target="_blank" rel="noopener">Demo下载地址</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/01/iOS-简单实现KVO-Swift版/" rel="next" title="iOS 简单实现KVO(Swift版)">
+                <i class="fa fa-chevron-left"></i> iOS 简单实现KVO(Swift版)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/05/1-Flutter-环境搭建ForMac/" rel="prev" title="1.Flutter-环境搭建ForMac">
+                1.Flutter-环境搭建ForMac <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpeg" alt="泡菜">
+            
+              <p class="site-author-name" itemprop="name">泡菜</p>
+              <p class="site-description motion-element" itemprop="description">不积趾步，何以至千里</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yueyeqi" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#本文将简单实现iOS快速路径绘制动画。"><span class="nav-number">1.</span> <span class="nav-text">本文将简单实现iOS快速路径绘制动画。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#案例一：快速实现路径动画"><span class="nav-number">2.</span> <span class="nav-text">案例一：快速实现路径动画</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#案例二：快速实现二维码动画"><span class="nav-number">3.</span> <span class="nav-text">案例二：快速实现二维码动画</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#每当解析到一个新标签，这里就会被调用"><span class="nav-number">4.</span> <span class="nav-text">每当解析到一个新标签，这里就会被调用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#整个-svg-文件解析完毕后，这里就会被调用"><span class="nav-number">5.</span> <span class="nav-text">整个 svg 文件解析完毕后，这里就会被调用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">泡菜</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://paocai.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2019/02/25/iOS-贝塞尔曲线路径动画-SVG快速实现-Swift版/';
+          this.page.identifier = '2019/02/25/iOS-贝塞尔曲线路径动画-SVG快速实现-Swift版/';
+          this.page.title = 'iOS 贝塞尔曲线路径动画 SVG快速实现(Swift版)';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://paocai.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

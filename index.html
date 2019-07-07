@@ -554,6 +554,679 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/25/iOS-贝塞尔曲线路径动画-SVG快速实现-Swift版/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="泡菜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泡菜的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/25/iOS-贝塞尔曲线路径动画-SVG快速实现-Swift版/" itemprop="url">iOS 贝塞尔曲线路径动画 SVG快速实现(Swift版)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-25T15:54:00+08:00">
+                2019-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS技术/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/25/iOS-贝塞尔曲线路径动画-SVG快速实现-Swift版/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/25/iOS-贝塞尔曲线路径动画-SVG快速实现-Swift版/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h6 id="本文将简单实现iOS快速路径绘制动画。"><a href="#本文将简单实现iOS快速路径绘制动画。" class="headerlink" title="本文将简单实现iOS快速路径绘制动画。"></a>本文将简单实现iOS快速路径绘制动画。</h6><p>什么核心动画(Core Animation)、CAShapeLayer、UIBeizerPath等这些，这篇文章就不多说了。<br>反正看完这篇文章可以实现以下两种效果，虽然这两种效果很弱智，但高楼从地起嘛，懂了原理可以实现越来越复杂的动画组。Demo在最后可以下载，代码很烂，大神轻喷。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1176193-1d78d2c1effc20b7.gif?imageMogr2/auto-orient/strip" alt><br><img src="https://upload-images.jianshu.io/upload_images/1176193-e506fbb52417111d.gif?imageMogr2/auto-orient/strip" alt><br>注：二维码效果来源:<a href="https://segmentfault.com/a/1190000002580541" target="_blank" rel="noopener">文章</a>，因为原文里的部分功能无法重现，故在此重新写了个Demo。</p>
+<h6 id="案例一：快速实现路径动画"><a href="#案例一：快速实现路径动画" class="headerlink" title="案例一：快速实现路径动画"></a>案例一：快速实现路径动画</h6><ul>
+<li>步骤：</li>
+</ul>
+<p>1.方案有很多，可以通过Sketch软件，先绘制出想要的图，然后导出SVG，再用PaintCode软件将SVG文件转换成所需的代码。这里我直接通过PaintCode绘制路径图，导出代码啦。<img src="https://upload-images.jianshu.io/upload_images/1176193-81db908145ca13a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>2.打开PaintCode，使用钢笔工具，随便画一条线，在软件的下方会直接生成贝塞尔曲线的代码(PS:也可以根据自己需要更改所使用的编程语言)。<br><img src="https://upload-images.jianshu.io/upload_images/1176193-23844ac6335984b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>3.复制生成的代码，去Xcode创建一个UIView。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">class ESSVGView: UIView &#123;</span><br><span class="line"></span><br><span class="line">    override init(frame: CGRect) &#123;</span><br><span class="line">        super.init(frame: frame)</span><br><span class="line">        backgroundColor = UIColor.white</span><br><span class="line">        drawBezierPath()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    required init?(coder aDecoder: NSCoder) &#123;</span><br><span class="line">        fatalError(&quot;init(coder:) has not been implemented&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    func drawBezierPath() &#123;</span><br><span class="line">       </span><br><span class="line">        //通过PaintCode生成的代码</span><br><span class="line">        let pathPath = UIBezierPath()</span><br><span class="line">        pathPath.move(to: CGPoint(x: 179.5, y: 36.5))</span><br><span class="line">        pathPath.addCurve(to: CGPoint(x: 52.5, y: 118.5), controlPoint1: CGPoint(x: 95.5, y: 81.5), controlPoint2: CGPoint(x: 52.5, y: 118.5))</span><br><span class="line">        pathPath.addLine(to: CGPoint(x: 263.5, y: 118.5))</span><br><span class="line">        pathPath.addCurve(to: CGPoint(x: 75.5, y: 253.5), controlPoint1: CGPoint(x: 263.5, y: 118.5), controlPoint2: CGPoint(x: 4.5, y: 205.5))</span><br><span class="line">        pathPath.addCurve(to: CGPoint(x: 263.5, y: 253.5), controlPoint1: CGPoint(x: 146.5, y: 301.5), controlPoint2: CGPoint(x: 263.5, y: 253.5))</span><br><span class="line">        pathPath.addCurve(to: CGPoint(x: 75.5, y: 378.5), controlPoint1: CGPoint(x: 263.5, y: 253.5), controlPoint2: CGPoint(x: 222.5, y: 413.5))</span><br><span class="line">        pathPath.addCurve(to: CGPoint(x: 134.5, y: 527.5), controlPoint1: CGPoint(x: -71.5, y: 343.5), controlPoint2: CGPoint(x: 134.5, y: 527.5))</span><br><span class="line">        pathPath.addLine(to: CGPoint(x: 263.5, y: 404.5))</span><br><span class="line">        </span><br><span class="line">        //添加path到ShapeLayer</span><br><span class="line">        let pathLayer = CAShapeLayer()</span><br><span class="line">        pathLayer.frame = frame</span><br><span class="line">        pathLayer.bounds = frame</span><br><span class="line">        pathLayer.isGeometryFlipped = false</span><br><span class="line">        pathLayer.path = pathPath.cgPath</span><br><span class="line">        pathLayer.strokeColor = UIColor.red.cgColor</span><br><span class="line">        pathLayer.fillColor = nil</span><br><span class="line">        pathLayer.lineWidth = 3</span><br><span class="line">        pathLayer.lineJoin = CAShapeLayerLineJoin.bevel</span><br><span class="line">        layer.addSublayer(pathLayer)</span><br><span class="line">        </span><br><span class="line">        //添加动画</span><br><span class="line">        let animation = CABasicAnimation(keyPath: &quot;strokeEnd&quot;) //strokeEnd正常绘制效果，strokeStart逐渐消失效果</span><br><span class="line">        animation.fromValue = 0 //初始值</span><br><span class="line">        animation.toValue = 1 //结束值</span><br><span class="line">        animation.repeatCount = 10 //重复次数</span><br><span class="line">        animation.duration = 10 //动画时间</span><br><span class="line">        pathLayer.add(animation, forKey: nil)</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.接着去ViewController，添加到视图里就OK了。简单粗暴！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class ViewController: UIViewController &#123;</span><br><span class="line"></span><br><span class="line">    override func viewDidLoad() &#123;</span><br><span class="line">        super.viewDidLoad()</span><br><span class="line">        let svg = ESSVGView(frame: view.frame)</span><br><span class="line">        view.addSubview(svg)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="案例二：快速实现二维码动画"><a href="#案例二：快速实现二维码动画" class="headerlink" title="案例二：快速实现二维码动画"></a>案例二：快速实现二维码动画</h6><ul>
+<li>步骤：<br>1.首先找一个可以生成二维码并能导出SVG的网站，这里我用的是<a href="https://cli.im/" target="_blank" rel="noopener">草料二维码生成</a>，选择其他格式。</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/1176193-78be8f3cb1b8262d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>2.下载SVG格式文件<br><img src="https://upload-images.jianshu.io/upload_images/1176193-eed8543b54c01ab4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>3.这里可以用文本编辑打开一下这个SVG文件，其实里面就是个XML，注意这些use就是二维码中一个个小方块。<br>每个方块x，y都知道了，width和height是固定值都是12。<br><img src="https://upload-images.jianshu.io/upload_images/1176193-08aa5ece1338dd5f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>4.接下来将SVG格式文件拖到工程，并用XML来解析这个文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">override init(frame: CGRect) &#123;</span><br><span class="line">       super.init(frame: frame)</span><br><span class="line">       backgroundColor = UIColor.white</span><br><span class="line">       let qrPath = Bundle.main.path(forResource: &quot;qr&quot;, ofType: &quot;svg&quot;)!</span><br><span class="line">       let qrData = NSData(contentsOfFile: qrPath)</span><br><span class="line">       let xmlParser = XMLParser(data: qrData! as Data)</span><br><span class="line">       xmlParser.delegate = self</span><br><span class="line">       xmlParser.parse()</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>5.使用XML代理的2个方法进行处理</p>
+<h6 id="每当解析到一个新标签，这里就会被调用"><a href="#每当解析到一个新标签，这里就会被调用" class="headerlink" title="每当解析到一个新标签，这里就会被调用"></a>每当解析到一个新标签，这里就会被调用</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:])</span><br></pre></td></tr></table></figure>
+
+<h6 id="整个-svg-文件解析完毕后，这里就会被调用"><a href="#整个-svg-文件解析完毕后，这里就会被调用" class="headerlink" title="整个 svg 文件解析完毕后，这里就会被调用"></a>整个 svg 文件解析完毕后，这里就会被调用</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func parserDidEndDocument(_ parser: XMLParser)</span><br></pre></td></tr></table></figure>
+
+<p>6.最后我就直接把代码贴上来，关键地方都注释了干啥滴。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">class ESXML: UIView &#123;</span><br><span class="line">    </span><br><span class="line">    var rects = [CGRect]()</span><br><span class="line">    </span><br><span class="line">    override init(frame: CGRect) &#123;</span><br><span class="line">        super.init(frame: frame)</span><br><span class="line">        backgroundColor = UIColor.white</span><br><span class="line">        //解析SVG文件</span><br><span class="line">        let qrPath = Bundle.main.path(forResource: &quot;qr&quot;, ofType: &quot;svg&quot;)!</span><br><span class="line">        let qrData = NSData(contentsOfFile: qrPath)</span><br><span class="line">        let xmlParser = XMLParser(data: qrData! as Data)</span><br><span class="line">        xmlParser.delegate = self</span><br><span class="line">        xmlParser.parse()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    required init?(coder aDecoder: NSCoder) &#123;</span><br><span class="line">        fatalError(&quot;init(coder:) has not been implemented&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension ESXML: XMLParserDelegate &#123;</span><br><span class="line">    </span><br><span class="line">    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) &#123;</span><br><span class="line">        if elementName == &quot;use&quot; &#123;</span><br><span class="line">            //但elementName等于use的时候，记录rect并添加的rects数组中</span><br><span class="line">            let x = Double(attributeDict[&quot;x&quot;]!)</span><br><span class="line">            let y = Double(attributeDict[&quot;y&quot;]!)</span><br><span class="line">            let rect = CGRect(x: x!, y: y!, width: 12, height: 12)</span><br><span class="line">            rects.append(rect)</span><br><span class="line">        &#125;else if elementName == &quot;svg&quot; &#123;</span><br><span class="line">            //elementName等于svg的时候，记录这个二维码大小</span><br><span class="line">            let w = Double(attributeDict[&quot;width&quot;]!)</span><br><span class="line">            let h = Double(attributeDict[&quot;height&quot;]!)</span><br><span class="line">            bounds = CGRect(x: 0, y: 0, width: w!, height: h!)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    func parserDidEndDocument(_ parser: XMLParser) &#123;</span><br><span class="line">        //给layer添加阴影</span><br><span class="line">        layer.shadowColor = UIColor.gray.cgColor</span><br><span class="line">        layer.shadowRadius = 4</span><br><span class="line">        layer.shadowOpacity = 1</span><br><span class="line">        layer.shadowOffset = CGSize.zero</span><br><span class="line">        </span><br><span class="line">        //遍历rects数组，把每一个rect变为一个贝塞尔路径，并用一个CAShapeLayer承载，最后添加动画。</span><br><span class="line">        for r in rects &#123;</span><br><span class="line">            let rectLayer = CAShapeLayer()</span><br><span class="line">            </span><br><span class="line">            rectLayer.fillColor = UIColor.orange.cgColor</span><br><span class="line">            rectLayer.strokeColor = nil</span><br><span class="line">            rectLayer.path = UIBezierPath(rect: CGRect(origin: CGPoint.zero, size: r.size)).cgPath</span><br><span class="line">            rectLayer.frame = r</span><br><span class="line">            </span><br><span class="line">            var startTransform = CATransform3DIdentity</span><br><span class="line">            startTransform.m34 = 1.0 / -20  // 透视</span><br><span class="line">            startTransform = CATransform3DRotate(startTransform, CGFloat(Double.pi)*0.5, 0, 1, 0)  // 沿 y 轴旋转 π/2 圈，待会再动画转回来</span><br><span class="line"></span><br><span class="line">            // transform 动画</span><br><span class="line">            let transAnim = CABasicAnimation(keyPath: &quot;transform&quot;)</span><br><span class="line">            transAnim.duration = drand48() * 2  // 随机一个持续时间</span><br><span class="line">            transAnim.fromValue = NSValue(caTransform3D: startTransform)</span><br><span class="line">            transAnim.toValue = NSValue(caTransform3D: CATransform3DIdentity)</span><br><span class="line">            transAnim.repeatCount = 5</span><br><span class="line">            rectLayer.add(transAnim, forKey: &quot;transAnim&quot;)</span><br><span class="line"></span><br><span class="line">            // 透明度动画</span><br><span class="line">            let alphaAnim = CABasicAnimation(keyPath: &quot;opacity&quot;)</span><br><span class="line">            alphaAnim.duration = transAnim.duration</span><br><span class="line">            alphaAnim.fromValue = 0</span><br><span class="line">            alphaAnim.toValue = 1</span><br><span class="line">            alphaAnim.repeatCount = 5</span><br><span class="line">            rectLayer.add(alphaAnim, forKey: &quot;alphaAnim&quot;)</span><br><span class="line">            </span><br><span class="line">            layer.addSublayer(rectLayer)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/yueyeqi/BezierAnimationDemo" target="_blank" rel="noopener">Demo下载地址</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/01/iOS-简单实现KVO-Swift版/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="泡菜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泡菜的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/01/iOS-简单实现KVO-Swift版/" itemprop="url">iOS 简单实现KVO(Swift版)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-01T12:03:00+08:00">
+                2019-01-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS技术/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/01/iOS-简单实现KVO-Swift版/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/01/iOS-简单实现KVO-Swift版/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>以下部分内容源于喵神的<a href="https://swifter.tips/kvo/" target="_blank" rel="noopener">Swifter-KVO章节</a>，大家也可以去看看，收获很大。本文只作用于自己收集和整理便于学习和复习所用。</p>
+</blockquote>
+<h6 id="一：什么是KVO，它拿来干什么的？"><a href="#一：什么是KVO，它拿来干什么的？" class="headerlink" title="一：什么是KVO，它拿来干什么的？"></a>一：什么是KVO，它拿来干什么的？</h6><p>KVO（Key-Value Observing）顾名思义就是通过键(key)值(value)，来对属性进行观察。<br>通过观察可以实现hook属性值，以及监听属性变化，并通知订阅者。这样一个强大的属性可以轻松实现松耦合的结构，使代码更加灵活和强大，例如双向绑定，通过监听model的值来刷新UI。</p>
+<h6 id="二：KVO原理"><a href="#二：KVO原理" class="headerlink" title="二：KVO原理"></a>二：KVO原理</h6><blockquote>
+<p>KVO是通过isa-swizzling技术实现的。在运行时根据原类创建一个中间类，这个中间类是原类的子类，并动态修改当前对象的isa指向中间类。并且将class方法重写，返回原类的Class。所以苹果建议在开发中不应该依赖isa指针，而是通过class实例方法来获取对象类型。</p>
+</blockquote>
+<p>当然上面的一堆原理如果不实际进行操作体验是很难理解的。所以简单来说就是KVO基于OC的动态派发特点和KVC为基础，这些都是依赖于OC的运行时(runtime)概念。而在swift中，默认是禁用了动态派发的。所以在swift中实现KVO,就需要额外的操作了。</p>
+<h6 id="三：实现KVO"><a href="#三：实现KVO" class="headerlink" title="三：实现KVO"></a>三：实现KVO</h6><p>那么如何实现其OC的动态派发特性呢？</p>
+<ul>
+<li>1.首先Class需继承自<code>NSObject</code></li>
+<li>2.属性前加上<code>@objc dynamic</code></li>
+</ul>
+<p>如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Preson</span>: <span class="title">NSObject</span> </span>&#123;</span><br><span class="line">    <span class="meta">@objc</span> <span class="keyword">dynamic</span> <span class="keyword">var</span> age = <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其实在Swift3中只需要加上<code>dynamic</code>就可以了，而Swift4以后则还需要<code>@objc</code>。</p>
+<blockquote>
+<p>因为必须使用@objc属性标记Swift类或协议才能在Objective-C中访问和使用。该属性告诉编译器可以从Objective-C访问这段Swift代码。</p>
+</blockquote>
+<p>接下来就可以对属性age实现KVO了</p>
+<ul>
+<li><p>1.实例化刚才的Preson对象，并对其age属性添加监听</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//创建对象</span><br><span class="line">let p = Preson()</span><br><span class="line">//为p对象的age属性设置监听。</span><br><span class="line">//options为枚举数组，传入了new和old两个值，表示我们需要监听改变前和改变后的值。</span><br><span class="line">//context是unsafePointer类型，表示不安全的指针类型(因为在Swift手动操作指针，修改内存是一件非常不安全且不考靠的行为)，可以传入一个指针地址。</span><br><span class="line">p.addObserver(self, forKeyPath: &quot;age&quot;, options: [.new, .old], context: nil)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2.重写observeValue方法，当age属性发生改变时得到通知。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) &#123;</span><br><span class="line">    if keyPath == &quot;age&quot; &#123;</span><br><span class="line">        print(&quot;age被改变了&quot;)</span><br><span class="line">        print(change as Any)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3.实现一个屏幕点击事件，当点击屏幕后，修改age值 = 20</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">override func touchesBegan(_ touches: Set&lt;UITouch&gt;, with event: UIEvent?) &#123;</span><br><span class="line">    p.age = 20</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4.当点击屏幕后，可以看到打印出了修改前和修改后的数据，old值 = 0，new值 = 20<br><img src="https://upload-images.jianshu.io/upload_images/1176193-87d7702c71d8c0c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+</li>
+<li><p>5.最后记得还要注销KVO，可以在页面的deinit方法中，也可以是手动注销。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">deinit &#123; </span><br><span class="line">    p.removeObserver(self, forKeyPath: &quot;age&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h6 id="四：以下是完整代码"><a href="#四：以下是完整代码" class="headerlink" title="四：以下是完整代码"></a>四：以下是完整代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">import UIKit</span><br><span class="line"></span><br><span class="line">class Preson: NSObject &#123;</span><br><span class="line">    @objc dynamic var age = 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class ViewController: UIViewController &#123;</span><br><span class="line"></span><br><span class="line">    //1.创建对象</span><br><span class="line">    let p = Preson()</span><br><span class="line">    </span><br><span class="line">    override func viewDidLoad() &#123;</span><br><span class="line">        super.viewDidLoad()</span><br><span class="line">        //为p对象的age属性设置监听。</span><br><span class="line">        //options为枚举数组，传入了new和old两个值，表示我们需要监听改变前和改变后的值。</span><br><span class="line">        //context是Any类型，可以传入任意类型数据，方便在监听到变化时获取该数据。</span><br><span class="line">        p.addObserver(self, forKeyPath: &quot;age&quot;, options: [.new, .old], context: nil)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) &#123;</span><br><span class="line">        if keyPath == &quot;age&quot; &#123;</span><br><span class="line">            print(&quot;age被改变了&quot;)</span><br><span class="line">            print(change as Any)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    deinit &#123; </span><br><span class="line">        p.removeObserver(self, forKeyPath: &quot;age&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    override func touchesBegan(_ touches: Set&lt;UITouch&gt;, with event: UIEvent?) &#123;</span><br><span class="line">        p.age = 20</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/27/iOS-蓝牙4-0开发基础教程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="泡菜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泡菜的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/27/iOS-蓝牙4-0开发基础教程/" itemprop="url">iOS 蓝牙4.0开发基础教程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-27T16:50:00+08:00">
+                2016-12-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS技术/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/12/27/iOS-蓝牙4-0开发基础教程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/27/iOS-蓝牙4-0开发基础教程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h6 id="一：简介"><a href="#一：简介" class="headerlink" title="一：简介"></a>一：简介</h6><p>目前蓝牙开发越来越火，很多外部设备都使用的是蓝牙技术(如:智能手环，智能家居，可穿戴设备等)网上的资料也很多。随着蓝牙低功耗技术BLE（Bluetooth Low Energy）的发展，蓝牙技术正在一步步成熟，如今的大部分移动设备都配备有蓝牙4.0，相比之前的蓝牙技术耗电量大大降低。本文基于蓝牙4.0使用Apple自家的蓝牙框架<code>Core Bluetooth</code>讲解。如有不当之处，望各位朋友多多提醒！</p>
+<h6 id="二：基本概念"><a href="#二：基本概念" class="headerlink" title="二：基本概念"></a>二：基本概念</h6><ul>
+<li><p>中心模式和外设模式<br>顾名思义，比如<strong>以App作为中心，连接其他外设的场景称为中心模式，而使用手机作为外设被其他中心设备操作的场景则被称为外设模式。</strong><br><img src="http://upload-images.jianshu.io/upload_images/1176193-cc2931a1de4fef4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>如图在<code>Core Bluetooth</code>框架API中，左列为中心模式，右列为外设模式</p>
+</li>
+<li><p>Central和Peripheral是什么？<br><code>Core Bluetooth</code>框架核心的两个东西：中心<code>Central</code>和外围设备<code>Peripheral</code><br><img src="http://upload-images.jianshu.io/upload_images/1176193-c55a13fa3704650b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>如图是以APP作为中心<code>Central</code>，连接其他的外设<code>Peripheral</code>的中心模式。在中心模式中本地Central表示为CBCentralManager，用来发现和连接外设<code>Peripheral</code>表示为CBPeripheral。</p>
+</li>
+<li><p>服务<code>Service</code>和特征<code>Characteristic</code>是什么？<br>服务<code>Service</code>：外设对外广播必须要有服务，服务可以是多个，服务里面又包含了特征<code>Characteristic</code>。<br>特征<code>Characteristic</code>：存在于服务里面，服务里面也可以存在多个特征，特征就是具体的键值对，提供数据的地方。<br><img src="http://upload-images.jianshu.io/upload_images/1176193-af3145edd5aa2553.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+</li>
+</ul>
+<h6 id="三：开始使用"><a href="#三：开始使用" class="headerlink" title="三：开始使用"></a>三：开始使用</h6><p>这里以APP为中心模式举个例</p>
+<pre><code>import UIKit
+import CoreBluetooth //导入蓝牙框架
+//添加蓝牙代理
+class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
+
+@IBOutlet weak var tableView: UITableView!
+var manager: CBCentralManager?//中心角色
+var per: CBPeripheral?//服务
+var readCharac: CBCharacteristic? // 读取特征
+var writeCharac: CBCharacteristic? // 写入特征
+
+var deviceArray: [CBPeripheral] = [] //外设数据源
+
+override func viewDidLoad() {
+    super.viewDidLoad()
+    //建立中心角色
+    manager = CBCentralManager(delegate: self, queue: nil)
+}
+
+//判断蓝牙是否开启，并开始扫描
+func centralManagerDidUpdateState(_ central: CBCentralManager) {
+    if let central = manager {
+        switch central.state {
+        case .poweredOn:
+            print(&quot;蓝牙已打开，请扫描外设&quot;)
+            manager?.scanForPeripherals(withServices: nil, options: nil)
+        case .poweredOff:
+            print(&quot;蓝牙没有打开，请先打开蓝牙&quot;)
+        default:
+            break
+        }
+    }
+}
+
+//查找外设的代理
+func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+    //查找到外设后添加到数据源里面，并刷新tableView数据
+    if !deviceArray.contains(peripheral) {
+        deviceArray.append(peripheral)
+    }
+    tableView.reloadData()
+}
+
+//连接外设成功，启动发现服务
+func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+    print(&quot;连接成功：\(peripheral.name)&quot;)//打印外设name
+    peripheral.delegate = self
+    peripheral.discoverServices(nil)//开始发现服务
+    per = peripheral
+}
+
+//连接外设失败
+func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+    print(&quot;连接失败：\(peripheral.name)&quot;)
+}
+
+//发现服务
+func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+    //遍历服务，发现服务下的特征
+    for server in peripheral.services! {
+        //也可以通过服务UUID来过滤服务
+        //server.uuid
+        peripheral.discoverCharacteristics(nil, for: server)
+    }
+}
+
+//信号检测
+func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
+    let rssi = abs(RSSI .intValue)
+    let str = &quot;发现BLT4.0热点：\(peripheral)，强度：\(rssi)&quot;
+    print(str)
+}
+
+//搜索到特征Characteristics
+func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+    print(&quot;服务UUID：\(service.uuid)&quot;)
+    //遍历每个服务下的特征
+    for c in service.characteristics! {
+        print(&quot;特征UUID:\(c.uuid)&quot;)
+        //根据外设所定制的特征，分别处理
+        //比如特征&quot;1111&quot;为读取，&quot;2222&quot;为写入
+        if (c.uuid.uuidString.range(of: &quot;1111&quot;) != nil) {
+            readCharac = c
+            peripheral.readRSSI()//检测外设信号
+            peripheral.readValue(for: c)//读取一次特征值
+            peripheral.setNotifyValue(true, for: c)//当特征值改变时通知
+        }else if (c.uuid.uuidString.range(of: &quot;2222&quot;) != nil) {
+            //写入的特征
+            writeCharac = c
+        }
+    }
+}
+
+//获取外设发来的数据(无论是读取还是通知，都在这个方法接收)
+func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+    if characteristic.uuid == CBUUID(string: &quot;1111&quot;) {
+        let data = characteristic.value
+        //data则是读取过来的数据
+    }
+}
+
+//检测中心向外设写数据是否成功
+func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
+    if (error != nil) {
+        print(&quot;发送失败&quot;)
+    }else {
+        print(&quot;发送成功&quot;)
+    }
+}
+
+//模拟写入数据
+//func testWriteData() {
+//    per?.writeValue(writeData, for: writeCharac!, type: CBCharacteristicWriteType.withResponse)
+//}
+}
+
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
+
+func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
+    return deviceArray.count
+}
+
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell {
+    let identified = &quot;cell&quot;
+    var cell = tableView.dequeueReusableCell(withIdentifier: identified)
+    if cell == nil {
+        cell = UITableViewCell(style: .default, reuseIdentifier: identified)
+    }
+    let per = deviceArray[indexPath.row]
+
+    if let name = per.name {
+        cell?.textLabel?.text = name
+    }else {
+        cell?.textLabel?.text = per.identifier.uuidString
+    }
+
+    return cell!
+}
+
+func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    per = deviceArray[indexPath.row]
+    manager?.connect(per!, options: nil)
+}
+}</code></pre><p>总得来说蓝牙连接分为以下几个步骤<br>1.建立一个Central Manager实例进行蓝牙管理<br>2.搜索外围设备<br>3.连接外围设备<br>4.获得外围设备的服务<br>5.获得服务的特征<br>6.从外围设备读数据<br>7.给外围设备发送数据</p>
+<p>Demo地址：<a href="https://github.com/yueyeqi/CoreBluetooth_Demo" target="_blank" rel="noopener">https://github.com/yueyeqi/CoreBluetooth_Demo</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/13/iOS-Facebook-Pop-动效库的使用教程-Swift版/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1390,7 +2063,7 @@ view.layer.pop_addAnimation(animation, forKey: &quot;positionX&quot;)</code></pr
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
