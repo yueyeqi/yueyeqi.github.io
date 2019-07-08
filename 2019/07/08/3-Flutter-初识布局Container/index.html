@@ -79,25 +79,23 @@
 
 
 
-<meta name="description" content="这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。推荐一个flutter学习网站：Flutter中文网 一：下载安装Flutter先去官网下载最新的flutter包：官网下载地址解压后放到自己找的到的路径这里我放到/Users/payne/flutter(注意：payne是我自己的用户名，请根据自己的用户名">
+<meta name="description" content="前言Flutter布局基于前端FlexBox(盒子布局)原理，学过CSS布局的朋友应该很熟悉，本文是作者自我归纳文章，比较粗糙，如果想细致的学习，推荐去Flutter中文网-布局教程学习。 布局之Container前面章节有说过Flutter万物皆为Widget(组件)，Container也是组件之一，并且可以算是万金油般的组件了，常用的属性有宽、高、背景色等，接下来我们来使用一下。 123456">
 <meta name="keywords" content="iOS技术分享,flutter技术分享,泡菜iOS,泡菜的博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1.Flutter-环境搭建ForMac">
-<meta property="og:url" content="http://yoursite.com/2019/07/05/1-Flutter-环境搭建ForMac/index.html">
+<meta property="og:title" content="3.Flutter-初识布局Container">
+<meta property="og:url" content="http://yoursite.com/2019/07/08/3-Flutter-初识布局Container/index.html">
 <meta property="og:site_name" content="泡菜的小屋">
-<meta property="og:description" content="这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。推荐一个flutter学习网站：Flutter中文网 一：下载安装Flutter先去官网下载最新的flutter包：官网下载地址解压后放到自己找的到的路径这里我放到/Users/payne/flutter(注意：payne是我自己的用户名，请根据自己的用户名">
+<meta property="og:description" content="前言Flutter布局基于前端FlexBox(盒子布局)原理，学过CSS布局的朋友应该很熟悉，本文是作者自我归纳文章，比较粗糙，如果想细致的学习，推荐去Flutter中文网-布局教程学习。 布局之Container前面章节有说过Flutter万物皆为Widget(组件)，Container也是组件之一，并且可以算是万金油般的组件了，常用的属性有宽、高、背景色等，接下来我们来使用一下。 123456">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-3e37f0073241aca8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-712d26bc69d390e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-cea93e9cbc9c3236.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-27ebd2672b5db31d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-d9793afa29d3538b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-4ecbe2b343fd30ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-07-05T15:30:47.779Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-82c635a8c3d22df5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-80db07ccd6cd1271.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-1ec4fdc9243f8b96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1176193-57a47f42352b1df2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-07-08T14:11:10.050Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="1.Flutter-环境搭建ForMac">
-<meta name="twitter:description" content="这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。推荐一个flutter学习网站：Flutter中文网 一：下载安装Flutter先去官网下载最新的flutter包：官网下载地址解压后放到自己找的到的路径这里我放到/Users/payne/flutter(注意：payne是我自己的用户名，请根据自己的用户名">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1176193-3e37f0073241aca8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="3.Flutter-初识布局Container">
+<meta name="twitter:description" content="前言Flutter布局基于前端FlexBox(盒子布局)原理，学过CSS布局的朋友应该很熟悉，本文是作者自我归纳文章，比较粗糙，如果想细致的学习，推荐去Flutter中文网-布局教程学习。 布局之Container前面章节有说过Flutter万物皆为Widget(组件)，Container也是组件之一，并且可以算是万金油般的组件了，常用的属性有宽、高、背景色等，接下来我们来使用一下。 123456">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1176193-82c635a8c3d22df5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -127,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/05/1-Flutter-环境搭建ForMac/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/08/3-Flutter-初识布局Container/">
 
 
 
 
 
-  <title>1.Flutter-环境搭建ForMac | 泡菜的小屋</title>
+  <title>3.Flutter-初识布局Container | 泡菜的小屋</title>
   
 
 
@@ -240,7 +238,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/05/1-Flutter-环境搭建ForMac/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/08/3-Flutter-初识布局Container/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="泡菜">
@@ -257,7 +255,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">1.Flutter-环境搭建ForMac</h1>
+          <h1 class="post-title" itemprop="name headline">3.Flutter-初识布局Container</h1>
         
 
         <div class="post-meta">
@@ -269,8 +267,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-05T23:29:00+08:00">
-                2019-07-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-08T22:07:00+08:00">
+                2019-07-08
               </time>
             
 
@@ -310,8 +308,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/05/1-Flutter-环境搭建ForMac/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/05/1-Flutter-环境搭建ForMac/" itemprop="commentCount"></span>
+                <a href="/2019/07/08/3-Flutter-初识布局Container/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/08/3-Flutter-初识布局Container/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -344,12 +342,22 @@
       
 
       
-        <p>这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。<br>推荐一个flutter学习网站：<a href="https://flutterchina.club/" target="_blank" rel="noopener">Flutter中文网</a></p>
-<h6 id="一：下载安装Flutter"><a href="#一：下载安装Flutter" class="headerlink" title="一：下载安装Flutter"></a>一：下载安装Flutter</h6><p>先去官网下载最新的flutter包：<a href="[https://flutter.dev/docs/development/tools/sdk/releases?tab=macos#macos]">官网下载地址</a><br><img src="https://upload-images.jianshu.io/upload_images/1176193-3e37f0073241aca8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>解压后放到自己找的到的路径<br>这里我放到<code>/Users/payne/flutter</code>(注意：<code>payne</code>是我自己的用户名，请根据自己的用户名替换)</p>
-<p>最后把下面这句<br><code>export PATH=`pwd`/flutter/bin:$PATH</code><br>添加的根目录<code>~/.bash_proflie</code>文件中保存，环境变量就配置好了<br><img src="https://upload-images.jianshu.io/upload_images/1176193-712d26bc69d390e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<h5 id="二-检查Flutter所需依赖"><a href="#二-检查Flutter所需依赖" class="headerlink" title="二.检查Flutter所需依赖"></a>二.检查Flutter所需依赖</h5><p>在终端执行<code>flutter doctor</code><br>会自动检测当前所需依赖，可根据指示进行安装。<br><code>Android Studio</code><br><code>Android SDK</code><br>还有iOS所需依赖<br><img src="https://upload-images.jianshu.io/upload_images/1176193-cea93e9cbc9c3236.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>所有依赖都安装完成后，在执行<code>flutter doctor</code>查看是否都OK</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1176193-27ebd2672b5db31d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>启动Android Studio<br>在设置里面插件中搜索安装flutter插件<br><img src="https://upload-images.jianshu.io/upload_images/1176193-d9793afa29d3538b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>安装完成重启，可以看到新建工程界面多了一个 新建flutter工程就完成了<img src="https://upload-images.jianshu.io/upload_images/1176193-4ecbe2b343fd30ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+        <h6 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h6><p>Flutter布局基于前端FlexBox(盒子布局)原理，学过CSS布局的朋友应该很熟悉，本文是作者自我归纳文章，比较粗糙，如果想细致的学习，推荐去<a href="https://flutterchina.club/tutorials/layout/" target="_blank" rel="noopener">Flutter中文网-布局教程</a>学习。</p>
+<h6 id="布局之Container"><a href="#布局之Container" class="headerlink" title="布局之Container"></a>布局之Container</h6><p>前面章节有说过Flutter万物皆为Widget(组件)，<code>Container</code>也是组件之一，并且可以算是万金油般的组件了，常用的属性有宽、高、背景色等，接下来我们来使用一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import &apos;package:flutter/material.dart&apos;;</span><br><span class="line"></span><br><span class="line">void main() =&gt; runApp(MyApp());</span><br><span class="line"></span><br><span class="line">class MyApp extends StatelessWidget &#123;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return MaterialApp(</span><br><span class="line">      title: &apos;demo&apos;,</span><br><span class="line">      home: Scaffold(</span><br><span class="line">        body: Container(</span><br><span class="line">          width: 100,</span><br><span class="line">          height: 100,</span><br><span class="line">          color: Colors.red,</span><br><span class="line">        )</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>首先使用<code>MaterialApp</code>和<code>Scaffold</code>搭建起来一个页面基本的架子，然后在body里面返回了一个<code>Container</code>，并设置它的属性高、宽、颜色，来看看效果<br><img src="https://upload-images.jianshu.io/upload_images/1176193-82c635a8c3d22df5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>可以看到<code>Container</code>是从左上开始布局的，接下来调整一下位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Container(</span><br><span class="line">          margin: EdgeInsets.only(top: 200, left: 200),</span><br><span class="line">          width: 100,</span><br><span class="line">          height: 100,</span><br><span class="line">          color: Colors.red,</span><br><span class="line">        )</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>margin</code>(外边距)属性，并通过<code>EdgeInsets.only</code>方法分别对上边和左边移动200<br><img src="https://upload-images.jianshu.io/upload_images/1176193-80db07ccd6cd1271.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>这真的是和CSS布局一模一样呀，还可以使用<code>EdgeInsets.all</code>方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Container(</span><br><span class="line">          margin: EdgeInsets.all(200),</span><br><span class="line">          width: 100,</span><br><span class="line">          height: 100,</span><br><span class="line">          color: Colors.red,</span><br><span class="line">        )</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/1176193-1ec4fdc9243f8b96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>不难发现<code>all</code>把四个边的边距都留出200的距离，所以导致Container被左右压缩了，而上下边距因为距离够，所以没有影响。</p>
+<h6 id="嵌套Widget"><a href="#嵌套Widget" class="headerlink" title="嵌套Widget"></a>嵌套Widget</h6><p>接下来把这个<code>Container</code>调大一点，并且在里面再放一个<code>Container</code>进行布局</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import &apos;package:flutter/material.dart&apos;;</span><br><span class="line"></span><br><span class="line">void main() =&gt; runApp(MyApp());</span><br><span class="line"></span><br><span class="line">class MyApp extends StatelessWidget &#123;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return MaterialApp(</span><br><span class="line">      title: &apos;demo&apos;,</span><br><span class="line">      home: Scaffold(</span><br><span class="line">        body: Container(</span><br><span class="line">          margin: EdgeInsets.only(left: 100, top: 100),</span><br><span class="line">          width: 200,</span><br><span class="line">          height: 200,</span><br><span class="line">          color: Colors.red,</span><br><span class="line">          child: Container(</span><br><span class="line">            margin: EdgeInsets.all(50),</span><br><span class="line">            width: 100,</span><br><span class="line">            height: 100,</span><br><span class="line">            color: Colors.blue,</span><br><span class="line">          ),</span><br><span class="line">        )</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/1176193-57a47f42352b1df2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>由此可见，<code>Container</code>这个容器可以包裹任何Widget，并对其位置进行布局，如果某个Widget不支持布局属性，那么就可以用Container来包装一下即可，因此它的使用场景可谓是非常广的，这也体现出了Flutter中，万物皆为Widget的意思。<br>学习flutter布局，重点还是在于多多练习。</p>
+<p>下期我们将介绍Flutter中3剑客(Row、Column、Stack)进行布局，分别针对横向、纵向、和重叠，期待你的阅读，蟹蟹</p>
 
       
     </div>
@@ -374,8 +382,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/01/Cocoapods-pod-setup和git-clone终极提速指南/" rel="next" title="Cocoapods pod setup和git clone终极提速指南">
-                <i class="fa fa-chevron-left"></i> Cocoapods pod setup和git clone终极提速指南
+              <a href="/2019/07/05/2-Flutter-初识Widget/" rel="next" title="2.Flutter-初识Widget">
+                <i class="fa fa-chevron-left"></i> 2.Flutter-初识Widget
               </a>
             
           </div>
@@ -383,10 +391,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/05/2-Flutter-初识Widget/" rel="prev" title="2.Flutter-初识Widget">
-                2.Flutter-初识Widget <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -537,7 +541,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#一：下载安装Flutter"><span class="nav-number">1.</span> <span class="nav-text">一：下载安装Flutter</span></a></li></ol><li class="nav-item nav-level-5"><a class="nav-link" href="#二-检查Flutter所需依赖"><span class="nav-number"></span> <span class="nav-text">二.检查Flutter所需依赖</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#布局之Container"><span class="nav-number">2.</span> <span class="nav-text">布局之Container</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#嵌套Widget"><span class="nav-number">3.</span> <span class="nav-text">嵌套Widget</span></a></li></ol></div>
             
 
           </div>
@@ -727,9 +731,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/07/05/1-Flutter-环境搭建ForMac/';
-          this.page.identifier = '2019/07/05/1-Flutter-环境搭建ForMac/';
-          this.page.title = '1.Flutter-环境搭建ForMac';
+          this.page.url = 'http://yoursite.com/2019/07/08/3-Flutter-初识布局Container/';
+          this.page.identifier = '2019/07/08/3-Flutter-初识布局Container/';
+          this.page.title = '3.Flutter-初识布局Container';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://paocai.disqus.com/embed.js';
