@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="ios flutter 技术分享">
+  <meta name="keywords" content="iOS技术,flutter技术,泡菜iOS,泡菜的博客">
 
 
 
@@ -80,6 +80,7 @@
 
 
 <meta name="description" content="不积趾步，何以至千里">
+<meta name="keywords" content="iOS技术分享,flutter技术分享,泡菜iOS,泡菜的博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="泡菜的小屋">
 <meta property="og:url" content="http://yoursite.com/index.html">
@@ -335,22 +336,16 @@
       
         
           
-            <p><code>Widget(小部件/组件)</code> 在flutter的世界里万物皆为Widget，可以理解成乐高玩具，再复杂的东西都是由一个个的小部件组成的。<br>说一千道一万，不如代码来得快。下面直接展示一个最简单的Widget</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import &apos;package:flutter/material.dart&apos;;</span><br><span class="line"></span><br><span class="line">void main() =&gt; runApp(MyApp());</span><br><span class="line"></span><br><span class="line">class MyApp extends StatelessWidget &#123;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return Container(</span><br><span class="line">      color: Colors.blue,</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>第一句main 作为程序的入口，等于C里面的main和iOS的didFinish<br>使用<code>runApp()</code>来设置启动的Widget，其中<code>=&gt;</code>是简写的方式，在flutter中如果函数只执行一句代码，可以直接用这个箭头代替，和下面这样一个意思</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">  runApp(MyApp());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>接着新建了个类叫<code>MyApp</code>继承自<code>StatelessWidget</code>这个无状态控制器，后续章节我会详细介绍有状态与无状态的区别。</p>
-<p>在类里面重写build构建方法，并返回一个容器类Widget–<code>Container</code>，类似于前端的div<br>设置了背景色为蓝色，来看看效果。<br><img src="https://upload-images.jianshu.io/upload_images/1176193-0d74dd2a0ecba9fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt></p>
-<p>这个Demo中<code>MyApp</code>是我自己创建的Widget类，然后里面又创建了一个系统的<code>Container</code>Widget，并设置去属性Color为蓝色，这就是一个很简单的Widget</p>
-<p>下面来演示一些系统的Widget类，创建出APP流行的页面结构<br>直接修改刚才的<code>MyApp</code>类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class MyApp extends StatelessWidget &#123;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return MaterialApp(</span><br><span class="line">      title: &quot;FlutterDemo&quot;,</span><br><span class="line">      home: Scaffold(</span><br><span class="line">        appBar: AppBar(</span><br><span class="line">          title: Text(&quot;Flutter&quot;),</span><br><span class="line">        ),</span><br><span class="line">        body: Container(),</span><br><span class="line">      )</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>来看看效果<br><img src="https://upload-images.jianshu.io/upload_images/1176193-667d538dfba2ce3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt><br>是不是突然熟悉了起来，哈哈。<br>首先在build里创建了一个<code>MaterialApp</code>，给title和home属性赋值(其中title属性只对Android有效)<br>而<code>Scaffold</code>则是脚手架的意思，负责构建一个具有顶部导航栏<code>AppBar</code>的界面<br>这里值得一提的是title属性也是一个Widget，不能直接使用字符串，要用<code>Text</code>包装一下<br>在body里面我们就可以搭建具体的页面布局咯</p>
-<p>下期介绍Flutter布局</p>
-
-          
+          Widget(小部件/组件) 在flutter的世界里万物皆为Widget，可以理解成乐高玩具，再复杂的东西都是由一个个的小部件组成的。说一千道一万，不如代码来得快。下面直接展示一个最简单的Widget
+12345678910111213import &apos;package:flutter/ma
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/05/2-Flutter-初识Widget/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -500,14 +495,16 @@
       
         
           
-            <p>这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。<br>推荐一个flutter学习网站：<a href="https://flutterchina.club/" target="_blank" rel="noopener">Flutter中文网</a></p>
-<h6 id="一：下载安装Flutter"><a href="#一：下载安装Flutter" class="headerlink" title="一：下载安装Flutter"></a>一：下载安装Flutter</h6><p>先去官网下载最新的flutter包：<a href="[https://flutter.dev/docs/development/tools/sdk/releases?tab=macos#macos]">官网下载地址</a><br><img src="https://upload-images.jianshu.io/upload_images/1176193-3e37f0073241aca8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>解压后放到自己找的到的路径<br>这里我放到<code>/Users/payne/flutter</code>(注意：<code>payne</code>是我自己的用户名，请根据自己的用户名替换)</p>
-<p>最后把下面这句<br><code>export PATH=`pwd`/flutter/bin:$PATH</code><br>添加的根目录<code>~/.bash_proflie</code>文件中保存，环境变量就配置好了<br><img src="https://upload-images.jianshu.io/upload_images/1176193-712d26bc69d390e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<h5 id="二-检查Flutter所需依赖"><a href="#二-检查Flutter所需依赖" class="headerlink" title="二.检查Flutter所需依赖"></a>二.检查Flutter所需依赖</h5><p>在终端执行<code>flutter doctor</code><br>会自动检测当前所需依赖，可根据指示进行安装。<br><code>Android Studio</code><br><code>Android SDK</code><br>还有iOS所需依赖<br><img src="https://upload-images.jianshu.io/upload_images/1176193-cea93e9cbc9c3236.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>所有依赖都安装完成后，在执行<code>flutter doctor</code>查看是否都OK</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1176193-27ebd2672b5db31d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>启动Android Studio<br>在设置里面插件中搜索安装flutter插件<br><img src="https://upload-images.jianshu.io/upload_images/1176193-d9793afa29d3538b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>安装完成重启，可以看到新建工程界面多了一个 新建flutter工程就完成了<img src="https://upload-images.jianshu.io/upload_images/1176193-4ecbe2b343fd30ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-
-          
+          这是该系列的第一篇文章，我会持续更新在flutter学习之路上的相关经验和坑，文章目的在于自己学习的整理，如有错误之处，还望各位看官多多指正。推荐一个flutter学习网站：Flutter中文网
+一：下载安装Flutter先去官网下载最新的flutter包：官网下载地址解压后放到自己找的到的路径这里
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/05/1-Flutter-环境搭建ForMac/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -657,24 +654,16 @@
       
         
           
-            <h3 id="背景描述："><a href="#背景描述：" class="headerlink" title="背景描述："></a>背景描述：</h3><p>最近刚换了新mac，需要重新配置cocoapods环境，执行pod setup时直接慢到崩溃(想哭)，速度只有几KB，不知道等到猴年马月才能装完，而且稍不注意就要重来。</p>
-<p>网上找了很多关于pod setup的解决方法，有说换网络环境的，有说换别的源，还有说直接拷贝别人安装好的文件，或者去GitHub上面直接download下来等等等。</p>
-<p>在我一一试了一遍后，都没有成功，可能我太笨了。</p>
-<h3 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h3><p>于是我想知道pod setup到底在做什么操作<img src="https://upload-images.jianshu.io/upload_images/1176193-22015c6a474dcf83.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>没错！git clone，就是一个很普通的git 仓库克隆到本地的操作。<br>为什么这么慢？因为克隆地址是github的，github的服务器是亚马逊的，而亚马逊又因为墙的原因(你懂得)….</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>so 既然知道为什么这么慢了，解决方案自然是要搭梯子了，但是你会发现搭上全局的梯子再试一次速度并没有多大的提升。<br>ok 终极解决方案来咯</p>
-<ol>
-<li>准备好一个速度不错的梯子（这里我就无耻的打个广告 O(∩_∩)O哈哈~：<a href="https://123ssr.com/auth/register?code=L0c7" target="_blank" rel="noopener">https://123ssr.com/auth/register?code=L0c7</a> ，我用的是10元/月的套餐，速度真心很不错，其次还有5元/月, 但是只能勉强看看文章、google一下什么的）当然如果你有更好的梯子也行。</li>
-<li>用小飞机-高级设置-查看代理ip和端口<img src="https://upload-images.jianshu.io/upload_images/1176193-b9cd76bd61d27434.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/250" alt><img src="https://upload-images.jianshu.io/upload_images/1176193-245a16f89c6bd9b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>我这里是127.0.0.1 和 1086,然后终端执行下面两句代码，启用代理(注意：地址和端口要一样)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy &apos;socks5://127.0.0.1:1086&apos;</span><br><span class="line">git config --global https.proxy &apos;socks5://127.0.0.1:1086&apos;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>最后把小飞机设置为全局模式，重新执行一次pod setup，快到流泪/(ㄒoㄒ)/~~，我是2M每秒下载速度，这个还是根据你的梯子和网络环境决定的<br><img src="https://upload-images.jianshu.io/upload_images/1176193-fd28f992b5cb6af9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>装完之后呢 可以再使用命令取消代理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
-
-<p>如果还有什么不懂得呢，可以留言，如果这篇文章对你有帮助的话，可以给我小红心哟~</p>
-
-          
+          背景描述：最近刚换了新mac，需要重新配置cocoapods环境，执行pod setup时直接慢到崩溃(想哭)，速度只有几KB，不知道等到猴年马月才能装完，而且稍不注意就要重来。
+网上找了很多关于pod setup的解决方法，有说换网络环境的，有说换别的源，还有说直接拷贝别人安装好的文件，或者去Gi
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/01/Cocoapods-pod-setup和git-clone终极提速指南/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -824,35 +813,15 @@
       
         
           
-            <h6 id="本文将简单实现iOS快速路径绘制动画。"><a href="#本文将简单实现iOS快速路径绘制动画。" class="headerlink" title="本文将简单实现iOS快速路径绘制动画。"></a>本文将简单实现iOS快速路径绘制动画。</h6><p>什么核心动画(Core Animation)、CAShapeLayer、UIBeizerPath等这些，这篇文章就不多说了。<br>反正看完这篇文章可以实现以下两种效果，虽然这两种效果很弱智，但高楼从地起嘛，懂了原理可以实现越来越复杂的动画组。Demo在最后可以下载，代码很烂，大神轻喷。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1176193-1d78d2c1effc20b7.gif?imageMogr2/auto-orient/strip" alt><br><img src="https://upload-images.jianshu.io/upload_images/1176193-e506fbb52417111d.gif?imageMogr2/auto-orient/strip" alt><br>注：二维码效果来源:<a href="https://segmentfault.com/a/1190000002580541" target="_blank" rel="noopener">文章</a>，因为原文里的部分功能无法重现，故在此重新写了个Demo。</p>
-<h6 id="案例一：快速实现路径动画"><a href="#案例一：快速实现路径动画" class="headerlink" title="案例一：快速实现路径动画"></a>案例一：快速实现路径动画</h6><ul>
-<li>步骤：</li>
-</ul>
-<p>1.方案有很多，可以通过Sketch软件，先绘制出想要的图，然后导出SVG，再用PaintCode软件将SVG文件转换成所需的代码。这里我直接通过PaintCode绘制路径图，导出代码啦。<img src="https://upload-images.jianshu.io/upload_images/1176193-81db908145ca13a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>2.打开PaintCode，使用钢笔工具，随便画一条线，在软件的下方会直接生成贝塞尔曲线的代码(PS:也可以根据自己需要更改所使用的编程语言)。<br><img src="https://upload-images.jianshu.io/upload_images/1176193-23844ac6335984b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>3.复制生成的代码，去Xcode创建一个UIView。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">class ESSVGView: UIView &#123;</span><br><span class="line"></span><br><span class="line">    override init(frame: CGRect) &#123;</span><br><span class="line">        super.init(frame: frame)</span><br><span class="line">        backgroundColor = UIColor.white</span><br><span class="line">        drawBezierPath()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    required init?(coder aDecoder: NSCoder) &#123;</span><br><span class="line">        fatalError(&quot;init(coder:) has not been implemented&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    func drawBezierPath() &#123;</span><br><span class="line">       </span><br><span class="line">        //通过PaintCode生成的代码</span><br><span class="line">        let pathPath = UIBezierPath()</span><br><span class="line">        pathPath.move(to: CGPoint(x: 179.5, y: 36.5))</span><br><span class="line">        pathPath.addCurve(to: CGPoint(x: 52.5, y: 118.5), controlPoint1: CGPoint(x: 95.5, y: 81.5), controlPoint2: CGPoint(x: 52.5, y: 118.5))</span><br><span class="line">        pathPath.addLine(to: CGPoint(x: 263.5, y: 118.5))</span><br><span class="line">        pathPath.addCurve(to: CGPoint(x: 75.5, y: 253.5), controlPoint1: CGPoint(x: 263.5, y: 118.5), controlPoint2: CGPoint(x: 4.5, y: 205.5))</span><br><span class="line">        pathPath.addCurve(to: CGPoint(x: 263.5, y: 253.5), controlPoint1: CGPoint(x: 146.5, y: 301.5), controlPoint2: CGPoint(x: 263.5, y: 253.5))</span><br><span class="line">        pathPath.addCurve(to: CGPoint(x: 75.5, y: 378.5), controlPoint1: CGPoint(x: 263.5, y: 253.5), controlPoint2: CGPoint(x: 222.5, y: 413.5))</span><br><span class="line">        pathPath.addCurve(to: CGPoint(x: 134.5, y: 527.5), controlPoint1: CGPoint(x: -71.5, y: 343.5), controlPoint2: CGPoint(x: 134.5, y: 527.5))</span><br><span class="line">        pathPath.addLine(to: CGPoint(x: 263.5, y: 404.5))</span><br><span class="line">        </span><br><span class="line">        //添加path到ShapeLayer</span><br><span class="line">        let pathLayer = CAShapeLayer()</span><br><span class="line">        pathLayer.frame = frame</span><br><span class="line">        pathLayer.bounds = frame</span><br><span class="line">        pathLayer.isGeometryFlipped = false</span><br><span class="line">        pathLayer.path = pathPath.cgPath</span><br><span class="line">        pathLayer.strokeColor = UIColor.red.cgColor</span><br><span class="line">        pathLayer.fillColor = nil</span><br><span class="line">        pathLayer.lineWidth = 3</span><br><span class="line">        pathLayer.lineJoin = CAShapeLayerLineJoin.bevel</span><br><span class="line">        layer.addSublayer(pathLayer)</span><br><span class="line">        </span><br><span class="line">        //添加动画</span><br><span class="line">        let animation = CABasicAnimation(keyPath: &quot;strokeEnd&quot;) //strokeEnd正常绘制效果，strokeStart逐渐消失效果</span><br><span class="line">        animation.fromValue = 0 //初始值</span><br><span class="line">        animation.toValue = 1 //结束值</span><br><span class="line">        animation.repeatCount = 10 //重复次数</span><br><span class="line">        animation.duration = 10 //动画时间</span><br><span class="line">        pathLayer.add(animation, forKey: nil)</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>4.接着去ViewController，添加到视图里就OK了。简单粗暴！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class ViewController: UIViewController &#123;</span><br><span class="line"></span><br><span class="line">    override func viewDidLoad() &#123;</span><br><span class="line">        super.viewDidLoad()</span><br><span class="line">        let svg = ESSVGView(frame: view.frame)</span><br><span class="line">        view.addSubview(svg)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="案例二：快速实现二维码动画"><a href="#案例二：快速实现二维码动画" class="headerlink" title="案例二：快速实现二维码动画"></a>案例二：快速实现二维码动画</h6><ul>
-<li>步骤：<br>1.首先找一个可以生成二维码并能导出SVG的网站，这里我用的是<a href="https://cli.im/" target="_blank" rel="noopener">草料二维码生成</a>，选择其他格式。</li>
-</ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/1176193-78be8f3cb1b8262d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>2.下载SVG格式文件<br><img src="https://upload-images.jianshu.io/upload_images/1176193-eed8543b54c01ab4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>3.这里可以用文本编辑打开一下这个SVG文件，其实里面就是个XML，注意这些use就是二维码中一个个小方块。<br>每个方块x，y都知道了，width和height是固定值都是12。<br><img src="https://upload-images.jianshu.io/upload_images/1176193-08aa5ece1338dd5f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>4.接下来将SVG格式文件拖到工程，并用XML来解析这个文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">override init(frame: CGRect) &#123;</span><br><span class="line">       super.init(frame: frame)</span><br><span class="line">       backgroundColor = UIColor.white</span><br><span class="line">       let qrPath = Bundle.main.path(forResource: &quot;qr&quot;, ofType: &quot;svg&quot;)!</span><br><span class="line">       let qrData = NSData(contentsOfFile: qrPath)</span><br><span class="line">       let xmlParser = XMLParser(data: qrData! as Data)</span><br><span class="line">       xmlParser.delegate = self</span><br><span class="line">       xmlParser.parse()</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<p>5.使用XML代理的2个方法进行处理</p>
-<h6 id="每当解析到一个新标签，这里就会被调用"><a href="#每当解析到一个新标签，这里就会被调用" class="headerlink" title="每当解析到一个新标签，这里就会被调用"></a>每当解析到一个新标签，这里就会被调用</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:])</span><br></pre></td></tr></table></figure>
-
-<h6 id="整个-svg-文件解析完毕后，这里就会被调用"><a href="#整个-svg-文件解析完毕后，这里就会被调用" class="headerlink" title="整个 svg 文件解析完毕后，这里就会被调用"></a>整个 svg 文件解析完毕后，这里就会被调用</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func parserDidEndDocument(_ parser: XMLParser)</span><br></pre></td></tr></table></figure>
-
-<p>6.最后我就直接把代码贴上来，关键地方都注释了干啥滴。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">class ESXML: UIView &#123;</span><br><span class="line">    </span><br><span class="line">    var rects = [CGRect]()</span><br><span class="line">    </span><br><span class="line">    override init(frame: CGRect) &#123;</span><br><span class="line">        super.init(frame: frame)</span><br><span class="line">        backgroundColor = UIColor.white</span><br><span class="line">        //解析SVG文件</span><br><span class="line">        let qrPath = Bundle.main.path(forResource: &quot;qr&quot;, ofType: &quot;svg&quot;)!</span><br><span class="line">        let qrData = NSData(contentsOfFile: qrPath)</span><br><span class="line">        let xmlParser = XMLParser(data: qrData! as Data)</span><br><span class="line">        xmlParser.delegate = self</span><br><span class="line">        xmlParser.parse()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    required init?(coder aDecoder: NSCoder) &#123;</span><br><span class="line">        fatalError(&quot;init(coder:) has not been implemented&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension ESXML: XMLParserDelegate &#123;</span><br><span class="line">    </span><br><span class="line">    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) &#123;</span><br><span class="line">        if elementName == &quot;use&quot; &#123;</span><br><span class="line">            //但elementName等于use的时候，记录rect并添加的rects数组中</span><br><span class="line">            let x = Double(attributeDict[&quot;x&quot;]!)</span><br><span class="line">            let y = Double(attributeDict[&quot;y&quot;]!)</span><br><span class="line">            let rect = CGRect(x: x!, y: y!, width: 12, height: 12)</span><br><span class="line">            rects.append(rect)</span><br><span class="line">        &#125;else if elementName == &quot;svg&quot; &#123;</span><br><span class="line">            //elementName等于svg的时候，记录这个二维码大小</span><br><span class="line">            let w = Double(attributeDict[&quot;width&quot;]!)</span><br><span class="line">            let h = Double(attributeDict[&quot;height&quot;]!)</span><br><span class="line">            bounds = CGRect(x: 0, y: 0, width: w!, height: h!)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    func parserDidEndDocument(_ parser: XMLParser) &#123;</span><br><span class="line">        //给layer添加阴影</span><br><span class="line">        layer.shadowColor = UIColor.gray.cgColor</span><br><span class="line">        layer.shadowRadius = 4</span><br><span class="line">        layer.shadowOpacity = 1</span><br><span class="line">        layer.shadowOffset = CGSize.zero</span><br><span class="line">        </span><br><span class="line">        //遍历rects数组，把每一个rect变为一个贝塞尔路径，并用一个CAShapeLayer承载，最后添加动画。</span><br><span class="line">        for r in rects &#123;</span><br><span class="line">            let rectLayer = CAShapeLayer()</span><br><span class="line">            </span><br><span class="line">            rectLayer.fillColor = UIColor.orange.cgColor</span><br><span class="line">            rectLayer.strokeColor = nil</span><br><span class="line">            rectLayer.path = UIBezierPath(rect: CGRect(origin: CGPoint.zero, size: r.size)).cgPath</span><br><span class="line">            rectLayer.frame = r</span><br><span class="line">            </span><br><span class="line">            var startTransform = CATransform3DIdentity</span><br><span class="line">            startTransform.m34 = 1.0 / -20  // 透视</span><br><span class="line">            startTransform = CATransform3DRotate(startTransform, CGFloat(Double.pi)*0.5, 0, 1, 0)  // 沿 y 轴旋转 π/2 圈，待会再动画转回来</span><br><span class="line"></span><br><span class="line">            // transform 动画</span><br><span class="line">            let transAnim = CABasicAnimation(keyPath: &quot;transform&quot;)</span><br><span class="line">            transAnim.duration = drand48() * 2  // 随机一个持续时间</span><br><span class="line">            transAnim.fromValue = NSValue(caTransform3D: startTransform)</span><br><span class="line">            transAnim.toValue = NSValue(caTransform3D: CATransform3DIdentity)</span><br><span class="line">            transAnim.repeatCount = 5</span><br><span class="line">            rectLayer.add(transAnim, forKey: &quot;transAnim&quot;)</span><br><span class="line"></span><br><span class="line">            // 透明度动画</span><br><span class="line">            let alphaAnim = CABasicAnimation(keyPath: &quot;opacity&quot;)</span><br><span class="line">            alphaAnim.duration = transAnim.duration</span><br><span class="line">            alphaAnim.fromValue = 0</span><br><span class="line">            alphaAnim.toValue = 1</span><br><span class="line">            alphaAnim.repeatCount = 5</span><br><span class="line">            rectLayer.add(alphaAnim, forKey: &quot;alphaAnim&quot;)</span><br><span class="line">            </span><br><span class="line">            layer.addSublayer(rectLayer)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://github.com/yueyeqi/BezierAnimationDemo" target="_blank" rel="noopener">Demo下载地址</a></p>
-
-          
+          本文将简单实现iOS快速路径绘制动画。什么核心动画(Core Animation)、CAShapeLayer、UIBeizerPath等这些，这篇文章就不多说了。反正看完这篇文章可以实现以下两种效果，虽然这两种效果很弱智，但高楼从地起嘛，懂了原理可以实现越来越复杂的动画组。Demo在最后可以下载，代
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/25/iOS-贝塞尔曲线路径动画-SVG快速实现-Swift版/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1002,46 +971,18 @@
       
         
           
-            <blockquote>
-<p>以下部分内容源于喵神的<a href="https://swifter.tips/kvo/" target="_blank" rel="noopener">Swifter-KVO章节</a>，大家也可以去看看，收获很大。本文只作用于自己收集和整理便于学习和复习所用。</p>
-</blockquote>
-<h6 id="一：什么是KVO，它拿来干什么的？"><a href="#一：什么是KVO，它拿来干什么的？" class="headerlink" title="一：什么是KVO，它拿来干什么的？"></a>一：什么是KVO，它拿来干什么的？</h6><p>KVO（Key-Value Observing）顾名思义就是通过键(key)值(value)，来对属性进行观察。<br>通过观察可以实现hook属性值，以及监听属性变化，并通知订阅者。这样一个强大的属性可以轻松实现松耦合的结构，使代码更加灵活和强大，例如双向绑定，通过监听model的值来刷新UI。</p>
-<h6 id="二：KVO原理"><a href="#二：KVO原理" class="headerlink" title="二：KVO原理"></a>二：KVO原理</h6><blockquote>
-<p>KVO是通过isa-swizzling技术实现的。在运行时根据原类创建一个中间类，这个中间类是原类的子类，并动态修改当前对象的isa指向中间类。并且将class方法重写，返回原类的Class。所以苹果建议在开发中不应该依赖isa指针，而是通过class实例方法来获取对象类型。</p>
-</blockquote>
-<p>当然上面的一堆原理如果不实际进行操作体验是很难理解的。所以简单来说就是KVO基于OC的动态派发特点和KVC为基础，这些都是依赖于OC的运行时(runtime)概念。而在swift中，默认是禁用了动态派发的。所以在swift中实现KVO,就需要额外的操作了。</p>
-<h6 id="三：实现KVO"><a href="#三：实现KVO" class="headerlink" title="三：实现KVO"></a>三：实现KVO</h6><p>那么如何实现其OC的动态派发特性呢？</p>
-<ul>
-<li>1.首先Class需继承自<code>NSObject</code></li>
-<li>2.属性前加上<code>@objc dynamic</code></li>
-</ul>
-<p>如下：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Preson</span>: <span class="title">NSObject</span> </span>&#123;</span><br><span class="line">    <span class="meta">@objc</span> <span class="keyword">dynamic</span> <span class="keyword">var</span> age = <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其实在Swift3中只需要加上<code>dynamic</code>就可以了，而Swift4以后则还需要<code>@objc</code>。</p>
-<blockquote>
-<p>因为必须使用@objc属性标记Swift类或协议才能在Objective-C中访问和使用。该属性告诉编译器可以从Objective-C访问这段Swift代码。</p>
-</blockquote>
-<p>接下来就可以对属性age实现KVO了</p>
-<ul>
-<li><p>1.实例化刚才的Preson对象，并对其age属性添加监听</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//创建对象</span><br><span class="line">let p = Preson()</span><br><span class="line">//为p对象的age属性设置监听。</span><br><span class="line">//options为枚举数组，传入了new和old两个值，表示我们需要监听改变前和改变后的值。</span><br><span class="line">//context是unsafePointer类型，表示不安全的指针类型(因为在Swift手动操作指针，修改内存是一件非常不安全且不考靠的行为)，可以传入一个指针地址。</span><br><span class="line">p.addObserver(self, forKeyPath: &quot;age&quot;, options: [.new, .old], context: nil)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>2.重写observeValue方法，当age属性发生改变时得到通知。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) &#123;</span><br><span class="line">    if keyPath == &quot;age&quot; &#123;</span><br><span class="line">        print(&quot;age被改变了&quot;)</span><br><span class="line">        print(change as Any)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>3.实现一个屏幕点击事件，当点击屏幕后，修改age值 = 20</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">override func touchesBegan(_ touches: Set&lt;UITouch&gt;, with event: UIEvent?) &#123;</span><br><span class="line">    p.age = 20</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>4.当点击屏幕后，可以看到打印出了修改前和修改后的数据，old值 = 0，new值 = 20<br><img src="https://upload-images.jianshu.io/upload_images/1176193-87d7702c71d8c0c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-</li>
-<li><p>5.最后记得还要注销KVO，可以在页面的deinit方法中，也可以是手动注销。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">deinit &#123; </span><br><span class="line">    p.removeObserver(self, forKeyPath: &quot;age&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h6 id="四：以下是完整代码"><a href="#四：以下是完整代码" class="headerlink" title="四：以下是完整代码"></a>四：以下是完整代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">import UIKit</span><br><span class="line"></span><br><span class="line">class Preson: NSObject &#123;</span><br><span class="line">    @objc dynamic var age = 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class ViewController: UIViewController &#123;</span><br><span class="line"></span><br><span class="line">    //1.创建对象</span><br><span class="line">    let p = Preson()</span><br><span class="line">    </span><br><span class="line">    override func viewDidLoad() &#123;</span><br><span class="line">        super.viewDidLoad()</span><br><span class="line">        //为p对象的age属性设置监听。</span><br><span class="line">        //options为枚举数组，传入了new和old两个值，表示我们需要监听改变前和改变后的值。</span><br><span class="line">        //context是Any类型，可以传入任意类型数据，方便在监听到变化时获取该数据。</span><br><span class="line">        p.addObserver(self, forKeyPath: &quot;age&quot;, options: [.new, .old], context: nil)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) &#123;</span><br><span class="line">        if keyPath == &quot;age&quot; &#123;</span><br><span class="line">            print(&quot;age被改变了&quot;)</span><br><span class="line">            print(change as Any)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    deinit &#123; </span><br><span class="line">        p.removeObserver(self, forKeyPath: &quot;age&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    override func touchesBegan(_ touches: Set&lt;UITouch&gt;, with event: UIEvent?) &#123;</span><br><span class="line">        p.age = 20</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
+以下部分内容源于喵神的Swifter-KVO章节，大家也可以去看看，收获很大。本文只作用于自己收集和整理便于学习和复习所用。
+
+一：什么是KVO，它拿来干什么的？KVO（Key-Value Observing）顾名思义就是通过键(key)值(value)，来对属性进行观察。通过观察可以实现hook
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/01/iOS-简单实现KVO-Swift版/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1191,163 +1132,15 @@
       
         
           
-            <h6 id="一：简介"><a href="#一：简介" class="headerlink" title="一：简介"></a>一：简介</h6><p>目前蓝牙开发越来越火，很多外部设备都使用的是蓝牙技术(如:智能手环，智能家居，可穿戴设备等)网上的资料也很多。随着蓝牙低功耗技术BLE（Bluetooth Low Energy）的发展，蓝牙技术正在一步步成熟，如今的大部分移动设备都配备有蓝牙4.0，相比之前的蓝牙技术耗电量大大降低。本文基于蓝牙4.0使用Apple自家的蓝牙框架<code>Core Bluetooth</code>讲解。如有不当之处，望各位朋友多多提醒！</p>
-<h6 id="二：基本概念"><a href="#二：基本概念" class="headerlink" title="二：基本概念"></a>二：基本概念</h6><ul>
-<li><p>中心模式和外设模式<br>顾名思义，比如<strong>以App作为中心，连接其他外设的场景称为中心模式，而使用手机作为外设被其他中心设备操作的场景则被称为外设模式。</strong><br><img src="http://upload-images.jianshu.io/upload_images/1176193-cc2931a1de4fef4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>如图在<code>Core Bluetooth</code>框架API中，左列为中心模式，右列为外设模式</p>
-</li>
-<li><p>Central和Peripheral是什么？<br><code>Core Bluetooth</code>框架核心的两个东西：中心<code>Central</code>和外围设备<code>Peripheral</code><br><img src="http://upload-images.jianshu.io/upload_images/1176193-c55a13fa3704650b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>如图是以APP作为中心<code>Central</code>，连接其他的外设<code>Peripheral</code>的中心模式。在中心模式中本地Central表示为CBCentralManager，用来发现和连接外设<code>Peripheral</code>表示为CBPeripheral。</p>
-</li>
-<li><p>服务<code>Service</code>和特征<code>Characteristic</code>是什么？<br>服务<code>Service</code>：外设对外广播必须要有服务，服务可以是多个，服务里面又包含了特征<code>Characteristic</code>。<br>特征<code>Characteristic</code>：存在于服务里面，服务里面也可以存在多个特征，特征就是具体的键值对，提供数据的地方。<br><img src="http://upload-images.jianshu.io/upload_images/1176193-af3145edd5aa2553.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-</li>
-</ul>
-<h6 id="三：开始使用"><a href="#三：开始使用" class="headerlink" title="三：开始使用"></a>三：开始使用</h6><p>这里以APP为中心模式举个例</p>
-<pre><code>import UIKit
-import CoreBluetooth //导入蓝牙框架
-//添加蓝牙代理
-class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
-
-@IBOutlet weak var tableView: UITableView!
-var manager: CBCentralManager?//中心角色
-var per: CBPeripheral?//服务
-var readCharac: CBCharacteristic? // 读取特征
-var writeCharac: CBCharacteristic? // 写入特征
-
-var deviceArray: [CBPeripheral] = [] //外设数据源
-
-override func viewDidLoad() {
-    super.viewDidLoad()
-    //建立中心角色
-    manager = CBCentralManager(delegate: self, queue: nil)
-}
-
-//判断蓝牙是否开启，并开始扫描
-func centralManagerDidUpdateState(_ central: CBCentralManager) {
-    if let central = manager {
-        switch central.state {
-        case .poweredOn:
-            print(&quot;蓝牙已打开，请扫描外设&quot;)
-            manager?.scanForPeripherals(withServices: nil, options: nil)
-        case .poweredOff:
-            print(&quot;蓝牙没有打开，请先打开蓝牙&quot;)
-        default:
-            break
-        }
-    }
-}
-
-//查找外设的代理
-func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-    //查找到外设后添加到数据源里面，并刷新tableView数据
-    if !deviceArray.contains(peripheral) {
-        deviceArray.append(peripheral)
-    }
-    tableView.reloadData()
-}
-
-//连接外设成功，启动发现服务
-func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-    print(&quot;连接成功：\(peripheral.name)&quot;)//打印外设name
-    peripheral.delegate = self
-    peripheral.discoverServices(nil)//开始发现服务
-    per = peripheral
-}
-
-//连接外设失败
-func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-    print(&quot;连接失败：\(peripheral.name)&quot;)
-}
-
-//发现服务
-func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-    //遍历服务，发现服务下的特征
-    for server in peripheral.services! {
-        //也可以通过服务UUID来过滤服务
-        //server.uuid
-        peripheral.discoverCharacteristics(nil, for: server)
-    }
-}
-
-//信号检测
-func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
-    let rssi = abs(RSSI .intValue)
-    let str = &quot;发现BLT4.0热点：\(peripheral)，强度：\(rssi)&quot;
-    print(str)
-}
-
-//搜索到特征Characteristics
-func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
-    print(&quot;服务UUID：\(service.uuid)&quot;)
-    //遍历每个服务下的特征
-    for c in service.characteristics! {
-        print(&quot;特征UUID:\(c.uuid)&quot;)
-        //根据外设所定制的特征，分别处理
-        //比如特征&quot;1111&quot;为读取，&quot;2222&quot;为写入
-        if (c.uuid.uuidString.range(of: &quot;1111&quot;) != nil) {
-            readCharac = c
-            peripheral.readRSSI()//检测外设信号
-            peripheral.readValue(for: c)//读取一次特征值
-            peripheral.setNotifyValue(true, for: c)//当特征值改变时通知
-        }else if (c.uuid.uuidString.range(of: &quot;2222&quot;) != nil) {
-            //写入的特征
-            writeCharac = c
-        }
-    }
-}
-
-//获取外设发来的数据(无论是读取还是通知，都在这个方法接收)
-func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-    if characteristic.uuid == CBUUID(string: &quot;1111&quot;) {
-        let data = characteristic.value
-        //data则是读取过来的数据
-    }
-}
-
-//检测中心向外设写数据是否成功
-func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
-    if (error != nil) {
-        print(&quot;发送失败&quot;)
-    }else {
-        print(&quot;发送成功&quot;)
-    }
-}
-
-//模拟写入数据
-//func testWriteData() {
-//    per?.writeValue(writeData, for: writeCharac!, type: CBCharacteristicWriteType.withResponse)
-//}
-}
-
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
-
-func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
-    return deviceArray.count
-}
-
-func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell {
-    let identified = &quot;cell&quot;
-    var cell = tableView.dequeueReusableCell(withIdentifier: identified)
-    if cell == nil {
-        cell = UITableViewCell(style: .default, reuseIdentifier: identified)
-    }
-    let per = deviceArray[indexPath.row]
-
-    if let name = per.name {
-        cell?.textLabel?.text = name
-    }else {
-        cell?.textLabel?.text = per.identifier.uuidString
-    }
-
-    return cell!
-}
-
-func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    per = deviceArray[indexPath.row]
-    manager?.connect(per!, options: nil)
-}
-}</code></pre><p>总得来说蓝牙连接分为以下几个步骤<br>1.建立一个Central Manager实例进行蓝牙管理<br>2.搜索外围设备<br>3.连接外围设备<br>4.获得外围设备的服务<br>5.获得服务的特征<br>6.从外围设备读数据<br>7.给外围设备发送数据</p>
-<p>Demo地址：<a href="https://github.com/yueyeqi/CoreBluetooth_Demo" target="_blank" rel="noopener">https://github.com/yueyeqi/CoreBluetooth_Demo</a></p>
-
-          
+          一：简介目前蓝牙开发越来越火，很多外部设备都使用的是蓝牙技术(如:智能手环，智能家居，可穿戴设备等)网上的资料也很多。随着蓝牙低功耗技术BLE（Bluetooth Low Energy）的发展，蓝牙技术正在一步步成熟，如今的大部分移动设备都配备有蓝牙4.0，相比之前的蓝牙技术耗电量大大降低。本文基于
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/27/iOS-蓝牙4-0开发基础教程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1497,65 +1290,17 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       
         
           
-            <p><img src="http://upload-images.jianshu.io/upload_images/1176193-66d5c66d0d199b24.gif?imageMogr2/auto-orient/strip" alt></p>
-<h6 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h6><p>好久没更新文章了，今天讲的是Facebook出的一款动效库Facebook-Pop。(部分内容摘自互联网，文章最后附有demo地址，有什么不对的地方，欢迎大家指正出来，大神勿喷，嘿嘿)</p>
-<p>Pop是一个动画引擎，用以扩展iOS、OSX的动画类型。相较于iOS、OSX中的基本动画效果，Pop扩展后支持弹簧动画效果与衰减动画效果，你可以用Pop动画引擎来构建出真实的物理交互效果。它的API与Core Animation的API非常类似，使用起来非常容易。Pop动画引擎已经经过了良好的测试，Facebook在 Paper 应用中进行了大量使用。<br>官方Git地址：<a href="https://github.com/facebook/pop" target="_blank" rel="noopener">https://github.com/facebook/pop</a></p>
-<p>iOS原生的Core Animation框架只提供了linear, ease-in, ease-out和ease-in-ease-out等4种静态动画：<br><img src="http://upload-images.jianshu.io/upload_images/1176193-18b5c2955c69955b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>而Pop在Core Animation基础上增加Spring、Decay和Custom 3种动态动画效果：<br><img src="http://upload-images.jianshu.io/upload_images/1176193-8fc5a161aef920e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>Spring(弹性)和Decay(衰减)可以让动画变得更灵动，而Custom这更为强大，可以给任何NSObject对象属性添加动画效果(待会有例子介绍)。</p>
-<p>所以今天主要讲的就是4个动画效果</p>
-<ul>
-<li>POPBasicAnimation //基础动画</li>
-<li>POPSpringAnimation //弹性动画</li>
-<li>POPDecayAnimation //衰减动画</li>
-<li>POPCustomAnimation //自定义动画</li>
-</ul>
-<h6 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h6><p>POPBasicAnimation</p>
-<ul>
-<li>POPBasicAnimation使用最广泛 提供固定时间间隔的动画(如淡入淡出效果)<pre><code>let animation = POPBasicAnimation(propertyNamed: kPOPLayerPositionX)
-animation.toValue = NSValue(CGPoint: CGPointMake(100, 200))
-animation.duration = 2
-animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
-view.layer.pop_addAnimation(animation, forKey: &quot;positionX&quot;)</code></pre>其实只有3个步骤就能创建一个动画</li>
-</ul>
-<p>1.创建对应的动画类型，这里我使用的是kPOPLayerPositionX来控制view的位置<br>2.设置动画的属性<br> toValue设置动画的最终值(对应的还有fromValue是设置动画的起始值，不写默认为当前值)<br>duration设置动画时长<br>timingFunction是系统预设的动画类型有以下5种：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">kCAMediaTimingFunctionLinear            线性,即匀速</span><br><span class="line">kCAMediaTimingFunctionEaseIn            先慢后快</span><br><span class="line">kCAMediaTimingFunctionEaseOut           先快后慢</span><br><span class="line">kCAMediaTimingFunctionEaseInEaseOut     先慢后快再慢</span><br><span class="line">kCAMediaTimingFunctionDefault           实际效果是动画中间比较快</span><br></pre></td></tr></table></figure>
-
-<p>这里使用的是EaseIn(先慢后快)<br>3.最后只需把动画add到对应视图的layer就完成，设置了key可以方便删除和修改动画，例如：<br>        [layer pop_removeAnimationForKey:@”positionX”];</p>
-<p>POPSpringAnimation</p>
-<ul>
-<li>POPSpringAnimation也许是大多数人使用POP的理由 其提供一个类似弹簧一般的动画效果(炫酷!)<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> animation = <span class="type">POPSpringAnimation</span>(propertyNamed: kPOPLayerScaleXY)</span><br><span class="line">animation!.toValue = <span class="type">NSValue</span>(<span class="type">CGSize</span>: <span class="type">CGSizeMake</span>(<span class="number">5</span>, <span class="number">5</span>))</span><br><span class="line">animation!.springBounciness = <span class="number">10</span> <span class="comment">//[0-20] 弹力 越大则震动幅度越大</span></span><br><span class="line">animation!.springSpeed = <span class="number">20</span> <span class="comment">//[0-20] 速度 越大则动画结束越快</span></span><br><span class="line"><span class="comment">//以下3个与物理力学模拟相关，没特殊需求不建议使用</span></span><br><span class="line"><span class="comment">//        animation.dynamicsFriction = 0 //拉力</span></span><br><span class="line"><span class="comment">//        animation.dynamicsFriction = 0 //摩擦</span></span><br><span class="line"><span class="comment">//        animation.dynamicsMass = 0 //质量</span></span><br><span class="line">view.layer.pop_addAnimation(animation, forKey: <span class="string">"scaleXY"</span>)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>POPSpringAnimation是没有duration字段的 其动画持续时间由以上几个参数决定，简单的几个步骤就能实现非常炫酷灵动的效果了</p>
-<p>POPDecayAnimation</p>
-<ul>
-<li>POPDecayAnimation提供一个过阻尼效果(其实Spring是一种欠阻尼效果) 可以实现类似UIScrollView的滑动衰减效果(是的 你可以靠它来自己实现一个UIScrollView)<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> animation = <span class="type">POPDecayAnimation</span>(propertyNamed: kPOPLayerPositionX)</span><br><span class="line">        </span><br><span class="line"> animation.velocity = <span class="number">200</span> <span class="comment">//速度</span></span><br><span class="line"> animation.deceleration = <span class="number">0.998</span> <span class="comment">// 衰减系数(越小则衰减得越快)</span></span><br><span class="line">        </span><br><span class="line"> <span class="comment">//目的状态toValue是通过velocity和deceleration计算，动态得到</span></span><br><span class="line">        </span><br><span class="line"> view.layer.pop_addAnimation(animation, forKey: <span class="string">"decayPosition"</span>)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>这是一个很简单的移动例子，当然强大的POP不止这些属性，在POPAnimatableProperty文件中还有很多可操作的属性,并且维护者还在不断增加：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> Common CALayer property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPLayerBackgroundColor: String</span><br><span class="line">public let kPOPLayerBounds: String</span><br><span class="line">public let kPOPLayerCornerRadius: String</span><br><span class="line">public let kPOPLayerBorderWidth: String</span><br><span class="line">public let kPOPLayerBorderColor: String</span><br><span class="line">public let kPOPLayerOpacity: String</span><br><span class="line">public let kPOPLayerPosition: String</span><br><span class="line">public let kPOPLayerPositionX: String</span><br><span class="line">public let kPOPLayerPositionY: String</span><br><span class="line">public let kPOPLayerRotation: String</span><br><span class="line">public let kPOPLayerRotationX: String</span><br><span class="line">public let kPOPLayerRotationY: String</span><br><span class="line">public let kPOPLayerScaleX: String</span><br><span class="line">public let kPOPLayerScaleXY: String</span><br><span class="line">public let kPOPLayerScaleY: String</span><br><span class="line">public let kPOPLayerSize: String</span><br><span class="line">public let kPOPLayerSubscaleXY: String</span><br><span class="line">public let kPOPLayerSubtranslationX: String</span><br><span class="line">public let kPOPLayerSubtranslationXY: String</span><br><span class="line">public let kPOPLayerSubtranslationY: String</span><br><span class="line">public let kPOPLayerSubtranslationZ: String</span><br><span class="line">public let kPOPLayerTranslationX: String</span><br><span class="line">public let kPOPLayerTranslationXY: String</span><br><span class="line">public let kPOPLayerTranslationY: String</span><br><span class="line">public let kPOPLayerTranslationZ: String</span><br><span class="line">public let kPOPLayerZPosition: String</span><br><span class="line">public let kPOPLayerShadowColor: String</span><br><span class="line">public let kPOPLayerShadowOffset: String</span><br><span class="line">public let kPOPLayerShadowOpacity: String</span><br><span class="line">public let kPOPLayerShadowRadius: String</span><br><span class="line">/**</span><br><span class="line"> Common CAShapeLayer property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPShapeLayerStrokeStart: String</span><br><span class="line">public let kPOPShapeLayerStrokeEnd: String</span><br><span class="line">public let kPOPShapeLayerStrokeColor: String</span><br><span class="line">public let kPOPShapeLayerFillColor: String</span><br><span class="line">public let kPOPShapeLayerLineWidth: String</span><br><span class="line">public let kPOPShapeLayerLineDashPhase: String</span><br><span class="line">/**</span><br><span class="line"> Common NSLayoutConstraint property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPLayoutConstraintConstant: String</span><br><span class="line">/**</span><br><span class="line"> Common UIView property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPViewAlpha: String</span><br><span class="line">public let kPOPViewBackgroundColor: String</span><br><span class="line">public let kPOPViewBounds: String</span><br><span class="line">public let kPOPViewCenter: String</span><br><span class="line">public let kPOPViewFrame: String</span><br><span class="line">public let kPOPViewScaleX: String</span><br><span class="line">public let kPOPViewScaleXY: String</span><br><span class="line">public let kPOPViewScaleY: String</span><br><span class="line">public let kPOPViewSize: String</span><br><span class="line">public let kPOPViewTintColor: String</span><br><span class="line">/**</span><br><span class="line"> Common UIScrollView property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPScrollViewContentOffset: String</span><br><span class="line">public let kPOPScrollViewContentSize: String</span><br><span class="line">public let kPOPScrollViewZoomScale: String</span><br><span class="line">public let kPOPScrollViewContentInset: String</span><br><span class="line">public let kPOPScrollViewScrollIndicatorInsets: String</span><br><span class="line">/**</span><br><span class="line"> Common UITableView property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPTableViewContentOffset: String</span><br><span class="line">public let kPOPTableViewContentSize: String</span><br><span class="line">/**</span><br><span class="line"> Common UICollectionView property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPCollectionViewContentOffset: String</span><br><span class="line">public let kPOPCollectionViewContentSize: String</span><br><span class="line">/**</span><br><span class="line"> Common UINavigationBar property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPNavigationBarBarTintColor: String</span><br><span class="line">/**</span><br><span class="line"> Common UIToolbar property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPToolbarBarTintColor: String</span><br><span class="line">/**</span><br><span class="line"> Common UITabBar property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPTabBarBarTintColor: String</span><br><span class="line">/**</span><br><span class="line"> Common UILabel property names.</span><br><span class="line"> */</span><br><span class="line">public let kPOPLabelTextColor: String</span><br></pre></td></tr></table></figure>
-
-<p>什么？你说这里面没有你需要的，别着急POP还有更强大的自定义属性功能</p>
-<p>自定义属性</p>
-<ul>
-<li>POP默认支持的三种动画都继承自POPPropertyAnimation POPPropertyAnimation中定义了一个叫property的属性( 之前没有用到它是因为POP根据不同的默认动画属性帮你生成了默认的property) 而这个property则是用来驱动POP的动画效果中的重要一环<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">POPAnimatableProperty *prop = [POPAnimatableProperty propertyWithName:@&quot;prop&quot; initializer:^(POPMutableAnimatableProperty *prop) &#123;</span><br><span class="line">    // read value</span><br><span class="line">    prop.readBlock = ^(id obj, CGFloat values[]) &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;;</span><br><span class="line">    // write value</span><br><span class="line">    prop.writeBlock = ^(id obj, const CGFloat values[]) &#123;</span><br><span class="line">    </span><br><span class="line">    &#125;;</span><br><span class="line">    // dynamics threshold</span><br><span class="line">    prop.threshold = 0.01;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>其组成就是一个readBlock一个writeBlock和一个threashold</p>
-<p>readBlock告诉POP当前的属性值<br>writeBlock中修改变化后的属性值<br>threashold决定了动画变化间隔的阈值 值越大writeBlock的调用次数越少<br>POPAnimatableProperty其实是POP中一个比较重要的东西 像上面提到的POP自带的动画属性 查看源代码可以看到也只是POP自动帮你设置好了POPAnimatableProperty而已 其作用就是当动画的某个时间片被触发时 告诉系统如何根据当前时间片做出变化</p>
-<p>直接上案例，我们要实现一个像系统的时钟APP里秒表计时的一个效果</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">testLabel = <span class="type">UILabel</span>(frame: <span class="type">CGRectMake</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">100</span>,<span class="number">50</span>))</span><br><span class="line">testLabel.center = view.center</span><br><span class="line">view.addSubview(testLabel!)</span><br><span class="line">        </span><br><span class="line"><span class="keyword">let</span> prop = <span class="type">POPAnimatableProperty</span>.propertyWithName(<span class="string">"Custom"</span>) &#123; (prop) <span class="keyword">in</span></span><br><span class="line">    prop.writeBlock = &#123;(obj, value) -&gt; <span class="type">Void</span> <span class="keyword">in</span></span><br><span class="line">        <span class="keyword">let</span> lable = obj <span class="keyword">as</span>! <span class="type">UILabel</span></span><br><span class="line">        lable.text = <span class="type">String</span>.<span class="keyword">init</span>(format: <span class="string">"%02d:%02d:%02d"</span>, <span class="type">Int</span>(value[<span class="number">0</span>]/<span class="number">60</span>),<span class="type">Int</span>(value[<span class="number">0</span>]%<span class="number">60</span>),<span class="type">Int</span>((value[<span class="number">0</span>]*<span class="number">100</span>)%<span class="number">100</span>))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> anBasic = <span class="type">POPBasicAnimation</span>.linearAnimation()</span><br><span class="line">anBasic.property = prop <span class="keyword">as</span>! <span class="type">POPAnimatableProperty</span></span><br><span class="line">anBasic.fromValue = <span class="number">0</span></span><br><span class="line">anBasic.toValue = <span class="number">3</span>*<span class="number">60</span></span><br><span class="line">anBasic.duration = <span class="number">3</span>*<span class="number">60</span></span><br><span class="line">testLabel!.pop_addAnimation(anBasic, forKey: <span class="string">"Custom"</span>)</span><br></pre></td></tr></table></figure>
-
-<p>效果如下：<br><img src="http://upload-images.jianshu.io/upload_images/1176193-c1ac07ef6fcb9fdb.gif?imageMogr2/auto-orient/strip" alt></p>
-<p>从这个例子中有没有新的启发呢，POP可以做的事情远比CoreAnimation要多，它的强大毋庸置疑。</p>
-<hr>
-<p>Demo地址：<a href="https://github.com/yueyeqi/Facebook-PopExample" target="_blank" rel="noopener">https://github.com/yueyeqi/Facebook-PopExample</a></p>
-<hr>
-<h6 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h6><p>其实只需要熟练掌握POP自带的三种动画 即可完成大部分的动画效果 如果实在是无法满足你的需求的话 自定义动画也基本可以满足你的要求 可以说POP化繁为简的出现 极大的方便了我们这些苦逼的coder 本文主要只介绍了最基本的使用方法和思路，更多的知识和效果还待大家深入了解 完。</p>
-
           
+简介：好久没更新文章了，今天讲的是Facebook出的一款动效库Facebook-Pop。(部分内容摘自互联网，文章最后附有demo地址，有什么不对的地方，欢迎大家指正出来，大神勿喷，嘿嘿)
+Pop是一个动画引擎，用以扩展iOS、OSX的动画类型。相较于iOS、OSX中的基本动画效果，Pop扩展后
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/08/13/iOS-Facebook-Pop-动效库的使用教程-Swift版/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1705,60 +1450,16 @@ view.layer.pop_addAnimation(animation, forKey: &quot;positionX&quot;)</code></pr
       
         
           
-            <p>最近Xcode更新8之后提交AppStore出现了此构建版本无效的问题<br><img src="http://upload-images.jianshu.io/upload_images/1176193-bea28387de87b42f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1176193-53f600a9abe53ec6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>网上各种说法参次不齐，其实出现这个问题苹果会把问题原因发送到你的邮箱，对照解决就行了。<br>最近比较常见的就是Xcode8更新后，没有对访问权限设置（因为我的APP里含有访问相册的功能，但是更新Xcode8之后没有添加访问权限设置，导致编译不会报错，上传也不会报错，最后就成了此构建版本无效了，也怪我更新之后没有测试访问相册那块的功能）</p>
-<h6 id="打开info-plist-像如下添加APP里相应的访问权限"><a href="#打开info-plist-像如下添加APP里相应的访问权限" class="headerlink" title="打开info.plist 像如下添加APP里相应的访问权限"></a>打开info.plist 像如下添加APP里相应的访问权限</h6><p><img src="http://upload-images.jianshu.io/upload_images/1176193-87128fa56404ceb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1176193-fc52072fcb57a3cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<blockquote>
-<p>常用的权限</p>
-</blockquote>
-<blockquote>
-<ul>
-<li>麦克风权限：Privacy - Microphone Usage Description 是否允许此App使用你的麦克风？</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>相机权限： Privacy - Camera Usage Description 是否允许此App使用你的相机？</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>相册权限： Privacy - Photo Library Usage Description 是否允许此App访问你的媒体资料库？</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>通讯录权限： Privacy - Contacts Usage Description 是否允许此App访问你的通讯录？</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>蓝牙权限：Privacy - Bluetooth Peripheral Usage Description 是否许允此App使用蓝牙？</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>语音转文字权限：Privacy - Speech Recognition Usage Description 是否允许此App使用语音识别？</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>日历权限：Privacy - Calendars Usage Description 是否允许此App使用日历？</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>定位权限：Privacy - Location When In Use Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>定位权限: Privacy - Location Always Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据</li>
-</ul>
-</blockquote>
-
-          
+          最近Xcode更新8之后提交AppStore出现了此构建版本无效的问题
+网上各种说法参次不齐，其实出现这个问题苹果会把问题原因发送到你的邮箱，对照解决就行了。最近比较常见的就是Xcode8更新后，没有对访问权限设置（因为我的APP里含有访问相册的功能，但是更新Xcode8之后没有添加访问权限设置，导
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/07/07/ITC-apps-preReleaseBuild-errors-processingFailed此构建版本无效解决方案/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1908,34 +1609,19 @@ view.layer.pop_addAnimation(animation, forKey: &quot;positionX&quot;)</code></pr
       
         
           
-            <p><img src="http://upload-images.jianshu.io/upload_images/1176193-c85bb9307e3500ac.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Socket就是对于传输层TCP/IP的封装"></p>
-<h6 id="简述"><a href="#简述" class="headerlink" title="简述:"></a>简述:</h6><ul>
-<li>由于最近项目的需要,需要使用到Socket,所以就趁此整理了一下,网上对于Socket的理论知识有很多,这里就不必多说,此篇文章主要在Swift环境下使用CocoaAsyncSocket库,来实现一个非常简单的Socket连接的例子,帮助大家理解和使用.(大神勿喷呀,哈哈)</li>
-</ul>
-<h6 id="1-创建Swift工程-并使用Cocoapods导入CocoaAsyncSocket"><a href="#1-创建Swift工程-并使用Cocoapods导入CocoaAsyncSocket" class="headerlink" title="1.创建Swift工程,并使用Cocoapods导入CocoaAsyncSocket"></a>1.创建Swift工程,并使用Cocoapods导入CocoaAsyncSocket</h6><p> <img src="http://upload-images.jianshu.io/upload_images/1176193-e36c66a1bca6af34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.创建工程"><br>Cocoapods:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use_frameworks! </span><br><span class="line">pod &apos;CocoaAsyncSocket&apos;</span><br></pre></td></tr></table></figure>
-
-<h6 id="2-搭建服务端和客户端UI"><a href="#2-搭建服务端和客户端UI" class="headerlink" title="2.搭建服务端和客户端UI"></a>2.搭建服务端和客户端UI</h6><ul>
-<li><p>使用Tabbar分别创建服务端界面和客户端界面<br><img src="http://upload-images.jianshu.io/upload_images/1176193-5c5e9b00e0160d4d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="服务端和客户端的界面搭建"></p>
-</li>
-<li><p>分别创建服务端和客户端ViewController并关联相关Textfield 和 Button  </p>
-</li>
-</ul>
-<h6 id="3-服务端创建Socket绑定端口-设置监听-消息发送等方法"><a href="#3-服务端创建Socket绑定端口-设置监听-消息发送等方法" class="headerlink" title="3.服务端创建Socket绑定端口,设置监听,消息发送等方法"></a>3.服务端创建Socket绑定端口,设置监听,消息发送等方法</h6><ul>
-<li>ServerViewController<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  ServerViewController.swift</span></span><br><span class="line"><span class="comment">//  TestSocket</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by YYQ on 6/21/16.</span></span><br><span class="line"><span class="comment">//  Copyright © 2016 YYQ. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"><span class="keyword">import</span> CocoaAsyncSocket</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ServerViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">    <span class="comment">//端口</span></span><br><span class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> portTF: <span class="type">UITextField!</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//消息</span></span><br><span class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> msgTF: <span class="type">UITextField!</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//信息显示</span></span><br><span class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> infoTV: <span class="type">UITextView!</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//服务端和客户端的socket引用</span></span><br><span class="line">    <span class="keyword">var</span> serverSocket: <span class="type">GCDAsyncSocket?</span></span><br><span class="line">    <span class="keyword">var</span> clientSocket: <span class="type">GCDAsyncSocket?</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//对InfoTextView添加提示内容</span></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">addText</span><span class="params">(text: String)</span></span> &#123;</span><br><span class="line">        infoTV.text = infoTV.text.stringByAppendingFormat(<span class="string">"%@\n"</span>, text)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">///监听</span></span><br><span class="line">    <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">listeningAct</span><span class="params">(sender: AnyObject)</span></span> &#123;</span><br><span class="line">    </span><br><span class="line">        serverSocket = <span class="type">GCDAsyncSocket</span>(delegate: <span class="keyword">self</span>, delegateQueue: dispatch_get_main_queue())</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> serverSocket?.acceptOnPort(<span class="type">UInt16</span>(portTF.text!)!)</span><br><span class="line">            addText(<span class="string">"监听成功"</span>)</span><br><span class="line">        &#125;<span class="keyword">catch</span> <span class="number">_</span> &#123;</span><br><span class="line">            addText(<span class="string">"监听失败"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">///发送</span></span><br><span class="line">    <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">sendAct</span><span class="params">(sender: AnyObject)</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> data = msgTF.text?.dataUsingEncoding(<span class="type">NSUTF8StringEncoding</span>)</span><br><span class="line">        <span class="comment">//向客户端写入信息   Timeout设置为 -1 则不会超时, tag作为两边一样的标示</span></span><br><span class="line">        clientSocket?.writeData(data, withTimeout: -<span class="number">1</span>, tag: <span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">ServerViewController</span>: <span class="title">GCDAsyncSocketDelegate</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//当接收到新的Socket连接时执行</span></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">socket</span><span class="params">(sock: GCDAsyncSocket!, didAcceptNewSocket newSocket: GCDAsyncSocket!)</span></span> &#123;</span><br><span class="line">    </span><br><span class="line">        addText(<span class="string">"连接成功"</span>)</span><br><span class="line">        addText(<span class="string">"连接地址"</span> + newSocket.connectedHost)</span><br><span class="line">        addText(<span class="string">"端口号"</span> + <span class="type">String</span>(newSocket.connectedPort))</span><br><span class="line">        clientSocket = newSocket</span><br><span class="line">    </span><br><span class="line">        <span class="comment">//第一次开始读取Data</span></span><br><span class="line">        clientSocket!.readDataWithTimeout(-<span class="number">1</span>, tag: <span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">socket</span><span class="params">(sock: GCDAsyncSocket!, didReadData data: NSData!, withTag tag: Int)</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> message = <span class="type">String</span>(data: data,encoding: <span class="type">NSUTF8StringEncoding</span>)</span><br><span class="line">        addText(message!)</span><br><span class="line">        <span class="comment">//再次准备读取Data,以此来循环读取Data</span></span><br><span class="line">        sock.readDataWithTimeout(-<span class="number">1</span>, tag: <span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h6 id="4-客户端创建Socket-设置连接-消息发送-读取-断开连接等方法"><a href="#4-客户端创建Socket-设置连接-消息发送-读取-断开连接等方法" class="headerlink" title="4.客户端创建Socket,设置连接,消息发送,读取,断开连接等方法"></a>4.客户端创建Socket,设置连接,消息发送,读取,断开连接等方法</h6><ul>
-<li>ClientViewController<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  ClientViewController.swift</span></span><br><span class="line"><span class="comment">//  TestSocket</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by YYQ on 6/21/16.</span></span><br><span class="line"><span class="comment">//  Copyright  2016 YYQ. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"><span class="keyword">import</span> CocoaAsyncSocket</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClientViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//IP地址</span></span><br><span class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> ipTF: <span class="type">UITextField!</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//端口</span></span><br><span class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> portTF: <span class="type">UITextField!</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//消息</span></span><br><span class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> msgTF: <span class="type">UITextField!</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//信息显示</span></span><br><span class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> infoTV: <span class="type">UITextView!</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> socket: <span class="type">GCDAsyncSocket?</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">addText</span><span class="params">(text: String)</span></span> &#123;</span><br><span class="line">        infoTV.text = infoTV.text.stringByAppendingFormat(<span class="string">"%@\n"</span>, text)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//连接</span></span><br><span class="line">    <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">connectionAct</span><span class="params">(sender: AnyObject)</span></span> &#123;</span><br><span class="line">        socket = <span class="type">GCDAsyncSocket</span>(delegate: <span class="keyword">self</span>, delegateQueue: dispatch_get_main_queue())</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> socket?.connectToHost(ipTF.text, onPort: <span class="type">UInt16</span>(portTF.text!)!)</span><br><span class="line">            addText(<span class="string">"连接成功"</span>)</span><br><span class="line">        &#125;<span class="keyword">catch</span> <span class="number">_</span> &#123;</span><br><span class="line">            addText(<span class="string">"连接失败"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//断开</span></span><br><span class="line">    <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">disconnectAct</span><span class="params">(sender: AnyObject)</span></span> &#123;</span><br><span class="line">        socket?.disconnect()</span><br><span class="line">        addText(<span class="string">"断开连接"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//发送</span></span><br><span class="line">    <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">sendMsgAct</span><span class="params">(sender: AnyObject)</span></span> &#123;</span><br><span class="line">        socket?.writeData(msgTF.text?.dataUsingEncoding(<span class="type">NSUTF8StringEncoding</span>), withTimeout: -<span class="number">1</span>, tag: <span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">ClientViewController</span>: <span class="title">GCDAsyncSocketDelegate</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">socket</span><span class="params">(sock: GCDAsyncSocket!, didConnectToHost host: String!, port: UInt16)</span></span> &#123;</span><br><span class="line">        addText(<span class="string">"连接服务器"</span> + host)</span><br><span class="line">        <span class="keyword">self</span>.socket?.readDataWithTimeout(-<span class="number">1</span>, tag: <span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">socket</span><span class="params">(sock: GCDAsyncSocket!, didReadData data: NSData!, withTag tag: Int)</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> msg = <span class="type">String</span>(data: data, encoding: <span class="type">NSUTF8StringEncoding</span>)</span><br><span class="line">        addText(msg!)</span><br><span class="line">        socket?.readDataWithTimeout(-<span class="number">1</span>, tag: <span class="number">0</span>) </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>|服务端| 客户端 |<br>|—–|:—-:|—-|<br>|<img src="http://upload-images.jianshu.io/upload_images/1176193-82d2b5dd3f4406fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>|<img src="http://upload-images.jianshu.io/upload_images/1176193-3dc0043b1ab97650.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt>|</p>
-<h6 id="结语"><a href="#结语" class="headerlink" title="结语:"></a>结语:</h6><p>CocoaAsyncSocket的使用还是非常直观清晰的,这里只是简单的抛砖引玉,要更深入理解Socket,如果有时间的话,我觉得还是研究下底层的socket实现比较好,大家有什么问题欢迎提出来,一起共勉~<br>联系方式:<a href="mailto:yueyeqi@iCloud.com" target="_blank" rel="noopener">yueyeqi@iCloud.com</a></p>
-
           
+简述:
+由于最近项目的需要,需要使用到Socket,所以就趁此整理了一下,网上对于Socket的理论知识有很多,这里就不必多说,此篇文章主要在Swift环境下使用CocoaAsyncSocket库,来实现一个非常简单的Socket连接的例子,帮助大家理解和使用.(大神勿喷呀,哈哈)
+
+1.创建Sw
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/24/iOS-CocoaAsyncSocket-使用教程-Swift版/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2085,87 +1771,18 @@ view.layer.pop_addAnimation(animation, forKey: &quot;positionX&quot;)</code></pr
       
         
           
-            <p>PS:此文仅以简单实现推送为主,是本人个人整理,部分截图与内容来自于互联网,若对大家有所帮助,还请给个赞O(∩_∩)O~~,大神勿喷</p>
-<h6 id="一-推送原理"><a href="#一-推送原理" class="headerlink" title="一.推送原理"></a>一.推送原理</h6><p><img src="http://upload-images.jianshu.io/upload_images/1176193-3251c869fb41474e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<ul>
-<li>图中，Provider是指某个iPhone软件的Push服务器，这篇文章我将使用<strong>百度云推送</strong>服务作为Provider。<br>APNS 是Apple Push Notification Service（Apple Push服务器）的缩写，是苹果的服务器。<br>上图可以分为三个阶段。<br>第一阶段：Push服务器应用程序把要发送的消息、目的iPhone的标识打包，发给APNS。<br>第二阶段：APNS在自身的已注册Push服务的iPhone列表中，查找有相应标识的iPhone，并把消息发到iPhone。<br>第三阶段：iPhone把发来的消息传递给相应的应用程序， 并且按照设定弹出Push通知。<br><img src="http://upload-images.jianshu.io/upload_images/1176193-dad50f024e55ae93.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>从上图我们可以看到。<br> 1、首先是应用程序注册消息推送。<br> 2、 IOS跟APNS Server要deviceToken。应用程序接受deviceToken。<br> 3、应用程序将deviceToken发送给PUSH服务端程序。<br> 4、 服务端程序向APNS服务发送消息。<br> 5、APNS服务将消息发送给iPhone应用程序。<br>  无论是iPhone客户端跟APNS,还是Provider和APNS都需要通过证书进行连接的。下面我介绍一下几种用到的证书。</li>
-</ul>
-<h6 id="二-创建本地请求证书文件–CertificateSigningRequest"><a href="#二-创建本地请求证书文件–CertificateSigningRequest" class="headerlink" title="二.创建本地请求证书文件–CertificateSigningRequest"></a>二.创建本地请求证书文件–CertificateSigningRequest</h6><ul>
-<li>打开钥匙串-证书助理-从证书颁发机构请求证书<br><img src="http://upload-images.jianshu.io/upload_images/1176193-e5d2c8145742114d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-<li>填写邮箱和名称(<strong>无特殊要求可随意填写</strong>)-选择存储到磁盘<br><img src="http://upload-images.jianshu.io/upload_images/1176193-ead7cdc4fd3a9c7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-<li>选择继续-保存至桌面即可(<strong>此文件可长期重复使用,只作为本机器的一个识别作用</strong>)<br><img src="http://upload-images.jianshu.io/upload_images/1176193-37c51f84db2eb85b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-</ul>
-<h6 id="三-进入苹果开发者网站-https-developer-apple-com"><a href="#三-进入苹果开发者网站-https-developer-apple-com" class="headerlink" title="三.进入苹果开发者网站:https://developer.apple.com/"></a>三.进入<a href="https://developer.apple.com/" target="_blank" rel="noopener">苹果开发者网站:https://developer.apple.com/</a></h6><ul>
-<li><p>依次选择Member Center - Certificates, Identifiers &amp;Profiles - Certificates<br><img src="http://upload-images.jianshu.io/upload_images/1176193-5b9a5d2885544c10.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><img src="http://upload-images.jianshu.io/upload_images/1176193-a9708f706701da64.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-</li>
-<li><p>选择当前要设置通知的APP IDs<br>PS:这里我以新建一个APP IDs为例,若公司已有项目APP IDs,则略过此步</p>
-</li>
-<li><p>选择右上角”+”号创建一个APPID<br><img src="http://upload-images.jianshu.io/upload_images/1176193-56d416c21f871713.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-</li>
-<li><p>填写name以及Bundle ID<br><img src="http://upload-images.jianshu.io/upload_images/1176193-3217716bc5362784.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-</li>
-<li><p>Bundle ID需要与Xcode里项目Bundle ID一致<br><img src="http://upload-images.jianshu.io/upload_images/1176193-45467ab43460e2de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-</li>
-<li><p>勾选push notification 并完成提交<br><img src="http://upload-images.jianshu.io/upload_images/1176193-c8a58a8e75cb45cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-</li>
-<li><p>找到刚创建好的APP IDs,可以看到下面的通知选项处提示Configurable,表示证书还没配置,点击Edit进行编辑<br><img src="http://upload-images.jianshu.io/upload_images/1176193-552de7c3337adb84.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-</li>
-<li><p>这里看到推送证书分为2个版本,一个开发模式,一个生产模式,即我们在开发测试时使用开发模式证书,发布上线后采用生产模式证书,两个都要创建(<strong>本次只作开发模式演示,当然创建生产版证书的步骤也是一样的</strong>)<br><img src="http://upload-images.jianshu.io/upload_images/1176193-42e21ecb539a7251.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-</li>
-<li><p>Choose File选择最开始创建在桌面的Request文件<br><img src="http://upload-images.jianshu.io/upload_images/1176193-b128051d8c5f7a3c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><img src="http://upload-images.jianshu.io/upload_images/1176193-d5f4f64e9739330a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-</li>
-<li><p>创建证书OK后 下载到本地<br><img src="http://upload-images.jianshu.io/upload_images/1176193-a21019b3d18aae2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-</li>
-<li><p>开发版和生产版证书都创建好后,此时这里已经都是启用状态了<br><img src="http://upload-images.jianshu.io/upload_images/1176193-59613c0be12cec6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-</li>
-<li><p>打开下载好的开发模式证书,可以在钥匙串中看到,右键将该证书导出成.p12格式文件<br><img src="http://upload-images.jianshu.io/upload_images/1176193-28db7c56510b2d28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><img src="http://upload-images.jianshu.io/upload_images/1176193-73a1ec4001a48723.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-</li>
-<li><p>证书密码可根据需求填写(<strong>可为空</strong>)<br><img src="http://upload-images.jianshu.io/upload_images/1176193-dcf04e42006aaf3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-</li>
-<li><p>这里请输入你电脑管理员密码<br><img src="http://upload-images.jianshu.io/upload_images/1176193-3b20be40b92433ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-</li>
-<li><p>导出的.p12格式文件如下<br><img src="http://upload-images.jianshu.io/upload_images/1176193-2a2b2e4e5f3b5eea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-</li>
-<li><p>接下来终端进入该文件目录下使用命令把此文件转成pem格式(<strong>因为后端需要上传pem格式文件验证</strong>)</p>
-</li>
-</ul>
-<p><strong><code>openssl pkcs12 -in TestPush_Dev.p12 -out Push_Dev.pem -nodes</code></strong><br><img src="http://upload-images.jianshu.io/upload_images/1176193-cdae0968418b441c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<ul>
-<li>推送证书创建好了,接下来回到苹果开发者官网,按以下步骤创建Provisioning Profile文件<br><img src="http://upload-images.jianshu.io/upload_images/1176193-16083ef6b6979500.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><img src="http://upload-images.jianshu.io/upload_images/1176193-257394d2732c569a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-<li>选择该项目APP ID<br><img src="http://upload-images.jianshu.io/upload_images/1176193-cb460021f9e1477f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><img src="http://upload-images.jianshu.io/upload_images/1176193-23c2d81ceef0e1d5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><img src="http://upload-images.jianshu.io/upload_images/1176193-64edab609767aae2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-<li>勾选测试授权的设备<br><img src="http://upload-images.jianshu.io/upload_images/1176193-e11b0b6b79262f6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-<li>注意右侧的状态要Active才是可用的,若是invalid则需要Edit并重新下载一次<br><img src="http://upload-images.jianshu.io/upload_images/1176193-de534bf8e097e583.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-<li><strong>到此我们开发模式所需要的证书和描述文件都创建好了</strong><br><img src="http://upload-images.jianshu.io/upload_images/1176193-330a7824e80d9558.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><h6 id="四-进入百度云推送后台-登陆验证开发者身份-并创建一个推送应用"><a href="#四-进入百度云推送后台-登陆验证开发者身份-并创建一个推送应用" class="headerlink" title="四.进入百度云推送后台,登陆验证开发者身份,并创建一个推送应用"></a>四.进入<a href="http://push.baidu.com" target="_blank" rel="noopener">百度云推送后台</a>,登陆验证开发者身份,并创建一个推送应用</h6><img src="http://upload-images.jianshu.io/upload_images/1176193-830126318744bd36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-<li>选择iOS,并上传开发版证书(<strong>当然如果你同时也创建了生产版证书也可以上传验证</strong>)<br><img src="http://upload-images.jianshu.io/upload_images/1176193-b336a9bc44dbfd3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-<li>保存后,我们要用到的便是右侧的API KEY<br><img src="http://upload-images.jianshu.io/upload_images/1176193-05a3f23f3c3b2551.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><h6 id="五-项目里配置百度云推送"><a href="#五-项目里配置百度云推送" class="headerlink" title="五.项目里配置百度云推送"></a>五.项目里配置百度云推送</h6></li>
-<li>下载最新的百度云推送SDK,导入到工程,SDK需要以下库：Foundation.framework、CoreTelephony.framework、libz.dylib、SystemConfiguration.framework，请在工程中添加<br><img src="http://upload-images.jianshu.io/upload_images/1176193-51b819286cc36050.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><img src="http://upload-images.jianshu.io/upload_images/1176193-2d0240d7236620b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-<li><strong>再次强调要修改Bundle ID与之前创建证书时所填Bundle ID一致</strong><br><img src="http://upload-images.jianshu.io/upload_images/1176193-a12dc8e31e420b1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-<li>在<code>AppDelegate</code>中导入<code>BPush.h</code>,并在<code>- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions</code>方法中添加如下代码,并修改apiKey为刚才创建应用所得apiKey,推送模式为开发模式</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// iOS8 下需要使用新的 API</span><br><span class="line"></span><br><span class="line">    if ([[[UIDevice currentDevice] systemVersion] floatValue] &gt;= 8.0) &#123;</span><br><span class="line">        UIUserNotificationType myTypes = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;</span><br><span class="line"></span><br><span class="line">        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:myTypes categories:nil];</span><br><span class="line">        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound;</span><br><span class="line">        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #warning 测试 开发环境 时需要修改BPushMode为BPushModeDevelopment 需要修改Apikey为自己的Apikey</span><br><span class="line">    </span><br><span class="line">    // 在 App 启动时注册百度云推送服务，需要提供 Apikey</span><br><span class="line">    [BPush registerChannel:launchOptions apiKey:&lt;#在百度云推送官网上注册后得到的apikey#&gt; pushMode:BPushModeDevelopment withFirstAction:nil withSecondAction:nil withCategory:nil isDebug:YES];</span><br></pre></td></tr></table></figure>
+          PS:此文仅以简单实现推送为主,是本人个人整理,部分截图与内容来自于互联网,若对大家有所帮助,还请给个赞O(∩_∩)O~~,大神勿喷
+一.推送原理
 
-<ul>
-<li>添加如下3个方法</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 在 iOS8 系统中，还需要添加这个方法。通过新的 API 注册推送服务</span><br><span class="line">- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings</span><br><span class="line">&#123;</span><br><span class="line">    [application registerForRemoteNotifications];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken</span><br><span class="line">&#123;</span><br><span class="line">    NSLog(@&quot;test:%@&quot;,deviceToken);</span><br><span class="line">    [BPush registerDeviceToken:deviceToken];</span><br><span class="line">    [BPush bindChannelWithCompleteHandler:nil];   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 当 DeviceToken 获取失败时，系统会回调此方法</span><br><span class="line">- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error</span><br><span class="line">&#123;</span><br><span class="line">    NSLog(@&quot;DeviceToken 获取失败，原因：%@&quot;,error);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="六-配置证书测试"><a href="#六-配置证书测试" class="headerlink" title="六.配置证书测试"></a>六.配置证书测试</h6><ul>
-<li>双击之前创建好的的TestPush_ProvisioningDev.mobileprovision描述文件,并在Xcode-Targets配置好证书<br><img src="http://upload-images.jianshu.io/upload_images/1176193-124724e6c25e0a26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-</ul>
-<p><strong>这一步编译的时候容易failed,通常检查之前配置的provisioning文件状态是否为Active,若状态为Invalid,则需删除本地provisioning文件,clean,再次重新下载配置</strong></p>
-<ul>
-<li>真机运行成功后,可看到控制端打印出获得到Device Token,以及APP提示时候开启通知<br><img src="http://upload-images.jianshu.io/upload_images/1176193-5d97f9659d08253b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><img src="http://upload-images.jianshu.io/upload_images/1176193-d5cbb314bb15e914.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-</ul>
-<h6 id="七-创建通知测试"><a href="#七-创建通知测试" class="headerlink" title="七.创建通知测试"></a>七.创建通知测试</h6><ul>
-<li>在百度云推送后台创建一个通知测试,请选择开发模式<br><img src="http://upload-images.jianshu.io/upload_images/1176193-6b14d10aee4d839a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-<li>现在我们就接收到刚才创建的通知了<br><img src="http://upload-images.jianshu.io/upload_images/1176193-d2fb5ee3f09f0cbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-</ul>
-<h6 id="总结-此文虽步骤繁多-但只要理解了苹果的证书机制-配置还是很快的-更多的推送操作本文不再多讲-可以去看各大推送SDK说明文档都是OK的-如有任何问题可邮箱yueyeqi-icloud-com联系我"><a href="#总结-此文虽步骤繁多-但只要理解了苹果的证书机制-配置还是很快的-更多的推送操作本文不再多讲-可以去看各大推送SDK说明文档都是OK的-如有任何问题可邮箱yueyeqi-icloud-com联系我" class="headerlink" title="总结:此文虽步骤繁多,但只要理解了苹果的证书机制,配置还是很快的,更多的推送操作本文不再多讲,可以去看各大推送SDK说明文档都是OK的,如有任何问题可邮箱yueyeqi@icloud.com联系我"></a>总结:此文虽步骤繁多,但只要理解了苹果的证书机制,配置还是很快的,更多的推送操作本文不再多讲,可以去看各大推送SDK说明文档都是OK的,如有任何问题可邮箱<a href="mailto:yueyeqi@icloud.com" target="_blank" rel="noopener">yueyeqi@icloud.com</a>联系我</h6>
-          
+图中，Provider是指某个iPhone软件的Push服务器，这篇文章我将使用百度云推送服务作为Provider。APNS 是Apple Push 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/12/21/iOS-推送通知-功能简单实现/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
